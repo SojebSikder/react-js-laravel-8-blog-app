@@ -38,7 +38,7 @@ export default class Login extends Component {
             username: this.state.username,
             password: this.state.password
         }
-        axios.post(Config.getUrl()+"/user/register", user)
+        axios.post(Config.getUrl()+"/user/login", user)
         .then(res=>{
             this.setState({alert_message:'success'});
         }).catch(error=>{

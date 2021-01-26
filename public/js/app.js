@@ -2890,7 +2890,7 @@ var Login = /*#__PURE__*/function (_Component) {
         username: this.state.username,
         password: this.state.password
       };
-      axios.post(_classes_Config__WEBPACK_IMPORTED_MODULE_2__.default.getUrl() + "/user/register", user).then(function (res) {
+      axios.post(_classes_Config__WEBPACK_IMPORTED_MODULE_2__.default.getUrl() + "/user/login", user).then(function (res) {
         _this2.setState({
           alert_message: 'success'
         });
