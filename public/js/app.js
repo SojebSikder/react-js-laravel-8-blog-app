@@ -2807,6 +2807,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/classes/Config.js");
+/* harmony import */ var _AlertMsg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AlertMsg */ "./resources/js/components/AlertMsg.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -2834,53 +2836,117 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var Login = /*#__PURE__*/function (_Component) {
   _inherits(Login, _Component);
 
   var _super = _createSuper(Login);
 
   function Login() {
+    var _this;
+
     _classCallCheck(this, Login);
 
-    return _super.apply(this, arguments);
-  }
+    _this = _super.call(this); // Method binding
+
+    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
+    _this.onChangeUsername = _this.onChangeUsername.bind(_assertThisInitialized(_this));
+    _this.onChangePassword = _this.onChangePassword.bind(_assertThisInitialized(_this)); // Set State
+
+    _this.state = {
+      // User information
+      username: '',
+      password: '',
+      // Error handeling variable
+      alert_message: ''
+    };
+    return _this;
+  } // Get value from input and set state
+
 
   _createClass(Login, [{
+    key: "onChangeUsername",
+    value: function onChangeUsername(e) {
+      this.setState({
+        username: e.target.value
+      });
+    }
+  }, {
+    key: "onChangePassword",
+    value: function onChangePassword(e) {
+      this.setState({
+        password: e.target.value
+      });
+    } // create user account
+
+  }, {
+    key: "onSubmit",
+    value: function onSubmit(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var user = {
+        username: this.state.username,
+        password: this.state.password
+      };
+      axios.post(_classes_Config__WEBPACK_IMPORTED_MODULE_2__.default.getUrl() + "/user/register", user).then(function (res) {
+        _this2.setState({
+          alert_message: 'success'
+        });
+      })["catch"](function (error) {
+        _this2.setState({
+          alert_message: 'error'
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: "container",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "mb-3",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-              htmlFor: "email",
-              className: "form-label",
-              children: "Email or Username"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-              type: "text",
-              className: "form-control",
-              id: "email",
-              placeholder: "Email or Username",
-              autoComplete: "off"
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), this.state.alert_message == "success" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AlertMsg__WEBPACK_IMPORTED_MODULE_3__.default, {
+            type: "success",
+            msg: "Account created successfully!"
+          }) : null, this.state.alert_message == "error" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AlertMsg__WEBPACK_IMPORTED_MODULE_3__.default, {
+            type: "warning",
+            msg: "Something went wrong"
+          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
+            onSubmit: this.onSubmit,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "mb-3",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                htmlFor: "username",
+                className: "form-label",
+                children: "Username"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                type: "text",
+                onChange: this.onChangeUsername,
+                className: "form-control",
+                id: "username",
+                placeholder: "Username",
+                autoComplete: "off"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              className: "mb-3",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+                htmlFor: "password",
+                className: "form-label",
+                children: "Password"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                type: "password",
+                onChange: this.onChangePassword,
+                className: "form-control",
+                id: "password",
+                placeholder: "Password",
+                autoComplete: "off"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+              type: "submit",
+              className: "btn btn-primary",
+              children: "Sign In"
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "mb-3",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-              htmlFor: "password",
-              className: "form-label",
-              children: "Password"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-              type: "password",
-              className: "form-control",
-              id: "password",
-              placeholder: "Password",
-              autoComplete: "off"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-            type: "submit",
-            className: "btn btn-primary",
-            children: "Login"
           })]
         })
       });
