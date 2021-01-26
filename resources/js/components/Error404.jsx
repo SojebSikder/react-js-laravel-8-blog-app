@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 
-export default class Home extends Component {
+export default class Error404 extends Component {
     render() {
         return (
             <div>
-                This is home test
+                Error 404 No found !
             </div>
         )
     }
 }
-
-

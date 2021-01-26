@@ -7,12 +7,12 @@ import Login from './Login';
 import Register from './Register';
 import About from './About';
 import ContactUs from './ContactUs';
+import Error404 from './Error404';
 
 export default class Header extends Component {
     render() {
         return (
             <div>
-
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="container-fluid">
 
@@ -27,7 +27,7 @@ export default class Header extends Component {
                             <li className="nav-item">
                                 <Link to="/" className="nav-link active" aria-current="page" href="#">Home</Link>
                             </li>
-
+{/*
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Account
@@ -36,14 +36,15 @@ export default class Header extends Component {
                                     <li><Link to="/login" className="dropdown-item">Login</Link></li>
                                     <li><Link to="/register" className="dropdown-item">Register</Link></li>
                                 </ul>
-                            </li>
+                            </li> */
+    }
 
                             <li className="nav-item">
                                 <Link to="/about" className="nav-link" >About us</Link>
                             </li>
 
                             <li className="nav-item">
-                                <Link to="/contact-us" className="nav-link">Contact us</Link>
+                                <Link to="/contactus" className="nav-link">Contact us</Link>
                             </li>
 
                         </ul>
@@ -54,12 +55,14 @@ export default class Header extends Component {
 
                 
                     <Switch>
-                        <Route exect path='/' component={Home} />
-                        <Route path='/login' component={Login} />
-                        <Route path='/register' component={Register} />
-                        <Route path='/about' component={About} />
-                        <Route path='/contact-us' component={ContactUs} />
-                        <Route path='/blog/:id' component={BlogDetails} />
+                        <Route exact path='/' component={Home} />
+                        <Route exact path='/login' component={Login} />
+                        <Route exact path='/register' component={Register} />
+                        <Route exact path='/about' component={About} />
+                        <Route exact path='/contactus' component={ContactUs} />
+                        <Route exact path='/blog/:id' component={BlogDetails} />
+
+                        <Route exact path="/*" component={Error404} />
                     </Switch>
 
             </div>
