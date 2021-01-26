@@ -52,7 +52,7 @@ export default class Login extends Component {
                 <div className="container">
                     <br />
 
-                    {this.state.alert_message=="success"?<AlertMsg type="success" msg="Account created successfully!" />:null}
+                    {this.state.alert_message=="success"?<AlertMsg type="success" msg="Sign In successfully!" />:null}
                     {this.state.alert_message=="error"?<AlertMsg type="warning" msg="Something went wrong" />:null}
 
                     <form onSubmit={this.onSubmit}>

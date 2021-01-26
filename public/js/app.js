@@ -2908,7 +2908,7 @@ var Login = /*#__PURE__*/function (_Component) {
           className: "container",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), this.state.alert_message == "success" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AlertMsg__WEBPACK_IMPORTED_MODULE_3__.default, {
             type: "success",
-            msg: "Account created successfully!"
+            msg: "Sign In successfully!"
           }) : null, this.state.alert_message == "error" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AlertMsg__WEBPACK_IMPORTED_MODULE_3__.default, {
             type: "warning",
             msg: "Something went wrong"

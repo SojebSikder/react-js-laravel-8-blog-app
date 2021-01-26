@@ -28,3 +28,4 @@ Route::put('/blog/update/{id}', [App\Http\Controllers\api\BlogController::class,
 
 // Users login/register
 Route::post('/user/register', [App\Http\Controllers\api\RegisterController::class, 'create']);
+Route::post('/user/login', [App\Http\Controllers\api\LoginController::class, 'index']);
