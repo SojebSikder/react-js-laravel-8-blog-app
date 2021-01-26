@@ -25,3 +25,6 @@ Route::post('/blog/store', [App\Http\Controllers\api\BlogController::class, 'sto
 Route::delete('/blog/delete', [App\Http\Controllers\api\BlogController::class, 'destroy']);
 Route::get('/blog/edit/{id}', [App\Http\Controllers\api\BlogController::class, 'edit']);
 Route::put('/blog/update/{id}', [App\Http\Controllers\api\BlogController::class, 'update']);
+
+// Users login/register
+Route::post('/user/register', [App\Http\Controllers\api\RegisterController::class, 'create']);
