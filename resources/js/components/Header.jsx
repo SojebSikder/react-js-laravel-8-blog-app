@@ -27,7 +27,7 @@ export default class Header extends Component {
                             <li className="nav-item">
                                 <Link to="/" className="nav-link active" aria-current="page" href="#">Home</Link>
                             </li>
-{/*
+ 
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Account
@@ -36,8 +36,8 @@ export default class Header extends Component {
                                     <li><Link to="/login" className="dropdown-item">Login</Link></li>
                                     <li><Link to="/register" className="dropdown-item">Register</Link></li>
                                 </ul>
-                            </li> */
-    }
+                            </li> 
+
 
                             <li className="nav-item">
                                 <Link to="/about" className="nav-link" >About us</Link>
