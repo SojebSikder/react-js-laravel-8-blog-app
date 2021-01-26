@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [App\Http\Controllers\api\BlogController::class, 'index']);
+Route::get('/blog/{id}', [App\Http\Controllers\api\BlogController::class, 'show']);

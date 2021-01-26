@@ -38,7 +38,14 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result = new Blog();
+        $result->user_id = '';
+        $result->post_id = '';
+        $result->status = 'active';
+        $result->title = $request->title;
+        $result->description = $request->description;
+
+        $result->save();
     }
 
     /**
@@ -49,7 +56,8 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = Blog::find($id);
+        return $result;
     }
 
     /**
