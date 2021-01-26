@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import Config from '../classes/Config';
+import Pagination from 'react-js-pagination';
 
 export default class Home extends Component {
 
@@ -9,13 +10,40 @@ export default class Home extends Component {
         super();
         this.state = {
             blogs:[],
+
+            //Pagination variables
+            activePage:1,
+            itemsCountPerPage:1,
+            totalItemsCount:1,
+            pageRangeDisplayed:3
         }
     }
 
     componentDidMount(){
         axios.get(Config.getUrl()+"/")
         .then(response=>{
-            this.setState({blogs: response.data});
+            this.setState({
+                blogs: response.data.data,
+                
+                itemsCountPerPage:response.data.per_page,
+                totalItemsCount:response.data.total,
+                activePage:response.data.current_page
+            });
+        });
+    }
+
+    handlePageChange(pageNumber) {
+        console.log(`active page is ${pageNumber}`);
+        //this.setState({activePage: pageNumber});
+
+        axios.get(Config.getUrl()+"/category?page="+pageNumber)
+        .then(response=>{
+            this.setState({
+                categories:response.data.data,
+                itemsCountPerPage:response.data.per_page,
+                totalItemsCount:response.data.total,
+                activePage:response.data.current_page
+            });
         });
     }
 
@@ -41,8 +69,20 @@ export default class Home extends Component {
                         );
                     })
                 }
-                </div>
 
+                    <div className="d-flex justify-content-center">
+                        <Pagination
+                        activePage={this.state.activePage}
+                        itemsCountPerPage={this.state.itemsCountPerPage}
+                        totalItemsCount={this.state.totalItemsCount}
+                        pageRangeDisplayed={this.state.pageRangeDisplayed}
+                        onChange={this.handlePageChange.bind(this)}
+                        itemClass='page-item'
+                        linkClass='page-link'
+                        />
+                    </div>
+
+                </div>
             </div>
         );
     }

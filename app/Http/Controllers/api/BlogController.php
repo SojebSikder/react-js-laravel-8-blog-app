@@ -16,7 +16,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $result = Blog::all();
+        $result = Blog::paginate(5);
         return $result;
     }
 
