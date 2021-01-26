@@ -68,7 +68,8 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $result = Blog::find($id);
+        return $result;
     }
 
     /**
@@ -80,7 +81,12 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = Blog::find($id);
+        $result->status = $request->status;
+        $result->title = $request->title;
+        $result->description = $request->description;
+
+        $result->save();
     }
 
     /**
@@ -91,6 +97,7 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = Blog::find($id);
+        $result->delete();
     }
 }
