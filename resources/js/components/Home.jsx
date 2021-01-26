@@ -32,6 +32,7 @@ export default class Home extends Component {
         });
     }
 
+    // For pagination
     handlePageChange(pageNumber) {
         console.log(`active page is ${pageNumber}`);
         //this.setState({activePage: pageNumber});

@@ -20,3 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\api\BlogController::class, 'index']);
 Route::get('/blog/{id}', [App\Http\Controllers\api\BlogController::class, 'show']);
+Route::post('/blog/store', [App\Http\Controllers\api\BlogController::class, 'store']);
+
+Route::delete('/blog/delete', [App\Http\Controllers\api\BlogController::class, 'destroy']);
+Route::get('/blog/edit/{id}', [App\Http\Controllers\api\BlogController::class, 'edit']);
+Route::put('/blog/update/{id}', [App\Http\Controllers\api\BlogController::class, 'update']);

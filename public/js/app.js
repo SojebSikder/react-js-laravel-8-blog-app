@@ -2618,7 +2618,8 @@ var Home = /*#__PURE__*/function (_Component) {
           activePage: response.data.current_page
         });
       });
-    }
+    } // For pagination
+
   }, {
     key: "handlePageChange",
     value: function handlePageChange(pageNumber) {
