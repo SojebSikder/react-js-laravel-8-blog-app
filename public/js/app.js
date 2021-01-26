@@ -2891,9 +2891,15 @@ var Login = /*#__PURE__*/function (_Component) {
         password: this.state.password
       };
       axios.post(_classes_Config__WEBPACK_IMPORTED_MODULE_2__.default.getUrl() + "/user/login", user).then(function (res) {
-        _this2.setState({
-          alert_message: 'success'
-        });
+        if (res.data.status == 0) {
+          _this2.setState({
+            alert_message: 'error'
+          });
+        } else if (res.data.status == 1) {
+          _this2.setState({
+            alert_message: 'success'
+          });
+        }
       })["catch"](function (error) {
         _this2.setState({
           alert_message: 'error'

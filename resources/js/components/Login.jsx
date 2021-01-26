@@ -40,7 +40,13 @@ export default class Login extends Component {
         }
         axios.post(Config.getUrl()+"/user/login", user)
         .then(res=>{
-            this.setState({alert_message:'success'});
+            if(res.data.status == 0)
+            {
+                this.setState({alert_message:'error'});
+            }else if(res.data.status == 1){
+                this.setState({alert_message:'success'});
+            }
+            
         }).catch(error=>{
             this.setState({alert_message:'error'});
         });
