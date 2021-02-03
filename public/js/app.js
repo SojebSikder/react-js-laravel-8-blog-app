@@ -19339,7 +19339,11 @@ var AuthService = /*#__PURE__*/function () {
     value: function login(user, calback) {
       var _this = this;
 
-      axios.post(_Config__WEBPACK_IMPORTED_MODULE_0__.default.getUrl() + "/user/login", user).then(function (res) {
+      // const user ={
+      //     username: this.state.username,
+      //     password: this.state.password
+      // }
+      axios.post(_Config__WEBPACK_IMPORTED_MODULE_0__.default.getUrl() + "/login", user).then(function (res) {
         if (res.data.status == 0) {
           _this.authenticated = true; //this.setState({alert_message:'error'});
         } else if (res.data.status == 1) {//this.setState({alert_message:'success'});
@@ -19361,7 +19365,7 @@ var AuthService = /*#__PURE__*/function () {
     value: function register(user, callback) {
       var _this2 = this;
 
-      axios.post(_Config__WEBPACK_IMPORTED_MODULE_0__.default.getUrl() + "/user/register", user).then(function (res) {
+      axios.post(_Config__WEBPACK_IMPORTED_MODULE_0__.default.getUrl() + "/register", user).then(function (res) {
         callback(res); //this.setState({alert_message:'success'});
       })["catch"](function (error) {
         _this2.setState({
@@ -20399,10 +20403,6 @@ var Login = /*#__PURE__*/function (_Component) {
             alert_message: 'success'
           });
         }
-      })["catch"](function (erro) {
-        _this2.setState({
-          alert_message: 'error'
-        });
       });
     }
   }, {

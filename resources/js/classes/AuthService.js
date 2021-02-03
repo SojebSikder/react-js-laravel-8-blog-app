@@ -9,7 +9,12 @@ class AuthService {
      */
     login(user, calback){
 
-        axios.post(Config.getUrl()+"/user/login", user)
+        // const user ={
+        //     username: this.state.username,
+        //     password: this.state.password
+        // }
+
+        axios.post(Config.getUrl()+"/login", user)
         .then(res=>{
             if(res.data.status == 0)
             {
@@ -23,15 +28,12 @@ class AuthService {
         }).catch(error=>{
             this.setState({alert_message:'error'});
         });
-
-        
-        
     }
     /**
      * Register with api
      */
     register(user, callback){
-        axios.post(Config.getUrl()+"/user/register", user)
+        axios.post(Config.getUrl()+"/register", user)
         .then(res=>{
             callback(res);
             //this.setState({alert_message:'success'});

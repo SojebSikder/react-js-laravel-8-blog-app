@@ -47,8 +47,6 @@ export default class Login extends Component {
             }else if(res.data.status == 1){
                 this.setState({alert_message:'success'});
             }
-        }).catch(erro=>{
-            this.setState({alert_message:'error'});
         });
         
     }
