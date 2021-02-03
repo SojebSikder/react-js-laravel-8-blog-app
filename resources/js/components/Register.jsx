@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import AuthService from '../classes/AuthService';
 import Config from '../classes/Config';
 import AlertMsg from './AlertMsg';
 
@@ -45,11 +46,9 @@ export default class Register extends Component {
             email: this.state.email,
             password: this.state.password
         }
-        axios.post(Config.getUrl()+"/user/register", user)
-        .then(res=>{
+        
+        AuthService.register(user, (res)=>{
             this.setState({alert_message:'success'});
-        }).catch(error=>{
-            this.setState({alert_message:'error'});
         });
     }
 

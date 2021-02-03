@@ -18,7 +18,7 @@ class Blog extends Migration
             $table->string('user_id');
             $table->string('post_id')->unique();
             $table->string('title');
-            $table->string('description');
+            $table->longText('description');
             $table->string('status');
             $table->string('keywords')->nullable();
             $table->timestamps();

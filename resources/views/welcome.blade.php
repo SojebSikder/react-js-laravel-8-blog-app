@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Laravel React Blog</title>
         <link rel="stylesheet" href=" {{ asset('css/bootstrap.min.css') }}">
+
     </head>
     <body>
         <div id="app"></div>

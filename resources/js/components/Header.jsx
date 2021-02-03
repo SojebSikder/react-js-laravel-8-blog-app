@@ -8,6 +8,7 @@ import Register from './Register';
 import About from './About';
 import ContactUs from './ContactUs';
 import Error404 from './Error404';
+import SignIn from './Test';
 
 export default class Header extends Component {
     render() {
@@ -46,6 +47,10 @@ export default class Header extends Component {
                             <li className="nav-item">
                                 <Link to="/contactus" className="nav-link">Contact us</Link>
                             </li>
+
+                            <li className="nav-item">
+                                <Link to="/testlogin" className="nav-link">Test login</Link>
+                            </li>
                         </ul>
 
                         </div>
@@ -53,9 +58,12 @@ export default class Header extends Component {
                 </nav>
 
                 
+
+                
                     <Switch>
                         <Route exact path='/' component={Home} />
                         <Route exact path='/login' component={Login} />
+                        <Route exact path='/testlogin' component={SignIn} />
                         <Route exact path='/register' component={Register} />
                         <Route exact path='/about' component={About} />
                         <Route exact path='/contactus' component={ContactUs} />

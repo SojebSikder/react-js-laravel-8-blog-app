@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Config from '../classes/Config';
+import AuthService from '../classes/AuthService';
 import AlertMsg from './AlertMsg';
 
 export default class Login extends Component {
@@ -38,18 +39,18 @@ export default class Login extends Component {
             username: this.state.username,
             password: this.state.password
         }
-        axios.post(Config.getUrl()+"/user/login", user)
-        .then(res=>{
-            if(res.data.status == 0)
-            {
+
+        
+        AuthService.login(user, (res)=>{
+            if(res.data.status == 0){
                 this.setState({alert_message:'error'});
             }else if(res.data.status == 1){
                 this.setState({alert_message:'success'});
             }
-            
-        }).catch(error=>{
+        }).catch(erro=>{
             this.setState({alert_message:'error'});
         });
+        
     }
 
     render() {
