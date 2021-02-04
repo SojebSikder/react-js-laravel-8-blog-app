@@ -42,7 +42,7 @@ export default class Register extends Component {
     {
         e.preventDefault();
         const user ={
-            username: this.state.username,
+            name: this.state.username,
             email: this.state.email,
             password: this.state.password
         }

@@ -20390,7 +20390,7 @@ var Login = /*#__PURE__*/function (_Component) {
 
       e.preventDefault();
       var user = {
-        username: this.state.username,
+        name: this.state.username,
         password: this.state.password
       };
       _classes_AuthService__WEBPACK_IMPORTED_MODULE_3__.default.login(user, function (res) {
@@ -20569,7 +20569,7 @@ var Register = /*#__PURE__*/function (_Component) {
 
       e.preventDefault();
       var user = {
-        username: this.state.username,
+        name: this.state.username,
         email: this.state.email,
         password: this.state.password
       };

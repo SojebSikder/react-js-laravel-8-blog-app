@@ -28,11 +28,12 @@ class UserController extends Controller
 
     public function register(Request $request){
         $plainPassword=$request->password;
+
         $password=bcrypt($request->password);
-        $username = $request->username;
+        $name = $request->name;
         $email = $request->email;
 
-        $request->request->add(['name' => $username]);
+        $request->request->add(['name' => $name]);
         $request->request->add(['email' => $email]);
         $request->request->add(['password' => $password]);
         
@@ -46,8 +47,9 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        
         $input = $request->only('name', 'password');
+
+
         $jwt_token = null;
         if (!$jwt_token =  $this->guard()->attempt($input)){//JWTAuth::attempt($input)) {
             return response()->json([
