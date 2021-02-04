@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import React, { Component } from 'react'
 import Userinfo from '../classes/Userinfo';
 import AuthService from '../services/AuthService';
@@ -10,6 +11,7 @@ export default class Login extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
+        this.onClickLogout = this.onClickLogout.bind(this);
 
         // Set State
         this.state = {
@@ -51,6 +53,13 @@ export default class Login extends Component {
         
     }
 
+    onClickLogout()
+    {
+        AuthService.logout((res)=>{
+            console.log(res.data.message);
+        })
+    }
+
     render() {
         return (
             <div>
@@ -62,6 +71,15 @@ export default class Login extends Component {
 
                     <form onSubmit={this.onSubmit}>
                         <span>Hello, {Userinfo.getName()}</span>
+
+                        <Button 
+                            variant="contained" 
+                            color="primary"
+                            onClick={this.onClickLogout}
+                        >
+                        Logout
+                        </Button>
+
                     <div className="mb-3">
                         <label htmlFor="username" className="form-label">Username</label>
                         <input type="text" onChange={this.onChangeUsername} className="form-control" id="username" placeholder="Username" autoComplete="off" />

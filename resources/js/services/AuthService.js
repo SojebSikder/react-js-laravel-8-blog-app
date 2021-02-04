@@ -1,6 +1,11 @@
+import axios from "axios";
 import Config from "../classes/Config";
+import Userinfo from "../classes/Userinfo";
 import SessionService from "./SessionService";
 
+/**
+ * Manage authentication
+ */
 class AuthService {
     constructor()
     {
@@ -20,7 +25,6 @@ class AuthService {
         //     username: this.state.username,
         //     password: this.state.password
         // }
-
         axios.post(Config.getUrl()+"/login", user)
         .then(res=>{
             if(res.data.success == true)
@@ -39,7 +43,7 @@ class AuthService {
             calback(res);
             
         }).catch(error=>{
-            this.setState({alert_message:'error'});
+            //this.setState({alert_message:'error'});
         });
     }
     /**
@@ -51,7 +55,7 @@ class AuthService {
             callback(res);
             //this.setState({alert_message:'success'});
         }).catch(error=>{
-            this.setState({alert_message:'error'});
+            //this.setState({alert_message:'error'});
         });
     }
     /**
@@ -66,6 +70,24 @@ class AuthService {
             this.authenticated = false;
             return this.authenticated;
         }
+    }
+
+    /**
+     * Logout user
+     */
+    logout(callback){
+        const user ={
+            token: Userinfo.getToken(),
+        }
+        axios.post(Config.getUrl()+"/logout", user)
+        .then(res=>{
+            SessionService.removeAll();
+            this.authenticated = false;
+            callback(res);
+        }).catch(error=>{
+            //this.setState({alert_message:'error'});
+        });
+        
     }
 }
 

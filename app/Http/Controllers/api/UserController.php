@@ -22,7 +22,7 @@ class UserController extends Controller
     use AuthenticatesUsers;
 
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'refresh', 'logout']]);
     }
 
 
@@ -69,6 +69,9 @@ class UserController extends Controller
 
 
     public function logout(Request $request){
+        // $this->guard()->logout();
+        // return response()->json(['message' => 'Successfully logged out']);
+
         if(!User::checkToken($request)){
             return response()->json([
              'message' => 'Token is required',
@@ -89,6 +92,7 @@ class UserController extends Controller
             ], 500);
         }
     }
+
 
 
     public function getCurrentUser(Request $request){
@@ -130,5 +134,15 @@ class UserController extends Controller
             'message' => 'Information has been updated successfully!',
             'user' =>$user
         ]);
+    }
+
+    /**
+     * Refresh a token.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function refresh()
+    {
+        return $this->respondWithToken($this->guard()->refresh());
     }
 }

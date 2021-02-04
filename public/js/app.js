@@ -20262,6 +20262,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => /* binding */ Login
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Button/Button.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/classes/Userinfo.js");
 /* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/services/AuthService.js");
@@ -20296,6 +20297,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Login = /*#__PURE__*/function (_Component) {
   _inherits(Login, _Component);
 
@@ -20310,7 +20312,8 @@ var Login = /*#__PURE__*/function (_Component) {
 
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     _this.onChangeUsername = _this.onChangeUsername.bind(_assertThisInitialized(_this));
-    _this.onChangePassword = _this.onChangePassword.bind(_assertThisInitialized(_this)); // Set State
+    _this.onChangePassword = _this.onChangePassword.bind(_assertThisInitialized(_this));
+    _this.onClickLogout = _this.onClickLogout.bind(_assertThisInitialized(_this)); // Set State
 
     _this.state = {
       // User information
@@ -20361,6 +20364,13 @@ var Login = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "onClickLogout",
+    value: function onClickLogout() {
+      _services_AuthService__WEBPACK_IMPORTED_MODULE_3__.default.logout(function (res) {
+        console.log(res.data.message);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
@@ -20376,6 +20386,11 @@ var Login = /*#__PURE__*/function (_Component) {
             onSubmit: this.onSubmit,
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
               children: ["Hello, ", _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__.default.getName()]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__.default, {
+              variant: "contained",
+              color: "primary",
+              onClick: this.onClickLogout,
+              children: "Logout"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
               className: "mb-3",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
@@ -20777,8 +20792,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/classes/Config.js");
-/* harmony import */ var _SessionService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SessionService */ "./resources/js/services/SessionService.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/classes/Config.js");
+/* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/classes/Userinfo.js");
+/* harmony import */ var _SessionService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SessionService */ "./resources/js/services/SessionService.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -20788,11 +20806,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 
+
+/**
+ * Manage authentication
+ */
+
 var AuthService = /*#__PURE__*/function () {
   function AuthService() {
     _classCallCheck(this, AuthService);
 
-    if (_SessionService__WEBPACK_IMPORTED_MODULE_1__.default.get('token') != null) {
+    if (_SessionService__WEBPACK_IMPORTED_MODULE_3__.default.get('token') != null) {
       this.authenticated = true;
     } else {
       this.authenticated = false;
@@ -20812,20 +20835,17 @@ var AuthService = /*#__PURE__*/function () {
       //     username: this.state.username,
       //     password: this.state.password
       // }
-      axios.post(_classes_Config__WEBPACK_IMPORTED_MODULE_0__.default.getUrl() + "/login", user).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post(_classes_Config__WEBPACK_IMPORTED_MODULE_1__.default.getUrl() + "/login", user).then(function (res) {
         if (res.data.success == true) {
           _this.authenticated = true; // Set sesiion
 
-          _SessionService__WEBPACK_IMPORTED_MODULE_1__.default.set('id', res.data.user.id);
-          _SessionService__WEBPACK_IMPORTED_MODULE_1__.default.set('name', res.data.user.name);
-          _SessionService__WEBPACK_IMPORTED_MODULE_1__.default.set('token', res.data.token);
+          _SessionService__WEBPACK_IMPORTED_MODULE_3__.default.set('id', res.data.user.id);
+          _SessionService__WEBPACK_IMPORTED_MODULE_3__.default.set('name', res.data.user.name);
+          _SessionService__WEBPACK_IMPORTED_MODULE_3__.default.set('token', res.data.token);
         } else if (res.data.success == false) {}
 
         calback(res);
-      })["catch"](function (error) {
-        _this.setState({
-          alert_message: 'error'
-        });
+      })["catch"](function (error) {//this.setState({alert_message:'error'});
       });
     }
     /**
@@ -20835,14 +20855,9 @@ var AuthService = /*#__PURE__*/function () {
   }, {
     key: "register",
     value: function register(user, callback) {
-      var _this2 = this;
-
-      axios.post(_classes_Config__WEBPACK_IMPORTED_MODULE_0__.default.getUrl() + "/register", user).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post(_classes_Config__WEBPACK_IMPORTED_MODULE_1__.default.getUrl() + "/register", user).then(function (res) {
         callback(res); //this.setState({alert_message:'success'});
-      })["catch"](function (error) {
-        _this2.setState({
-          alert_message: 'error'
-        });
+      })["catch"](function (error) {//this.setState({alert_message:'error'});
       });
     }
     /**
@@ -20852,13 +20867,32 @@ var AuthService = /*#__PURE__*/function () {
   }, {
     key: "isAuthenticated",
     value: function isAuthenticated() {
-      if (_SessionService__WEBPACK_IMPORTED_MODULE_1__.default.get('token') != null) {
+      if (_SessionService__WEBPACK_IMPORTED_MODULE_3__.default.get('token') != null) {
         this.authenticated = true;
         return this.authenticated;
       } else {
         this.authenticated = false;
         return this.authenticated;
       }
+    }
+    /**
+     * Logout user
+     */
+
+  }, {
+    key: "logout",
+    value: function logout(callback) {
+      var _this2 = this;
+
+      var user = {
+        token: _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__.default.getToken()
+      };
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post(_classes_Config__WEBPACK_IMPORTED_MODULE_1__.default.getUrl() + "/logout", user).then(function (res) {
+        _SessionService__WEBPACK_IMPORTED_MODULE_3__.default.removeAll();
+        _this2.authenticated = false;
+        callback(res);
+      })["catch"](function (error) {//this.setState({alert_message:'error'});
+      });
     }
   }]);
 

@@ -33,5 +33,5 @@ Route::post('/register', [App\Http\Controllers\api\UserController::class, 'regis
 Route::post('/login', [App\Http\Controllers\api\UserController::class, 'login']);
 Route::get('/user', [App\Http\Controllers\api\UserController::class, 'getCurrentUser']);
 Route::post('/update', [App\Http\Controllers\api\UserController::class, 'update']);
-Route::get('/logout', [App\Http\Controllers\api\UserController::class, 'logout']);
+Route::post('/logout', [App\Http\Controllers\api\UserController::class, 'logout']);
 
