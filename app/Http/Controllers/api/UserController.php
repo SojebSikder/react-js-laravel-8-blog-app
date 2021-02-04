@@ -6,15 +6,26 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+//use Auth;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Mail;
 use App\Mail\PasswordReset;
+use Validator;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class UserController extends Controller
 {
 // JWT Token: VsvuDxEa7UUzVc7rOY2rRZwFGwjiRFU9a9A4WWfxD7kQnAITnkis5EcQN8gwkfsL
+
+    use AuthenticatesUsers;
+
+    public function __construct() {
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+    }
+
+
     public function register(Request $request){
         $plainPassword=$request->password;
         $password=bcrypt($request->password);
@@ -38,7 +49,7 @@ class UserController extends Controller
         
         $input = $request->only('name', 'password');
         $jwt_token = null;
-        if (!$jwt_token = JWTAuth::attempt($input)) {
+        if (!$jwt_token =  $this->guard()->attempt($input)){//JWTAuth::attempt($input)) {
             return response()->json([
                 'success' => false,
                 'message' => 'Invalid Email or Password',
@@ -55,8 +66,7 @@ class UserController extends Controller
     }
 
 
-    public function logout(Request $request)
-    {
+    public function logout(Request $request){
         if(!User::checkToken($request)){
             return response()->json([
              'message' => 'Token is required',

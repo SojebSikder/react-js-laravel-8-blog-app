@@ -38,9 +38,21 @@ Route::post('/update', [App\Http\Controllers\api\LoginController::class, 'update
 Route::get('/logout', [App\Http\Controllers\api\LoginController::class, 'logout']);
 */
 
+/*Route::group(['middleware' => 'auth:api'], function(){
+
+    Route::post('/register', [App\Http\Controllers\api\UserController::class, 'register']);
+    Route::post('/login', [App\Http\Controllers\api\UserController::class, 'login']);
+    Route::get('/user', [App\Http\Controllers\api\UserController::class, 'getCurrentUser']);
+    Route::post('/update', [App\Http\Controllers\api\UserController::class, 'update']);
+    Route::get('/logout', [App\Http\Controllers\api\UserController::class, 'logout']);
+});
+*/
+
+
 
 Route::post('/register', [App\Http\Controllers\api\UserController::class, 'register']);
 Route::post('/login', [App\Http\Controllers\api\UserController::class, 'login']);
 Route::get('/user', [App\Http\Controllers\api\UserController::class, 'getCurrentUser']);
 Route::post('/update', [App\Http\Controllers\api\UserController::class, 'update']);
 Route::get('/logout', [App\Http\Controllers\api\UserController::class, 'logout']);
+
