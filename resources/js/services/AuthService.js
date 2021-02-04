@@ -1,14 +1,21 @@
-import Config from "./Config";
+import Config from "../classes/Config";
+import SessionService from "./SessionService";
 
 class AuthService {
-    constructor(){
-        this.authenticated = false;
+    constructor()
+    {
+        if(SessionService.get('token') != null){
+            this.authenticated = true;
+        }else{
+            this.authenticated = false;
+        }
+        
     }
     /**
      * Login with api
      */
-    login(user, calback){
-
+    login(user, calback)
+    {
         // const user ={
         //     username: this.state.username,
         //     password: this.state.password
@@ -16,13 +23,19 @@ class AuthService {
 
         axios.post(Config.getUrl()+"/login", user)
         .then(res=>{
-            if(res.data.status == 0)
+            if(res.data.success == true)
             {
                 this.authenticated = true;
-                //this.setState({alert_message:'error'});
-            }else if(res.data.status == 1){
-                //this.setState({alert_message:'success'});
+
+                // Set sesiion
+                SessionService.set('id', res.data.user.id);
+                SessionService.set('name', res.data.user.name);
+                SessionService.set('token', res.data.token);
+
+            }else if(res.data.success == false){
+                
             }
+            
             calback(res);
             
         }).catch(error=>{
@@ -44,8 +57,15 @@ class AuthService {
     /**
      * Check if user is authenticated or not
      */
-    isAuthenticated(){
-        return this.authenticated;
+    isAuthenticated()
+    {
+        if(SessionService.get('token') != null){
+            this.authenticated = true;
+            return this.authenticated;
+        }else{
+            this.authenticated = false;
+            return this.authenticated;
+        }
     }
 }
 

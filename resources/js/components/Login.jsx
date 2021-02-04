@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Config from '../classes/Config';
-import AuthService from '../classes/AuthService';
+import Userinfo from '../classes/Userinfo';
+import AuthService from '../services/AuthService';
 import AlertMsg from './AlertMsg';
 
 export default class Login extends Component {
@@ -61,6 +61,7 @@ export default class Login extends Component {
                     {this.state.alert_message=="error"?<AlertMsg type="warning" msg="Something went wrong" />:null}
 
                     <form onSubmit={this.onSubmit}>
+                        <span>Hello, {Userinfo.getName()}</span>
                     <div className="mb-3">
                         <label htmlFor="username" className="form-label">Username</label>
                         <input type="text" onChange={this.onChangeUsername} className="form-control" id="username" placeholder="Username" autoComplete="off" />

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import AuthService from '../classes/AuthService';
-import Config from '../classes/Config';
+import AuthService from '../services/AuthService';
 import AlertMsg from './AlertMsg';
 
 export default class Register extends Component {

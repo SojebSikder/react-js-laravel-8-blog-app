@@ -19303,118 +19303,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/classes/AuthService.js":
-/*!*********************************************!*\
-  !*** ./resources/js/classes/AuthService.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var _Config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Config */ "./resources/js/classes/Config.js");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-var AuthService = /*#__PURE__*/function () {
-  function AuthService() {
-    _classCallCheck(this, AuthService);
-
-    this.authenticated = false;
-  }
-  /**
-   * Login with api
-   */
-
-
-  _createClass(AuthService, [{
-    key: "login",
-    value: function login(user, calback) {
-      var _this = this;
-
-      // const user ={
-      //     username: this.state.username,
-      //     password: this.state.password
-      // }
-      axios.post(_Config__WEBPACK_IMPORTED_MODULE_0__.default.getUrl() + "/login", user).then(function (res) {
-        if (res.data.status == 0) {
-          _this.authenticated = true; //this.setState({alert_message:'error'});
-        } else if (res.data.status == 1) {//this.setState({alert_message:'success'});
-        }
-
-        calback(res);
-      })["catch"](function (error) {
-        _this.setState({
-          alert_message: 'error'
-        });
-      });
-    }
-    /**
-     * Register with api
-     */
-
-  }, {
-    key: "register",
-    value: function register(user, callback) {
-      var _this2 = this;
-
-      axios.post(_Config__WEBPACK_IMPORTED_MODULE_0__.default.getUrl() + "/register", user).then(function (res) {
-        callback(res); //this.setState({alert_message:'success'});
-      })["catch"](function (error) {
-        _this2.setState({
-          alert_message: 'error'
-        });
-      });
-    }
-    /**
-     * Check if user is authenticated or not
-     */
-
-  }, {
-    key: "isAuthenticated",
-    value: function isAuthenticated() {
-      return this.authenticated;
-    }
-  }]);
-
-  return AuthService;
-}();
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new AuthService()); // for Login
-
-/*
-axios.post(Config.getUrl()+"/user/login", user)
-.then(res=>{
-    if(res.data.status == 0)
-    {
-        this.setState({alert_message:'error'});
-    }else if(res.data.status == 1){
-        this.setState({alert_message:'success'});
-    }
-    
-}).catch(error=>{
-    this.setState({alert_message:'error'});
-}); */
-// for register
-
-/*
-axios.post(Config.getUrl()+"/user/register", user)
-.then(res=>{
-this.setState({alert_message:'success'});
-}).catch(error=>{
-this.setState({alert_message:'error'});
-});
-*/
-
-/***/ }),
-
 /***/ "./resources/js/classes/Config.js":
 /*!****************************************!*\
   !*** ./resources/js/classes/Config.js ***!
@@ -19455,6 +19343,73 @@ var Config = /*#__PURE__*/function () {
 }();
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Config);
+
+/***/ }),
+
+/***/ "./resources/js/classes/Userinfo.js":
+/*!******************************************!*\
+  !*** ./resources/js/classes/Userinfo.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _services_SessionService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/SessionService */ "./resources/js/services/SessionService.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+/**
+ * Access user information
+ */
+
+var Userinfo = /*#__PURE__*/function () {
+  function Userinfo() {
+    _classCallCheck(this, Userinfo);
+  }
+
+  _createClass(Userinfo, [{
+    key: "getId",
+
+    /**
+     * Get user id
+     */
+    value: function getId() {
+      var data = _services_SessionService__WEBPACK_IMPORTED_MODULE_0__.default.get('id');
+      return data;
+    }
+    /**
+     * Get User name
+     */
+
+  }, {
+    key: "getName",
+    value: function getName() {
+      var data = _services_SessionService__WEBPACK_IMPORTED_MODULE_0__.default.get('name');
+      return data;
+    }
+    /**
+     * Get User token
+     */
+
+  }, {
+    key: "getToken",
+    value: function getToken() {
+      var data = _services_SessionService__WEBPACK_IMPORTED_MODULE_0__.default.get('token');
+      return data;
+    }
+  }]);
+
+  return Userinfo;
+}();
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new Userinfo());
 
 /***/ }),
 
@@ -20308,8 +20263,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/classes/Config.js");
-/* harmony import */ var _classes_AuthService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../classes/AuthService */ "./resources/js/classes/AuthService.js");
+/* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/classes/Userinfo.js");
+/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/services/AuthService.js");
 /* harmony import */ var _AlertMsg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AlertMsg */ "./resources/js/components/AlertMsg.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -20393,7 +20348,7 @@ var Login = /*#__PURE__*/function (_Component) {
         name: this.state.username,
         password: this.state.password
       };
-      _classes_AuthService__WEBPACK_IMPORTED_MODULE_3__.default.login(user, function (res) {
+      _services_AuthService__WEBPACK_IMPORTED_MODULE_3__.default.login(user, function (res) {
         if (res.data.status == 0) {
           _this2.setState({
             alert_message: 'error'
@@ -20419,7 +20374,9 @@ var Login = /*#__PURE__*/function (_Component) {
             msg: "Something went wrong"
           }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
             onSubmit: this.onSubmit,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+              children: ["Hello, ", _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__.default.getName()]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
               className: "mb-3",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
                 htmlFor: "username",
@@ -20478,9 +20435,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _classes_AuthService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../classes/AuthService */ "./resources/js/classes/AuthService.js");
-/* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/classes/Config.js");
-/* harmony import */ var _AlertMsg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AlertMsg */ "./resources/js/components/AlertMsg.jsx");
+/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/services/AuthService.js");
+/* harmony import */ var _AlertMsg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AlertMsg */ "./resources/js/components/AlertMsg.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -20505,7 +20461,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 
 
 
@@ -20573,7 +20528,7 @@ var Register = /*#__PURE__*/function (_Component) {
         email: this.state.email,
         password: this.state.password
       };
-      _classes_AuthService__WEBPACK_IMPORTED_MODULE_2__.default.register(user, function (res) {
+      _services_AuthService__WEBPACK_IMPORTED_MODULE_2__.default.register(user, function (res) {
         _this2.setState({
           alert_message: 'success'
         });
@@ -20585,10 +20540,10 @@ var Register = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           className: "container",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), this.state.alert_message == "success" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AlertMsg__WEBPACK_IMPORTED_MODULE_4__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), this.state.alert_message == "success" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AlertMsg__WEBPACK_IMPORTED_MODULE_3__.default, {
             type: "success",
             msg: "Account created successfully!"
-          }) : null, this.state.alert_message == "error" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AlertMsg__WEBPACK_IMPORTED_MODULE_4__.default, {
+          }) : null, this.state.alert_message == "error" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AlertMsg__WEBPACK_IMPORTED_MODULE_3__.default, {
             type: "warning",
             msg: "Something went wrong"
           }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
@@ -20808,6 +20763,208 @@ function SignIn() {
     })]
   });
 }
+
+/***/ }),
+
+/***/ "./resources/js/services/AuthService.js":
+/*!**********************************************!*\
+  !*** ./resources/js/services/AuthService.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/classes/Config.js");
+/* harmony import */ var _SessionService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SessionService */ "./resources/js/services/SessionService.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+var AuthService = /*#__PURE__*/function () {
+  function AuthService() {
+    _classCallCheck(this, AuthService);
+
+    if (_SessionService__WEBPACK_IMPORTED_MODULE_1__.default.get('token') != null) {
+      this.authenticated = true;
+    } else {
+      this.authenticated = false;
+    }
+  }
+  /**
+   * Login with api
+   */
+
+
+  _createClass(AuthService, [{
+    key: "login",
+    value: function login(user, calback) {
+      var _this = this;
+
+      // const user ={
+      //     username: this.state.username,
+      //     password: this.state.password
+      // }
+      axios.post(_classes_Config__WEBPACK_IMPORTED_MODULE_0__.default.getUrl() + "/login", user).then(function (res) {
+        if (res.data.success == true) {
+          _this.authenticated = true; // Set sesiion
+
+          _SessionService__WEBPACK_IMPORTED_MODULE_1__.default.set('id', res.data.user.id);
+          _SessionService__WEBPACK_IMPORTED_MODULE_1__.default.set('name', res.data.user.name);
+          _SessionService__WEBPACK_IMPORTED_MODULE_1__.default.set('token', res.data.token);
+        } else if (res.data.success == false) {}
+
+        calback(res);
+      })["catch"](function (error) {
+        _this.setState({
+          alert_message: 'error'
+        });
+      });
+    }
+    /**
+     * Register with api
+     */
+
+  }, {
+    key: "register",
+    value: function register(user, callback) {
+      var _this2 = this;
+
+      axios.post(_classes_Config__WEBPACK_IMPORTED_MODULE_0__.default.getUrl() + "/register", user).then(function (res) {
+        callback(res); //this.setState({alert_message:'success'});
+      })["catch"](function (error) {
+        _this2.setState({
+          alert_message: 'error'
+        });
+      });
+    }
+    /**
+     * Check if user is authenticated or not
+     */
+
+  }, {
+    key: "isAuthenticated",
+    value: function isAuthenticated() {
+      if (_SessionService__WEBPACK_IMPORTED_MODULE_1__.default.get('token') != null) {
+        this.authenticated = true;
+        return this.authenticated;
+      } else {
+        this.authenticated = false;
+        return this.authenticated;
+      }
+    }
+  }]);
+
+  return AuthService;
+}();
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new AuthService()); // for Login
+
+/*
+axios.post(Config.getUrl()+"/user/login", user)
+.then(res=>{
+    if(res.data.status == 0)
+    {
+        this.setState({alert_message:'error'});
+    }else if(res.data.status == 1){
+        this.setState({alert_message:'success'});
+    }
+    
+}).catch(error=>{
+    this.setState({alert_message:'error'});
+}); */
+// for register
+
+/*
+axios.post(Config.getUrl()+"/user/register", user)
+.then(res=>{
+this.setState({alert_message:'success'});
+}).catch(error=>{
+this.setState({alert_message:'error'});
+});
+*/
+
+/***/ }),
+
+/***/ "./resources/js/services/SessionService.js":
+/*!*************************************************!*\
+  !*** ./resources/js/services/SessionService.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/**
+ * It is used for Session Management
+ */
+var SessionService = /*#__PURE__*/function () {
+  function SessionService() {
+    _classCallCheck(this, SessionService);
+  }
+
+  _createClass(SessionService, [{
+    key: "set",
+
+    /**
+     * Set session value
+     * @param {*} key 
+     * @param {*} value 
+     */
+    value: function set(key, value) {
+      sessionStorage.setItem(key, value);
+    }
+    /**
+     * Get session value
+     * @param {*} key 
+     */
+
+  }, {
+    key: "get",
+    value: function get(key) {
+      var data = sessionStorage.getItem(key);
+      return data;
+    }
+    /**
+     * Remove session value
+     * @param {*} key 
+     */
+
+  }, {
+    key: "remove",
+    value: function remove(key) {
+      sessionStorage.removeItem(key);
+    }
+    /**
+     * Remove all session value
+     */
+
+  }, {
+    key: "removeAll",
+    value: function removeAll() {
+      sessionStorage.clear();
+    }
+  }]);
+
+  return SessionService;
+}();
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new SessionService());
 
 /***/ }),
 
