@@ -29,27 +29,6 @@ Route::put('/blog/update/{id}', [App\Http\Controllers\api\BlogController::class,
 
 
 // Users login/register
-
-/*
-Route::post('/register', [App\Http\Controllers\api\RegisterController::class, 'create']);
-Route::post('/login', [App\Http\Controllers\api\LoginController::class, 'index']);
-Route::get('/user', [App\Http\Controllers\api\LoginController::class, 'getCurrentUser']);
-Route::post('/update', [App\Http\Controllers\api\LoginController::class, 'update']);
-Route::get('/logout', [App\Http\Controllers\api\LoginController::class, 'logout']);
-*/
-
-/*Route::group(['middleware' => 'auth:api'], function(){
-
-    Route::post('/register', [App\Http\Controllers\api\UserController::class, 'register']);
-    Route::post('/login', [App\Http\Controllers\api\UserController::class, 'login']);
-    Route::get('/user', [App\Http\Controllers\api\UserController::class, 'getCurrentUser']);
-    Route::post('/update', [App\Http\Controllers\api\UserController::class, 'update']);
-    Route::get('/logout', [App\Http\Controllers\api\UserController::class, 'logout']);
-});
-*/
-
-
-
 Route::post('/register', [App\Http\Controllers\api\UserController::class, 'register']);
 Route::post('/login', [App\Http\Controllers\api\UserController::class, 'login']);
 Route::get('/user', [App\Http\Controllers\api\UserController::class, 'getCurrentUser']);
