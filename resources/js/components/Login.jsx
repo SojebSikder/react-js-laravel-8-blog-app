@@ -57,7 +57,7 @@ export default class Login extends Component {
     {
         AuthService.logout((res)=>{
             console.log(res.data.message);
-        })
+        });
     }
 
     render() {
