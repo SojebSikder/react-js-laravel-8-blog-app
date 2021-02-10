@@ -19914,17 +19914,29 @@ var Header = /*#__PURE__*/function (_Component) {
                     role: "button",
                     "data-bs-toggle": "dropdown",
                     "aria-expanded": "false",
-                    children: _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged == false ? _classes_Userinfo__WEBPACK_IMPORTED_MODULE_11__.default.getName() : "Account"
+                    children: _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? _classes_Userinfo__WEBPACK_IMPORTED_MODULE_11__.default.getName() : "Account"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
                     className: "dropdown-menu",
                     "aria-labelledby": "navbarDropdown",
-                    children: [_services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged =  false ? /*#__PURE__*/0 : null, _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged =  false ? /*#__PURE__*/0 : null, _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged =  false ? 0 : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                    children: [_services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
+                        to: "/profile",
+                        className: "dropdown-item",
+                        children: "Profile"
+                      })
+                    }) : null, _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
+                        to: "/logout",
+                        className: "dropdown-item",
+                        children: "Logout"
+                      })
+                    }) : null, _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
                         to: "/login",
                         className: "dropdown-item",
                         children: "Login"
                       })
-                    }), _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged =  false ? 0 : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                    }), _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
                         to: "/register",
                         className: "dropdown-item",

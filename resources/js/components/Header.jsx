@@ -33,14 +33,14 @@ export default class Header extends Component {
  
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggl(e" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    { AuthService.isLogged == false ? (Userinfo.getName()) : ("Account") }
+                                    { AuthService.isLogged() == true ? (Userinfo.getName()) : ("Account") }
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                { AuthService.isLogged = false? (<li><Link to="/profile" className="dropdown-item">Profile</Link></li>) :(null) }
-                                { AuthService.isLogged = false ? (<li><Link to="/logout" className="dropdown-item">Logout</Link></li>) : (null) }
+                                { AuthService.isLogged() == true? (<li><Link to="/profile" className="dropdown-item">Profile</Link></li>) :(null) }
+                                { AuthService.isLogged() == true ? (<li><Link to="/logout" className="dropdown-item">Logout</Link></li>) : (null) }
 
-                                { AuthService.isLogged = false ? (null) :  (<li><Link to="/login" className="dropdown-item">Login</Link></li>) }
-                                { AuthService.isLogged = false ? (null) :  (<li><Link to="/register" className="dropdown-item">Register</Link></li>) }
+                                { AuthService.isLogged() == true ? (null) :  (<li><Link to="/login" className="dropdown-item">Login</Link></li>) }
+                                { AuthService.isLogged() == true ? (null) :  (<li><Link to="/register" className="dropdown-item">Register</Link></li>) }
                                 </ul>
                             </li> 
 
