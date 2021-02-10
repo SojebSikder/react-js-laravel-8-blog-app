@@ -20092,7 +20092,7 @@ function Home() {
                 children: blog.title
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
                 className: "card-text",
-                children: blog.description
+                children: blog.description.length > 400 ? blog.description.substr(1, 400) + " ....." : blog.description
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__.default, {
                 variant: "contained",
                 color: "primary",
@@ -20161,178 +20161,121 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => /* binding */ Login
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Button/Button.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/classes/Userinfo.js");
 /* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/services/AuthService.js");
 /* harmony import */ var _AlertMsg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AlertMsg */ "./resources/js/components/AlertMsg.jsx");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
 
 
+function Login() {
+  // User information
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      username = _useState2[0],
+      setUsername = _useState2[1];
 
-var Login = /*#__PURE__*/function (_Component) {
-  _inherits(Login, _Component);
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      password = _useState4[0],
+      setPassword = _useState4[1]; // Error handling variable
 
-  var _super = _createSuper(Login);
 
-  function Login() {
-    var _this;
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      alert_message = _useState6[0],
+      setAlert_message = _useState6[1]; // Get value from input and set state
 
-    _classCallCheck(this, Login);
 
-    _this = _super.call(this); // Method binding
+  var onChangeUsername = function onChangeUsername(e) {
+    setUsername(e.target.value);
+  };
 
-    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
-    _this.onChangeUsername = _this.onChangeUsername.bind(_assertThisInitialized(_this));
-    _this.onChangePassword = _this.onChangePassword.bind(_assertThisInitialized(_this));
-    _this.onClickLogout = _this.onClickLogout.bind(_assertThisInitialized(_this)); // Set State
+  var onChangePassword = function onChangePassword(e) {
+    setPassword(e.target.value);
+  }; // create user account
 
-    _this.state = {
-      // User information
-      username: '',
-      password: '',
-      // Error handeling variable
-      alert_message: ''
+
+  var onSubmit = function onSubmit(e) {
+    e.preventDefault();
+    var user = {
+      name: username,
+      password: password
     };
-    return _this;
-  } // Get value from input and set state
+    _services_AuthService__WEBPACK_IMPORTED_MODULE_3__.default.login(user, function (res) {
+      if (res.data.status == 0) {
+        setAlert_message('error');
+      } else if (res.data.status == 1) {
+        setAlert_message('success');
+      }
+    });
+  };
 
-
-  _createClass(Login, [{
-    key: "onChangeUsername",
-    value: function onChangeUsername(e) {
-      this.setState({
-        username: e.target.value
-      });
-    }
-  }, {
-    key: "onChangePassword",
-    value: function onChangePassword(e) {
-      this.setState({
-        password: e.target.value
-      });
-    } // create user account
-
-  }, {
-    key: "onSubmit",
-    value: function onSubmit(e) {
-      var _this2 = this;
-
-      e.preventDefault();
-      var user = {
-        name: this.state.username,
-        password: this.state.password
-      };
-      _services_AuthService__WEBPACK_IMPORTED_MODULE_3__.default.login(user, function (res) {
-        if (res.data.status == 0) {
-          _this2.setState({
-            alert_message: 'error'
-          });
-        } else if (res.data.status == 1) {
-          _this2.setState({
-            alert_message: 'success'
-          });
-        }
-      });
-    }
-  }, {
-    key: "onClickLogout",
-    value: function onClickLogout() {
-      _services_AuthService__WEBPACK_IMPORTED_MODULE_3__.default.logout(function (res) {
-        console.log(res.data.message);
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-          className: "container",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), this.state.alert_message == "success" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AlertMsg__WEBPACK_IMPORTED_MODULE_4__.default, {
-            type: "success",
-            msg: "Sign In successfully!"
-          }) : null, this.state.alert_message == "error" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AlertMsg__WEBPACK_IMPORTED_MODULE_4__.default, {
-            type: "warning",
-            msg: "Something went wrong"
-          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
-            onSubmit: this.onSubmit,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-              children: ["Hello, ", _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__.default.getName()]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__.default, {
-              variant: "contained",
-              color: "primary",
-              onClick: this.onClickLogout,
-              children: "Logout"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-              className: "mb-3",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                htmlFor: "username",
-                className: "form-label",
-                children: "Username"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                type: "text",
-                onChange: this.onChangeUsername,
-                className: "form-control",
-                id: "username",
-                placeholder: "Username",
-                autoComplete: "off"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-              className: "mb-3",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                htmlFor: "password",
-                className: "form-label",
-                children: "Password"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                type: "password",
-                onChange: this.onChangePassword,
-                className: "form-control",
-                id: "password",
-                placeholder: "Password",
-                autoComplete: "off"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-              type: "submit",
-              className: "btn btn-primary",
-              children: "Sign In"
-            })]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), alert_message == "success" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AlertMsg__WEBPACK_IMPORTED_MODULE_4__.default, {
+        type: "success",
+        msg: "Sign In successfully!"
+      }) : null, alert_message == "error" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AlertMsg__WEBPACK_IMPORTED_MODULE_4__.default, {
+        type: "warning",
+        msg: "Something went wrong"
+      }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
+        onSubmit: onSubmit,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "mb-3",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+            htmlFor: "username",
+            className: "form-label",
+            children: "Username"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+            type: "text",
+            onChange: onChangeUsername,
+            className: "form-control",
+            id: "username",
+            placeholder: "Username",
+            autoComplete: "off"
           })]
-        })
-      });
-    }
-  }]);
-
-  return Login;
-}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
-
-
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "mb-3",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+            htmlFor: "password",
+            className: "form-label",
+            children: "Password"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+            type: "password",
+            onChange: onChangePassword,
+            className: "form-control",
+            id: "password",
+            placeholder: "Password",
+            autoComplete: "off"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+          type: "submit",
+          className: "btn btn-primary",
+          children: "Sign In"
+        })]
+      })]
+    })
+  });
+}
 
 /***/ }),
 

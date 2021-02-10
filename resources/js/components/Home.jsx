@@ -65,7 +65,7 @@ export default function Home() {
                             <div className="card mx-auto" style={{width: '18rem'}}>
                                 <div className="card-body">
                                     <h5 className="card-title">{blog.title}</h5>
-                                    <p className="card-text">{blog.description}</p>
+                                    <p className="card-text">{blog.description.length > 400 ? blog.description.substr(1, 400)+  " ....." : blog.description}</p>
                                     
                                     <Button  variant="contained" color="primary" component={Link} to={'/blog/'+blog.id}>Read more</Button>
                                 </div>
