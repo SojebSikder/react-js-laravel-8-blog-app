@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Error404 extends Component {
-    render() {
-        return (
-            <div>
-                Error 404 No found !
-            </div>
-        )
-    }
+export default function Error404() {
+    return (
+        <div>
+            Error 404 No found !
+        </div>
+    )
 }
