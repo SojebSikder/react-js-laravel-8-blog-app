@@ -8,17 +8,17 @@ import Register from './Register';
 import About from './About';
 import ContactUs from './ContactUs';
 import Error404 from './Error404';
-import SignIn from './Test';
 import AuthService from '../services/AuthService';
 import Userinfo from '../classes/Userinfo';
-import { Button } from '@material-ui/core';
 import Settings from './Settings';
 import Profile from './Profile';
+import Navbar from './Navbar';
 
 export default function Header() {
 
     return (
         <div>
+            <Navbar />
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
 
@@ -58,9 +58,6 @@ export default function Header() {
                             <Link to="/contactus" className="nav-link">Contact us</Link>
                         </li>
 
-                        <li className="nav-item">
-                            <Link to="/testlogin" className="nav-link">Test login</Link>
-                        </li>
                     </ul>
 
                     </div>
@@ -73,7 +70,6 @@ export default function Header() {
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route exact path='/login' component={Login} />
-                    <Route exact path='/testlogin' component={SignIn} />
                     <Route exact path='/register' component={Register} />
                     <Route exact path='/about' component={About} />
                     <Route exact path='/contactus' component={ContactUs} />

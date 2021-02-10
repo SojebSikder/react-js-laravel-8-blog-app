@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Pagination from 'react-js-pagination';
 import { Button } from '@material-ui/core';
 import Config from '../classes/Config';
+import BlogCard from './BlogCard';
 
 
 export default function Home() {
@@ -62,14 +63,14 @@ export default function Home() {
                 blogs.map(blog=>{
                     return(
                         <div key={blog.id}>
-                            <div className="card mx-auto" style={{width: '18rem'}}>
-                                <div className="card-body">
-                                    <h5 className="card-title">{blog.title}</h5>
-                                    <p className="card-text">{blog.description.length > 400 ? blog.description.substr(1, 400)+  " ....." : blog.description}</p>
-                                    
-                                    <Button  variant="contained" color="primary" component={Link} to={'/blog/'+blog.id}>Read more</Button>
-                                </div>
-                            </div>
+
+                            <BlogCard 
+                            key={blog.id} 
+                            title={blog.title} 
+                            description={blog.description.length > 400 ? blog.description.substr(1, 400)+  " ....." : blog.description} 
+                            link={'/blog/'+blog.id}
+                            />
+
                             <br />
                         </div>
                         
