@@ -20368,6 +20368,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-js-pagination */ "./node_modules/react-js-pagination/dist/Pagination.js");
 /* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/classes/Config.js");
 /* harmony import */ var _BlogCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BlogCard */ "./resources/js/components/BlogCard.jsx");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Container/Container.js");
 
 
 
@@ -20388,7 +20389,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+ // Material UI
 
+ // End Material UI
 
 function Home() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -20441,9 +20444,10 @@ function Home() {
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      className: "container",
-      children: [blogs.map(function (blog) {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__.default, {
+      component: "main",
+      maxWidth: "xs",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), blogs.map(function (blog) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_BlogCard__WEBPACK_IMPORTED_MODULE_5__.default, {
             title: blog.title,

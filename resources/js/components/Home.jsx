@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import Pagination from 'react-js-pagination';
-import { Button } from '@material-ui/core';
 import Config from '../classes/Config';
 import BlogCard from './BlogCard';
+
+// Material UI
+import { Button, Container } from '@material-ui/core';
+// End Material UI
 
 
 export default function Home() {
@@ -58,7 +61,8 @@ export default function Home() {
     
     return (
         <div>
-            <div className="container">
+            <Container component="main" maxWidth="xs">
+                <br />
             {
                 blogs.map(blog=>{
                     return(
@@ -88,8 +92,8 @@ export default function Home() {
                     linkClass='page-link'
                     />
                 </div>
+            </Container>
 
-            </div>
         </div>
         );
 
