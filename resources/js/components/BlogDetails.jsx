@@ -19,7 +19,7 @@ export default function BlogDetails(props) {
     return (
         <div>
             <div key={blog.id}>
-                <div className="card mx-auto" style={{width: '18rem'}}>
+                <div className="card mx-auto" style={{width: '50%'}}>
                     <div className="card-body">
                         <h5 className="card-title">{blog.title}</h5>
                         <p className="card-text">{blog.description}</p>

@@ -6,7 +6,7 @@ import Config from '../classes/Config';
 import BlogCard from './BlogCard';
 
 // Material UI
-import { Button, Container } from '@material-ui/core';
+import { Button, Container, CssBaseline } from '@material-ui/core';
 // End Material UI
 
 
@@ -63,12 +63,15 @@ export default function Home() {
         <div>
             <Container component="main" maxWidth="xs">
                 <br />
+                <CssBaseline />
             {
                 blogs.map(blog=>{
                     return(
                         <div key={blog.id}>
 
                             <BlogCard 
+                            image="/static/images/cards/contemplative-reptile.jpg"
+                            alt="Contemplative Reptile"
                             title={blog.title} 
                             description={blog.description.length > 400 ? blog.description.substr(1, 400)+  " ....." : blog.description} 
                             link={'/blog/'+blog.id}

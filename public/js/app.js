@@ -20071,9 +20071,9 @@ function BlogCard(props) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_CardActionArea__WEBPACK_IMPORTED_MODULE_4__.default, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_5__.default, {
         component: "img",
-        alt: "Contemplative Reptile",
+        alt: props.alt,
         height: "140",
-        image: "/static/images/cards/contemplative-reptile.jpg",
+        image: props.image,
         title: "Contemplative Reptile"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_6__.default, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_7__.default, {
@@ -20167,7 +20167,7 @@ function BlogDetails(props) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: "card mx-auto",
         style: {
-          width: '18rem'
+          width: '50%'
         },
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           className: "card-body",
@@ -20369,6 +20369,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/classes/Config.js");
 /* harmony import */ var _BlogCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BlogCard */ "./resources/js/components/BlogCard.jsx");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Container/Container.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/CssBaseline/CssBaseline.js");
 
 
 
@@ -20447,9 +20448,11 @@ function Home() {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__.default, {
       component: "main",
       maxWidth: "xs",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), blogs.map(function (blog) {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {}), blogs.map(function (blog) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_BlogCard__WEBPACK_IMPORTED_MODULE_5__.default, {
+            image: "/static/images/cards/contemplative-reptile.jpg",
+            alt: "Contemplative Reptile",
             title: blog.title,
             description: blog.description.length > 400 ? blog.description.substr(1, 400) + " ....." : blog.description,
             link: '/blog/' + blog.id

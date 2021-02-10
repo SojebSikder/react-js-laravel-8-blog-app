@@ -23,9 +23,9 @@ export default function BlogCard(props) {
       <CardActionArea>
         <CardMedia
           component="img"
-          alt="Contemplative Reptile"
+          alt={props.alt}
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={props.image}
           title="Contemplative Reptile"
         />
         <CardContent>
