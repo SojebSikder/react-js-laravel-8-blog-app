@@ -19807,8 +19807,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home */ "./resources/js/components/Home.jsx");
 /* harmony import */ var _BlogDetails__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BlogDetails */ "./resources/js/components/BlogDetails.jsx");
 /* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Login */ "./resources/js/components/Login.jsx");
@@ -19819,30 +19819,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Test__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Test */ "./resources/js/components/Test.jsx");
 /* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/services/AuthService.js");
 /* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/classes/Userinfo.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+/* harmony import */ var _Settings__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Settings */ "./resources/js/components/Settings.jsx");
+/* harmony import */ var _Profile__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Profile */ "./resources/js/components/Profile.jsx");
 
 
 
@@ -19857,161 +19835,153 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var Header = /*#__PURE__*/function (_Component) {
-  _inherits(Header, _Component);
 
-  var _super = _createSuper(Header);
 
-  function Header() {
-    _classCallCheck(this, Header);
 
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Header, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("nav", {
-          className: "navbar navbar-expand-lg navbar-light bg-light",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "container-fluid",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-              className: "navbar-brand",
-              href: "/",
-              children: "Blog"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-              className: "navbar-toggler",
-              type: "button",
-              "data-bs-toggle": "collapse",
-              "data-bs-target": "#navbarSupportedContent",
-              "aria-controls": "navbarSupportedContent",
-              "aria-expanded": "false",
-              "aria-label": "Toggle navigation",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-                className: "navbar-toggler-icon"
+function Header() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("nav", {
+      className: "navbar navbar-expand-lg navbar-light bg-light",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "container-fluid",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+          className: "navbar-brand",
+          href: "/",
+          children: "Blog"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+          className: "navbar-toggler",
+          type: "button",
+          "data-bs-toggle": "collapse",
+          "data-bs-target": "#navbarSupportedContent",
+          "aria-controls": "navbarSupportedContent",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+            className: "navbar-toggler-icon"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "collapse navbar-collapse",
+          id: "navbarSupportedContent",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+            className: "navbar-nav me-auto mb-2 mb-lg-0",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+              className: "nav-item",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
+                to: "/",
+                className: "nav-link active",
+                "aria-current": "page",
+                href: "#",
+                children: "Home"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-              className: "collapse navbar-collapse",
-              id: "navbarSupportedContent",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
-                className: "navbar-nav me-auto mb-2 mb-lg-0",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-                  className: "nav-item",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
-                    to: "/",
-                    className: "nav-link active",
-                    "aria-current": "page",
-                    href: "#",
-                    children: "Home"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+              className: "nav-item dropdown",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                className: "nav-link dropdown-toggl(e",
+                href: "#",
+                id: "navbarDropdown",
+                role: "button",
+                "data-bs-toggle": "dropdown",
+                "aria-expanded": "false",
+                children: _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? _classes_Userinfo__WEBPACK_IMPORTED_MODULE_11__.default.getName() : "Account"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+                className: "dropdown-menu",
+                "aria-labelledby": "navbarDropdown",
+                children: [_services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
+                    to: "/profile",
+                    className: "dropdown-item",
+                    children: "Profile"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-                  className: "nav-item dropdown",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                    className: "nav-link dropdown-toggl(e",
-                    href: "#",
-                    id: "navbarDropdown",
-                    role: "button",
-                    "data-bs-toggle": "dropdown",
-                    "aria-expanded": "false",
-                    children: _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? _classes_Userinfo__WEBPACK_IMPORTED_MODULE_11__.default.getName() : "Account"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
-                    className: "dropdown-menu",
-                    "aria-labelledby": "navbarDropdown",
-                    children: [_services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
-                        to: "/profile",
-                        className: "dropdown-item",
-                        children: "Profile"
-                      })
-                    }) : null, _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
-                        to: "/logout",
-                        className: "dropdown-item",
-                        children: "Logout"
-                      })
-                    }) : null, _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
-                        to: "/login",
-                        className: "dropdown-item",
-                        children: "Login"
-                      })
-                    }), _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
-                        to: "/register",
-                        className: "dropdown-item",
-                        children: "Register"
-                      })
-                    })]
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-                  className: "nav-item",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
-                    to: "/about",
-                    className: "nav-link",
-                    children: "About us"
+                }) : null, _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
+                    to: "/settings",
+                    className: "dropdown-item",
+                    children: "Settings"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-                  className: "nav-item",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
-                    to: "/contactus",
-                    className: "nav-link",
-                    children: "Contact us"
+                }) : null, _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
+                    to: "/login",
+                    className: "dropdown-item",
+                    children: "Login"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-                  className: "nav-item",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
-                    to: "/testlogin",
-                    className: "nav-link",
-                    children: "Test login"
+                }), _services_AuthService__WEBPACK_IMPORTED_MODULE_10__.default.isLogged() == true ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
+                    to: "/register",
+                    className: "dropdown-item",
+                    children: "Register"
                   })
                 })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+              className: "nav-item",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
+                to: "/about",
+                className: "nav-link",
+                children: "About us"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+              className: "nav-item",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
+                to: "/contactus",
+                className: "nav-link",
+                children: "Contact us"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+              className: "nav-item",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
+                to: "/testlogin",
+                className: "nav-link",
+                children: "Test login"
               })
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Switch, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            exact: true,
-            path: "/",
-            component: _Home__WEBPACK_IMPORTED_MODULE_2__.default
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            exact: true,
-            path: "/login",
-            component: _Login__WEBPACK_IMPORTED_MODULE_4__.default
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            exact: true,
-            path: "/testlogin",
-            component: _Test__WEBPACK_IMPORTED_MODULE_9__.default
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            exact: true,
-            path: "/register",
-            component: _Register__WEBPACK_IMPORTED_MODULE_5__.default
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            exact: true,
-            path: "/about",
-            component: _About__WEBPACK_IMPORTED_MODULE_6__.default
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            exact: true,
-            path: "/contactus",
-            component: _ContactUs__WEBPACK_IMPORTED_MODULE_7__.default
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            exact: true,
-            path: "/blog/:id",
-            component: _BlogDetails__WEBPACK_IMPORTED_MODULE_3__.default
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
-            exact: true,
-            path: "/*",
-            component: _Error404__WEBPACK_IMPORTED_MODULE_8__.default
-          })]
         })]
-      });
-    }
-  }]);
-
-  return Header;
-}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
-
-
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Switch, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+        exact: true,
+        path: "/",
+        component: _Home__WEBPACK_IMPORTED_MODULE_2__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+        exact: true,
+        path: "/login",
+        component: _Login__WEBPACK_IMPORTED_MODULE_4__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+        exact: true,
+        path: "/testlogin",
+        component: _Test__WEBPACK_IMPORTED_MODULE_9__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+        exact: true,
+        path: "/register",
+        component: _Register__WEBPACK_IMPORTED_MODULE_5__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+        exact: true,
+        path: "/about",
+        component: _About__WEBPACK_IMPORTED_MODULE_6__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+        exact: true,
+        path: "/contactus",
+        component: _ContactUs__WEBPACK_IMPORTED_MODULE_7__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+        exact: true,
+        path: "/blog/:id",
+        component: _BlogDetails__WEBPACK_IMPORTED_MODULE_3__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+        exact: true,
+        path: "/profile",
+        component: _Profile__WEBPACK_IMPORTED_MODULE_13__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+        exact: true,
+        path: "/settings",
+        component: _Settings__WEBPACK_IMPORTED_MODULE_12__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+        exact: true,
+        path: "/*",
+        component: _Error404__WEBPACK_IMPORTED_MODULE_8__.default
+      })]
+    })]
+  });
+}
 
 /***/ }),
 
@@ -20452,6 +20422,29 @@ var Login = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Profile.jsx":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Profile.jsx ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ Profile
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+function Profile() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    children: "Profile page"
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/Register.jsx":
 /*!**********************************************!*\
   !*** ./resources/js/components/Register.jsx ***!
@@ -20636,6 +20629,47 @@ var Register = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_1__.Component);
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/Settings.jsx":
+/*!**********************************************!*\
+  !*** ./resources/js/components/Settings.jsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ Settings
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Button/Button.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/services/AuthService.js");
+
+
+
+
+
+function Settings() {
+  var onClickLogout = function onClickLogout() {
+    _services_AuthService__WEBPACK_IMPORTED_MODULE_2__.default.logout(function (res) {
+      console.log(res.data.message);
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
+      children: "Settings pages"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__.default, {
+      variant: "contained",
+      color: "primary",
+      onClick: onClickLogout(),
+      children: "Logout"
+    })]
+  });
+}
 
 /***/ }),
 
