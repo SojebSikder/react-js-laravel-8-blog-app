@@ -37,6 +37,7 @@ export default function Header() {
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggl(e" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 { AuthService.isLogged() == true ? (Userinfo.getName()) : ("Account") }
+
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                             { AuthService.isLogged() == true ? (<li><Link to="/profile" className="dropdown-item">Profile</Link></li>) :(null) }

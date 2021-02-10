@@ -20,8 +20,6 @@ export default function Settings() {
             color="primary"
             onClick={onClickLogout()}
             >Logout</Button>
-            
-            
         </div>
     )
 }

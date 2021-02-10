@@ -59,7 +59,7 @@ class AuthService {
      */
     isLogged()
     {
-        if(SessionService.get('token') != ""){
+        if(SessionService.get('token') != null){
             this.authenticated = true;
             return true;
         }else{
