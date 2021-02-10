@@ -18,7 +18,7 @@ export default function Settings() {
             <Button 
             variant="contained" 
             color="primary"
-            onClick={onClickLogout()}
+            onClick={onClickLogout}
             >Logout</Button>
         </div>
     )

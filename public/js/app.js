@@ -20522,7 +20522,7 @@ function Settings() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__.default, {
       variant: "contained",
       color: "primary",
-      onClick: onClickLogout(),
+      onClick: onClickLogout,
       children: "Logout"
     })]
   });
