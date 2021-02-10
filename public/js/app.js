@@ -20476,16 +20476,16 @@ function BlogCard(props) {
         image: "/static/images/cards/contemplative-reptile.jpg",
         title: "Contemplative Reptile"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_6__.default, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_7__.default, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_7__.default, {
           gutterBottom: true,
           variant: "h5",
           component: "h2",
-          children: ["Lizard", props.title]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_7__.default, {
+          children: props.title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_7__.default, {
           variant: "body2",
           color: "textSecondary",
           component: "p",
-          children: ["Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica", props.description]
+          children: props.description
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_8__.default, {
@@ -20939,7 +20939,7 @@ function Home() {
             title: blog.title,
             description: blog.description.length > 400 ? blog.description.substr(1, 400) + " ....." : blog.description,
             link: '/blog/' + blog.id
-          }, blog.id), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {})]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {})]
         }, blog.id);
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: "d-flex justify-content-center",

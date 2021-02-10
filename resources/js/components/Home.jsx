@@ -65,7 +65,6 @@ export default function Home() {
                         <div key={blog.id}>
 
                             <BlogCard 
-                            key={blog.id} 
                             title={blog.title} 
                             description={blog.description.length > 400 ? blog.description.substr(1, 400)+  " ....." : blog.description} 
                             link={'/blog/'+blog.id}
