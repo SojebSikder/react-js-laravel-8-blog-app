@@ -1,4 +1,8 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import AuthService from '../services/AuthService';
+
+// Material UI
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,6 +18,9 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { Button } from '@material-ui/core';
+import Userinfo from '../classes/Userinfo';
+// End Material UI
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -115,8 +122,12 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+
+      { AuthService.isLogged() == true ? (<MenuItem onClick={handleMenuClose} component={Link} to='/profile'>Profile</MenuItem>) :(null) }
+      { AuthService.isLogged() == true ? (<MenuItem onClick={handleMenuClose} component={Link} to='/settings'>Settings</MenuItem>) : (null) }
+
+      { AuthService.isLogged() == true ? (null) : (<MenuItem onClick={handleMenuClose} component={Link} to='/login'>Login</MenuItem>) }
+      { AuthService.isLogged() == true ? (null) : (<MenuItem onClick={handleMenuClose} component={Link} to='/register'>Register</MenuItem>) }
     </Menu>
   );
 
@@ -131,33 +142,23 @@ export default function Navbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
+        <Link color="inherit" to='/'>Home</Link>
       </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+
       <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
+        { AuthService.isLogged() == true ? (Userinfo.getName()) :(<p>Account</p>) }
       </MenuItem>
+
+      <MenuItem>
+      <Link color="inherit" to='/about'>About us</Link>
+      </MenuItem>
+
+      <MenuItem>
+      <Link color="inherit" to='/contact'>Contact us</Link>
+      </MenuItem>
+
     </Menu>
   );
 
@@ -173,9 +174,11 @@ export default function Navbar() {
           >
             <MenuIcon />
           </IconButton>
+
           <Typography className={classes.title} variant="h6" noWrap>
             Sojeb's Blog
           </Typography>
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -189,28 +192,37 @@ export default function Navbar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
+
+          <Button color="inherit" component={Link} to='/'>Home</Button>
+
+
+            { AuthService.isLogged() == true ? (
+            <Button 
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+             >{Userinfo.getName()}</Button>
+            ) 
+            :(<Button 
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >Account</Button>) }
+
+          <Button color="inherit" component={Link} to='/about'>About us</Button>
+          <Button color="inherit" component={Link} to='/contact'>Contact us</Button>
+
+            
+
           </div>
           <div className={classes.sectionMobile}>
             <IconButton

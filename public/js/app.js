@@ -1007,316 +1007,6 @@ var Avatar = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function
 
 /***/ }),
 
-/***/ "./node_modules/@material-ui/core/esm/Badge/Badge.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/@material-ui/core/esm/Badge/Badge.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "styles": () => /* binding */ styles,
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
-/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/esm/styles/withStyles.js");
-/* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/capitalize */ "./node_modules/@material-ui/core/esm/utils/capitalize.js");
-
-
-
-
-
-
-
-var RADIUS_STANDARD = 10;
-var RADIUS_DOT = 4;
-var styles = function styles(theme) {
-  return {
-    /* Styles applied to the root element. */
-    root: {
-      position: 'relative',
-      display: 'inline-flex',
-      // For correct alignment with the text.
-      verticalAlign: 'middle',
-      flexShrink: 0
-    },
-
-    /* Styles applied to the badge `span` element. */
-    badge: {
-      display: 'flex',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-      alignContent: 'center',
-      alignItems: 'center',
-      position: 'absolute',
-      boxSizing: 'border-box',
-      fontFamily: theme.typography.fontFamily,
-      fontWeight: theme.typography.fontWeightMedium,
-      fontSize: theme.typography.pxToRem(12),
-      minWidth: RADIUS_STANDARD * 2,
-      lineHeight: 1,
-      padding: '0 6px',
-      height: RADIUS_STANDARD * 2,
-      borderRadius: RADIUS_STANDARD,
-      zIndex: 1,
-      // Render the badge on top of potential ripples.
-      transition: theme.transitions.create('transform', {
-        easing: theme.transitions.easing.easeInOut,
-        duration: theme.transitions.duration.enteringScreen
-      })
-    },
-
-    /* Styles applied to the root element if `color="primary"`. */
-    colorPrimary: {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.primary.contrastText
-    },
-
-    /* Styles applied to the root element if `color="secondary"`. */
-    colorSecondary: {
-      backgroundColor: theme.palette.secondary.main,
-      color: theme.palette.secondary.contrastText
-    },
-
-    /* Styles applied to the root element if `color="error"`. */
-    colorError: {
-      backgroundColor: theme.palette.error.main,
-      color: theme.palette.error.contrastText
-    },
-
-    /* Styles applied to the root element if `variant="dot"`. */
-    dot: {
-      borderRadius: RADIUS_DOT,
-      height: RADIUS_DOT * 2,
-      minWidth: RADIUS_DOT * 2,
-      padding: 0
-    },
-
-    /* Styles applied to the root element if `anchorOrigin={{ 'top', 'right' }} overlap="rectangle"`. */
-    anchorOriginTopRightRectangle: {
-      top: 0,
-      right: 0,
-      transform: 'scale(1) translate(50%, -50%)',
-      transformOrigin: '100% 0%',
-      '&$invisible': {
-        transform: 'scale(0) translate(50%, -50%)'
-      }
-    },
-
-    /* Styles applied to the root element if `anchorOrigin={{ 'bottom', 'right' }} overlap="rectangle"`. */
-    anchorOriginBottomRightRectangle: {
-      bottom: 0,
-      right: 0,
-      transform: 'scale(1) translate(50%, 50%)',
-      transformOrigin: '100% 100%',
-      '&$invisible': {
-        transform: 'scale(0) translate(50%, 50%)'
-      }
-    },
-
-    /* Styles applied to the root element if `anchorOrigin={{ 'top', 'left' }} overlap="rectangle"`. */
-    anchorOriginTopLeftRectangle: {
-      top: 0,
-      left: 0,
-      transform: 'scale(1) translate(-50%, -50%)',
-      transformOrigin: '0% 0%',
-      '&$invisible': {
-        transform: 'scale(0) translate(-50%, -50%)'
-      }
-    },
-
-    /* Styles applied to the root element if `anchorOrigin={{ 'bottom', 'left' }} overlap="rectangle"`. */
-    anchorOriginBottomLeftRectangle: {
-      bottom: 0,
-      left: 0,
-      transform: 'scale(1) translate(-50%, 50%)',
-      transformOrigin: '0% 100%',
-      '&$invisible': {
-        transform: 'scale(0) translate(-50%, 50%)'
-      }
-    },
-
-    /* Styles applied to the root element if `anchorOrigin={{ 'top', 'right' }} overlap="circle"`. */
-    anchorOriginTopRightCircle: {
-      top: '14%',
-      right: '14%',
-      transform: 'scale(1) translate(50%, -50%)',
-      transformOrigin: '100% 0%',
-      '&$invisible': {
-        transform: 'scale(0) translate(50%, -50%)'
-      }
-    },
-
-    /* Styles applied to the root element if `anchorOrigin={{ 'bottom', 'right' }} overlap="circle"`. */
-    anchorOriginBottomRightCircle: {
-      bottom: '14%',
-      right: '14%',
-      transform: 'scale(1) translate(50%, 50%)',
-      transformOrigin: '100% 100%',
-      '&$invisible': {
-        transform: 'scale(0) translate(50%, 50%)'
-      }
-    },
-
-    /* Styles applied to the root element if `anchorOrigin={{ 'top', 'left' }} overlap="circle"`. */
-    anchorOriginTopLeftCircle: {
-      top: '14%',
-      left: '14%',
-      transform: 'scale(1) translate(-50%, -50%)',
-      transformOrigin: '0% 0%',
-      '&$invisible': {
-        transform: 'scale(0) translate(-50%, -50%)'
-      }
-    },
-
-    /* Styles applied to the root element if `anchorOrigin={{ 'bottom', 'left' }} overlap="circle"`. */
-    anchorOriginBottomLeftCircle: {
-      bottom: '14%',
-      left: '14%',
-      transform: 'scale(1) translate(-50%, 50%)',
-      transformOrigin: '0% 100%',
-      '&$invisible': {
-        transform: 'scale(0) translate(-50%, 50%)'
-      }
-    },
-
-    /* Pseudo-class to the badge `span` element if `invisible={true}`. */
-    invisible: {
-      transition: theme.transitions.create('transform', {
-        easing: theme.transitions.easing.easeInOut,
-        duration: theme.transitions.duration.leavingScreen
-      })
-    }
-  };
-};
-var Badge = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function Badge(props, ref) {
-  var _props$anchorOrigin = props.anchorOrigin,
-      anchorOrigin = _props$anchorOrigin === void 0 ? {
-    vertical: 'top',
-    horizontal: 'right'
-  } : _props$anchorOrigin,
-      badgeContent = props.badgeContent,
-      children = props.children,
-      classes = props.classes,
-      className = props.className,
-      _props$color = props.color,
-      color = _props$color === void 0 ? 'default' : _props$color,
-      _props$component = props.component,
-      ComponentProp = _props$component === void 0 ? 'span' : _props$component,
-      invisibleProp = props.invisible,
-      _props$max = props.max,
-      max = _props$max === void 0 ? 99 : _props$max,
-      _props$overlap = props.overlap,
-      overlap = _props$overlap === void 0 ? 'rectangle' : _props$overlap,
-      _props$showZero = props.showZero,
-      showZero = _props$showZero === void 0 ? false : _props$showZero,
-      _props$variant = props.variant,
-      variant = _props$variant === void 0 ? 'standard' : _props$variant,
-      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__.default)(props, ["anchorOrigin", "badgeContent", "children", "classes", "className", "color", "component", "invisible", "max", "overlap", "showZero", "variant"]);
-
-  var invisible = invisibleProp;
-
-  if (invisibleProp == null && (badgeContent === 0 && !showZero || badgeContent == null && variant !== 'dot')) {
-    invisible = true;
-  }
-
-  var displayValue = '';
-
-  if (variant !== 'dot') {
-    displayValue = badgeContent > max ? "".concat(max, "+") : badgeContent;
-  }
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(ComponentProp, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
-    className: (0,clsx__WEBPACK_IMPORTED_MODULE_4__.default)(classes.root, className),
-    ref: ref
-  }, other), children, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("span", {
-    className: (0,clsx__WEBPACK_IMPORTED_MODULE_4__.default)(classes.badge, classes["".concat(anchorOrigin.horizontal).concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_5__.default)(anchorOrigin.vertical), "}")], classes["anchorOrigin".concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_5__.default)(anchorOrigin.vertical)).concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_5__.default)(anchorOrigin.horizontal)).concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_5__.default)(overlap))], color !== 'default' && classes["color".concat((0,_utils_capitalize__WEBPACK_IMPORTED_MODULE_5__.default)(color))], invisible && classes.invisible, variant === 'dot' && classes.dot)
-  }, displayValue));
-});
- true ? Badge.propTypes = {
-  // ----------------------------- Warning --------------------------------
-  // | These PropTypes are generated from the TypeScript type definitions |
-  // |     To update them edit the d.ts file and run "yarn proptypes"     |
-  // ----------------------------------------------------------------------
-
-  /**
-   * The anchor of the badge.
-   */
-  anchorOrigin: prop_types__WEBPACK_IMPORTED_MODULE_3___default().shape({
-    horizontal: prop_types__WEBPACK_IMPORTED_MODULE_3___default().oneOf(['left', 'right']).isRequired,
-    vertical: prop_types__WEBPACK_IMPORTED_MODULE_3___default().oneOf(['bottom', 'top']).isRequired
-  }),
-
-  /**
-   * The content rendered within the badge.
-   */
-  badgeContent: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().node),
-
-  /**
-   * The badge will be added relative to this node.
-   */
-  children: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().node),
-
-  /**
-   * Override or extend the styles applied to the component.
-   * See [CSS API](#css) below for more details.
-   */
-  classes: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().object),
-
-  /**
-   * @ignore
-   */
-  className: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string),
-
-  /**
-   * The color of the component. It supports those theme colors that make sense for this component.
-   */
-  color: prop_types__WEBPACK_IMPORTED_MODULE_3___default().oneOf(['default', 'error', 'primary', 'secondary']),
-
-  /**
-   * The component used for the root node.
-   * Either a string to use a HTML element or a component.
-   */
-  component: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().elementType),
-
-  /**
-   * If `true`, the badge will be invisible.
-   */
-  invisible: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool),
-
-  /**
-   * Max count to show.
-   */
-  max: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().number),
-
-  /**
-   * Wrapped shape the badge should overlap.
-   */
-  overlap: prop_types__WEBPACK_IMPORTED_MODULE_3___default().oneOf(['circle', 'rectangle']),
-
-  /**
-   * Controls whether the badge is hidden when `badgeContent` is zero.
-   */
-  showZero: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool),
-
-  /**
-   * The variant to use.
-   */
-  variant: prop_types__WEBPACK_IMPORTED_MODULE_3___default().oneOf(['dot', 'standard'])
-} : 0;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_6__.default)(styles, {
-  name: 'MuiBadge'
-})(Badge));
-
-/***/ }),
-
 /***/ "./node_modules/@material-ui/core/esm/Box/Box.js":
 /*!*******************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/Box/Box.js ***!
@@ -15527,36 +15217,6 @@ function useIsFocusVisible() {
 
 /***/ }),
 
-/***/ "./node_modules/@material-ui/icons/AccountCircle.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/@material-ui/icons/AccountCircle.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
-var _interopRequireWildcard = __webpack_require__(/*! @babel/runtime/helpers/interopRequireWildcard */ "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js");
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.default = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
-}), 'AccountCircle');
-
-exports.default = _default;
-
-/***/ }),
-
 /***/ "./node_modules/@material-ui/icons/LockOutlined.js":
 /*!*********************************************************!*\
   !*** ./node_modules/@material-ui/icons/LockOutlined.js ***!
@@ -15582,36 +15242,6 @@ var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/crea
 var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"
 }), 'LockOutlined');
-
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/@material-ui/icons/Mail.js":
-/*!*************************************************!*\
-  !*** ./node_modules/@material-ui/icons/Mail.js ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
-var _interopRequireWildcard = __webpack_require__(/*! @babel/runtime/helpers/interopRequireWildcard */ "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js");
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.default = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-}), 'Mail');
 
 exports.default = _default;
 
@@ -15672,36 +15302,6 @@ var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/crea
 var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
 }), 'MoreVert');
-
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/@material-ui/icons/Notifications.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/@material-ui/icons/Notifications.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
-var _interopRequireWildcard = __webpack_require__(/*! @babel/runtime/helpers/interopRequireWildcard */ "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js");
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.default = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"
-}), 'Notifications');
 
 exports.default = _default;
 
@@ -20675,8 +20275,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home */ "./resources/js/components/Home.jsx");
 /* harmony import */ var _BlogDetails__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BlogDetails */ "./resources/js/components/BlogDetails.jsx");
 /* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Login */ "./resources/js/components/Login.jsx");
@@ -20707,129 +20306,40 @@ __webpack_require__.r(__webpack_exports__);
 
 function Header() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_13__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("nav", {
-      className: "navbar navbar-expand-lg navbar-light bg-light",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "container-fluid",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
-          to: "/",
-          className: "navbar-brand",
-          children: "Blog"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-          className: "navbar-toggler",
-          type: "button",
-          "data-bs-toggle": "collapse",
-          "data-bs-target": "#navbarSupportedContent",
-          "aria-controls": "navbarSupportedContent",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-            className: "navbar-toggler-icon"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-          className: "collapse navbar-collapse",
-          id: "navbarSupportedContent",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
-            className: "navbar-nav me-auto mb-2 mb-lg-0",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-              className: "nav-item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
-                to: "/",
-                className: "nav-link active",
-                "aria-current": "page",
-                children: "Home"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-              className: "nav-item dropdown",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                className: "nav-link dropdown-toggle",
-                href: "#",
-                id: "navbarDropdown",
-                role: "button",
-                "data-bs-toggle": "dropdown",
-                "aria-expanded": "false",
-                children: _services_AuthService__WEBPACK_IMPORTED_MODULE_9__.default.isLogged() == true ? _classes_Userinfo__WEBPACK_IMPORTED_MODULE_10__.default.getName() : "Account"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
-                className: "dropdown-menu",
-                "aria-labelledby": "navbarDropdown",
-                children: [_services_AuthService__WEBPACK_IMPORTED_MODULE_9__.default.isLogged() == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
-                    to: "/profile",
-                    className: "dropdown-item",
-                    children: "Profile"
-                  })
-                }) : null, _services_AuthService__WEBPACK_IMPORTED_MODULE_9__.default.isLogged() == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
-                    to: "/settings",
-                    className: "dropdown-item",
-                    children: "Settings"
-                  })
-                }) : null, _services_AuthService__WEBPACK_IMPORTED_MODULE_9__.default.isLogged() == true ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
-                    to: "/login",
-                    className: "dropdown-item",
-                    children: "Login"
-                  })
-                }), _services_AuthService__WEBPACK_IMPORTED_MODULE_9__.default.isLogged() == true ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
-                    to: "/register",
-                    className: "dropdown-item",
-                    children: "Register"
-                  })
-                })]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-              className: "nav-item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
-                to: "/about",
-                className: "nav-link",
-                children: "About us"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-              className: "nav-item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Link, {
-                to: "/contactus",
-                className: "nav-link",
-                children: "Contact us"
-              })
-            })]
-          })
-        })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Switch, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_13__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Switch, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
         exact: true,
         path: "/",
         component: _Home__WEBPACK_IMPORTED_MODULE_2__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
         exact: true,
         path: "/login",
         component: _Login__WEBPACK_IMPORTED_MODULE_4__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
         exact: true,
         path: "/register",
         component: _Register__WEBPACK_IMPORTED_MODULE_5__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
         exact: true,
         path: "/about",
         component: _About__WEBPACK_IMPORTED_MODULE_6__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
         exact: true,
-        path: "/contactus",
+        path: "/contact",
         component: _ContactUs__WEBPACK_IMPORTED_MODULE_7__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
         exact: true,
         path: "/blog/:id",
         component: _BlogDetails__WEBPACK_IMPORTED_MODULE_3__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
         exact: true,
         path: "/profile",
         component: _Profile__WEBPACK_IMPORTED_MODULE_12__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
         exact: true,
         path: "/settings",
         component: _Settings__WEBPACK_IMPORTED_MODULE_11__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
         exact: true,
         path: "/*",
         component: _Error404__WEBPACK_IMPORTED_MODULE_8__.default
@@ -21213,22 +20723,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/makeStyles.js");
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/colorManipulator.js");
-/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/AppBar */ "./node_modules/@material-ui/core/esm/AppBar/AppBar.js");
-/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/Toolbar */ "./node_modules/@material-ui/core/esm/Toolbar/Toolbar.js");
-/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/IconButton */ "./node_modules/@material-ui/core/esm/IconButton/IconButton.js");
-/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/Typography.js");
-/* harmony import */ var _material_ui_core_InputBase__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/core/InputBase */ "./node_modules/@material-ui/core/esm/InputBase/InputBase.js");
-/* harmony import */ var _material_ui_core_Badge__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Badge */ "./node_modules/@material-ui/core/esm/Badge/Badge.js");
-/* harmony import */ var _material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/MenuItem */ "./node_modules/@material-ui/core/esm/MenuItem/MenuItem.js");
-/* harmony import */ var _material_ui_core_Menu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Menu */ "./node_modules/@material-ui/core/esm/Menu/Menu.js");
-/* harmony import */ var _material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/icons/Menu */ "./node_modules/@material-ui/icons/Menu.js");
-/* harmony import */ var _material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/icons/Search */ "./node_modules/@material-ui/icons/Search.js");
-/* harmony import */ var _material_ui_icons_AccountCircle__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/icons/AccountCircle */ "./node_modules/@material-ui/icons/AccountCircle.js");
-/* harmony import */ var _material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/icons/Mail */ "./node_modules/@material-ui/icons/Mail.js");
-/* harmony import */ var _material_ui_icons_Notifications__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/icons/Notifications */ "./node_modules/@material-ui/icons/Notifications.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/services/AuthService.js");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/makeStyles.js");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/colorManipulator.js");
+/* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/AppBar */ "./node_modules/@material-ui/core/esm/AppBar/AppBar.js");
+/* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Toolbar */ "./node_modules/@material-ui/core/esm/Toolbar/Toolbar.js");
+/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/IconButton */ "./node_modules/@material-ui/core/esm/IconButton/IconButton.js");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/Typography.js");
+/* harmony import */ var _material_ui_core_InputBase__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/core/InputBase */ "./node_modules/@material-ui/core/esm/InputBase/InputBase.js");
+/* harmony import */ var _material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/MenuItem */ "./node_modules/@material-ui/core/esm/MenuItem/MenuItem.js");
+/* harmony import */ var _material_ui_core_Menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/Menu */ "./node_modules/@material-ui/core/esm/Menu/Menu.js");
+/* harmony import */ var _material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/icons/Menu */ "./node_modules/@material-ui/icons/Menu.js");
+/* harmony import */ var _material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/icons/Search */ "./node_modules/@material-ui/icons/Search.js");
 /* harmony import */ var _material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/icons/MoreVert */ "./node_modules/@material-ui/icons/MoreVert.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Button/Button.js");
+/* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/classes/Userinfo.js");
 
 
 
@@ -21248,6 +20758,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+ // Material UI
 
 
 
@@ -21262,7 +20773,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var useStyles = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__.default)(function (theme) {
+
+
+
+ // End Material UI
+
+var useStyles = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__.default)(function (theme) {
   return {
     grow: {
       flexGrow: 1
@@ -21278,9 +20794,9 @@ var useStyles = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__.default
     search: _defineProperty({
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
-      backgroundColor: (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__.fade)(theme.palette.common.white, 0.15),
+      backgroundColor: (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__.fade)(theme.palette.common.white, 0.15),
       '&:hover': {
-        backgroundColor: (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__.fade)(theme.palette.common.white, 0.25)
+        backgroundColor: (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__.fade)(theme.palette.common.white, 0.25)
       },
       marginRight: theme.spacing(2),
       marginLeft: 0,
@@ -21357,7 +20873,7 @@ function Navbar() {
 
   var menuId = 'primary-search-account-menu';
 
-  var renderMenu = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_Menu__WEBPACK_IMPORTED_MODULE_4__.default, {
+  var renderMenu = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_Menu__WEBPACK_IMPORTED_MODULE_6__.default, {
     anchorEl: anchorEl,
     anchorOrigin: {
       vertical: 'top',
@@ -21371,18 +20887,32 @@ function Navbar() {
     },
     open: isMenuOpen,
     onClose: handleMenuClose,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, {
+    children: [_services_AuthService__WEBPACK_IMPORTED_MODULE_2__.default.isLogged() == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7__.default, {
       onClick: handleMenuClose,
+      component: react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link,
+      to: "/profile",
       children: "Profile"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, {
+    }) : null, _services_AuthService__WEBPACK_IMPORTED_MODULE_2__.default.isLogged() == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7__.default, {
       onClick: handleMenuClose,
-      children: "My account"
+      component: react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link,
+      to: "/settings",
+      children: "Settings"
+    }) : null, _services_AuthService__WEBPACK_IMPORTED_MODULE_2__.default.isLogged() == true ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7__.default, {
+      onClick: handleMenuClose,
+      component: react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link,
+      to: "/login",
+      children: "Login"
+    }), _services_AuthService__WEBPACK_IMPORTED_MODULE_2__.default.isLogged() == true ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7__.default, {
+      onClick: handleMenuClose,
+      component: react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link,
+      to: "/register",
+      children: "Register"
     })]
   });
 
   var mobileMenuId = 'primary-search-account-menu-mobile';
 
-  var renderMobileMenu = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_Menu__WEBPACK_IMPORTED_MODULE_4__.default, {
+  var renderMobileMenu = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_Menu__WEBPACK_IMPORTED_MODULE_6__.default, {
     anchorEl: mobileMoreAnchorEl,
     anchorOrigin: {
       vertical: 'top',
@@ -21396,56 +20926,44 @@ function Navbar() {
     },
     open: isMobileMenuOpen,
     onClose: handleMobileMenuClose,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6__.default, {
-        "aria-label": "show 4 new mails",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
         color: "inherit",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_Badge__WEBPACK_IMPORTED_MODULE_7__.default, {
-          badgeContent: 4,
-          color: "secondary",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_8__.default, {})
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-        children: "Messages"
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6__.default, {
-        "aria-label": "show 11 new notifications",
-        color: "inherit",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_Badge__WEBPACK_IMPORTED_MODULE_7__.default, {
-          badgeContent: 11,
-          color: "secondary",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_icons_Notifications__WEBPACK_IMPORTED_MODULE_9__.default, {})
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-        children: "Notifications"
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, {
+        to: "/",
+        children: "Home"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7__.default, {
       onClick: handleProfileMenuOpen,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6__.default, {
-        "aria-label": "account of current user",
-        "aria-controls": "primary-search-account-menu",
-        "aria-haspopup": "true",
+      children: _services_AuthService__WEBPACK_IMPORTED_MODULE_2__.default.isLogged() == true ? _classes_Userinfo__WEBPACK_IMPORTED_MODULE_3__.default.getName() : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+        children: "Account"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
         color: "inherit",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_icons_AccountCircle__WEBPACK_IMPORTED_MODULE_10__.default, {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-        children: "Profile"
-      })]
+        to: "/about",
+        children: "About us"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_MenuItem__WEBPACK_IMPORTED_MODULE_7__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+        color: "inherit",
+        to: "/contact",
+        children: "Contact us"
+      })
     })]
   });
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: classes.grow,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_11__.default, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_9__.default, {
       position: "static",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_12__.default, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_10__.default, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_11__.default, {
           edge: "start",
           className: classes.menuButton,
           color: "inherit",
           "aria-label": "open drawer",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_13__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_14__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_icons_Menu__WEBPACK_IMPORTED_MODULE_12__.default, {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_13__.default, {
           className: classes.title,
           variant: "h6",
           noWrap: true,
@@ -21454,8 +20972,8 @@ function Navbar() {
           className: classes.search,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
             className: classes.searchIcon,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_15__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_InputBase__WEBPACK_IMPORTED_MODULE_16__.default, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_14__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_InputBase__WEBPACK_IMPORTED_MODULE_15__.default, {
             placeholder: "Search\u2026",
             classes: {
               root: classes.inputRoot,
@@ -21469,34 +20987,41 @@ function Navbar() {
           className: classes.grow
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           className: classes.sectionDesktop,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6__.default, {
-            "aria-label": "show 4 new mails",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
             color: "inherit",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_Badge__WEBPACK_IMPORTED_MODULE_7__.default, {
-              badgeContent: 4,
-              color: "secondary",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_icons_Mail__WEBPACK_IMPORTED_MODULE_8__.default, {})
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6__.default, {
-            "aria-label": "show 17 new notifications",
-            color: "inherit",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_Badge__WEBPACK_IMPORTED_MODULE_7__.default, {
-              badgeContent: 17,
-              color: "secondary",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_icons_Notifications__WEBPACK_IMPORTED_MODULE_9__.default, {})
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6__.default, {
+            component: react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link,
+            to: "/",
+            children: "Home"
+          }), _services_AuthService__WEBPACK_IMPORTED_MODULE_2__.default.isLogged() == true ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
             edge: "end",
             "aria-label": "account of current user",
             "aria-controls": menuId,
             "aria-haspopup": "true",
             onClick: handleProfileMenuOpen,
             color: "inherit",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_icons_AccountCircle__WEBPACK_IMPORTED_MODULE_10__.default, {})
+            children: _classes_Userinfo__WEBPACK_IMPORTED_MODULE_3__.default.getName()
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
+            edge: "end",
+            "aria-label": "account of current user",
+            "aria-controls": menuId,
+            "aria-haspopup": "true",
+            onClick: handleProfileMenuOpen,
+            color: "inherit",
+            children: "Account"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
+            color: "inherit",
+            component: react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link,
+            to: "/about",
+            children: "About us"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
+            color: "inherit",
+            component: react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link,
+            to: "/contact",
+            children: "Contact us"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           className: classes.sectionMobile,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_11__.default, {
             "aria-label": "show more",
             "aria-controls": mobileMenuId,
             "aria-haspopup": "true",
