@@ -19876,7 +19876,7 @@ function Header() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
               className: "nav-item dropdown",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                className: "nav-link dropdown-toggl(e",
+                className: "nav-link dropdown-toggle",
                 href: "#",
                 id: "navbarDropdown",
                 role: "button",
