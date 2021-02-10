@@ -14,7 +14,6 @@ class AuthService {
         }else{
             this.authenticated = false;
         }
-        
     }
     /**
      * Login with api
@@ -30,7 +29,6 @@ class AuthService {
             if(res.data.success == true)
             {
                 this.authenticated = true;
-
                 // Set sesiion
                 SessionService.set('id', res.data.user.id);
                 SessionService.set('name', res.data.user.name);
@@ -39,9 +37,7 @@ class AuthService {
             }else if(res.data.success == false){
                 
             }
-            
             calback(res);
-            
         }).catch(error=>{
             //this.setState({alert_message:'error'});
         });
@@ -61,14 +57,14 @@ class AuthService {
     /**
      * Check if user is authenticated or not
      */
-    isAuthenticated()
+    isLogged()
     {
-        if(SessionService.get('token') != null){
+        if(SessionService.get('token') != ""){
             this.authenticated = true;
-            return this.authenticated;
+            return true;
         }else{
             this.authenticated = false;
-            return this.authenticated;
+            return false;
         }
     }
 

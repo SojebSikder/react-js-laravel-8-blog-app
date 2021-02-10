@@ -32,12 +32,8 @@ export default function Home() {
             console.log(error);
         });
 
+  }, []);
 
-    return function cleanup() {
-
-    };
-
-  });
 
 
 

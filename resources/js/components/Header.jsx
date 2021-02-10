@@ -9,6 +9,8 @@ import About from './About';
 import ContactUs from './ContactUs';
 import Error404 from './Error404';
 import SignIn from './Test';
+import AuthService from '../services/AuthService';
+import Userinfo from '../classes/Userinfo';
 
 export default class Header extends Component {
     render() {
@@ -30,12 +32,15 @@ export default class Header extends Component {
                             </li>
  
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Account
+                                <a className="nav-link dropdown-toggl(e" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    { AuthService.isLogged == false ? (Userinfo.getName()) : ("Account") }
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><Link to="/login" className="dropdown-item">Login</Link></li>
-                                    <li><Link to="/register" className="dropdown-item">Register</Link></li>
+                                { AuthService.isLogged = false? (<li><Link to="/profile" className="dropdown-item">Profile</Link></li>) :(null) }
+                                { AuthService.isLogged = false ? (<li><Link to="/logout" className="dropdown-item">Logout</Link></li>) : (null) }
+
+                                { AuthService.isLogged = false ? (null) :  (<li><Link to="/login" className="dropdown-item">Login</Link></li>) }
+                                { AuthService.isLogged = false ? (null) :  (<li><Link to="/register" className="dropdown-item">Register</Link></li>) }
                                 </ul>
                             </li> 
 

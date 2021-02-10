@@ -9,7 +9,7 @@ class SessionService{
      * @param {*} value 
      */
     set(key, value){
-        sessionStorage.setItem(key, value);
+        localStorage.setItem(key, value);
     }
 
     /**
@@ -17,7 +17,7 @@ class SessionService{
      * @param {*} key 
      */
     get(key){
-      let data = sessionStorage.getItem(key);
+      let data = localStorage.getItem(key);
       return data;
     }
 
@@ -26,14 +26,14 @@ class SessionService{
      * @param {*} key 
      */
     remove(key){
-        sessionStorage.removeItem(key);
+        localStorage.removeItem(key);
     }
 
     /**
      * Remove all session value
      */
     removeAll(){
-        sessionStorage.clear();
+        localStorage.clear();
     }
 }
 
