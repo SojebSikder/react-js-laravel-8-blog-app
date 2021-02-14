@@ -25,6 +25,7 @@ export default function BlogDetails(props) {
     return (
         <Container component="main" maxWidth="lg">
             <br />
+            <CssBaseline />
 
             <BlogCardSingle
             image={ Config.getBase() + '/images/' + blog.image}
