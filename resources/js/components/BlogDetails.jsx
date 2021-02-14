@@ -1,6 +1,11 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import Config from '../classes/Config';
+import BlogCardSingle from './BlogCardSingle';
+
+// Material ui
+import { Container, CssBaseline, } from '@material-ui/core';
+
 
 
 export default function BlogDetails(props) {
@@ -8,6 +13,7 @@ export default function BlogDetails(props) {
     // Hooks
     const [blog, setBlog] = useState([]);
 
+    // Methods
     useEffect(() => {
         axios.get(Config.getUrl()+"/blog/"+props.match.params.id)
         .then(response=>{
@@ -17,17 +23,18 @@ export default function BlogDetails(props) {
 
 
     return (
-        <div>
-            <div key={blog.id}>
-                <div className="card mx-auto" style={{width: '50%'}}>
-                    <div className="card-body">
-                        <h5 className="card-title">{blog.title}</h5>
-                        <p className="card-text">{blog.description}</p>
-                    </div>
-                </div>
-                <br />
-            </div>
-        </div>
+        <Container component="main" maxWidth="lg">
+            <br />
+
+            <BlogCardSingle
+            image="/static/images/cards/contemplative-reptile.jpg"
+            alt={blog.title} 
+            title={blog.title} 
+            description={blog.description} 
+            link={'/blog/'+blog.id}
+            />
+
+        </Container>
     );
 }
 
