@@ -20,6 +20,10 @@ const useStyles = makeStyles({
         width: '50%',
       },
   },
+  media: {
+    height: 400,
+    objectFit: 'scale-down',
+  },
 });
 
 export default function BlogCardSingle(props) {
@@ -30,6 +34,7 @@ export default function BlogCardSingle(props) {
     <Card>
       {/* <CardActionArea> */}
         <CardMedia
+          className={classes.media}
           component="img"
           alt={props.alt}
           height="140"
@@ -49,9 +54,6 @@ export default function BlogCardSingle(props) {
       <CardActions>
         <Button size="small" color="primary">
           Share
-        </Button>
-        <Button size="small" color="primary" component={Link} to={props.link}>
-          Learn More
         </Button>
       </CardActions>
     </Card>
