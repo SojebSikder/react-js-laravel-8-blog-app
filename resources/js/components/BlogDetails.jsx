@@ -27,7 +27,7 @@ export default function BlogDetails(props) {
             <br />
 
             <BlogCardSingle
-            image="/static/images/cards/contemplative-reptile.jpg"
+            image={ Config.getBase() + '/images/' + blog.image}
             alt={blog.title} 
             title={blog.title} 
             description={blog.description} 

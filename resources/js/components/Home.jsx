@@ -70,8 +70,8 @@ export default function Home() {
                         <div key={blog.id}>
 
                             <BlogCard 
-                            image="/static/images/cards/contemplative-reptile.jpg"
-                            alt="Contemplative Reptile"
+                            image={Config.getBase()+'/images/' + blog.image}
+                            alt={blog.title} 
                             title={blog.title} 
                             description={blog.description.length > 400 ? blog.description.substr(1, 400)+  " ....." : blog.description} 
                             link={'/blog/'+blog.id}

@@ -20,13 +20,13 @@ export default function BlogCard(props) {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea component={Link} to={props.link}>
         <CardMedia
           component="img"
           alt={props.alt}
           height="140"
           image={props.image}
-          title="Contemplative Reptile"
+          title={props.alt}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
