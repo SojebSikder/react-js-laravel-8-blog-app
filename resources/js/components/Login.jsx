@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link as RouterLink } from "react-router-dom";
 import AuthService from '../services/AuthService';
 import AlertMsg from './AlertMsg';
 
@@ -88,7 +89,7 @@ export default function Login() {
                 <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                Sign in
+                Login
                 </Typography>
                 <form onSubmit={onSubmit} className={classes.form} noValidate>
                 <TextField
@@ -122,7 +123,7 @@ export default function Login() {
                     color="primary"
                     className={classes.submit}
                 >
-                    Sign In
+                    Login
                 </Button>
                 <Grid container>
                     <Grid item xs>
@@ -131,8 +132,8 @@ export default function Login() {
                     </Link>
                     </Grid>
                     <Grid item>
-                    <Link href="#" variant="body2">
-                        {"Don't have an account? Sign Up"}
+                    <Link component={RouterLink} to="/register" variant="body2">
+                        {"Don't have an account? Register"}
                     </Link>
                     </Grid>
                 </Grid>

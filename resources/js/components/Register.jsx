@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import AuthService from '../services/AuthService';
 import AlertMsg from './AlertMsg';
 
@@ -8,7 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-//import Link from '@material-ui/core/Link';
+import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -115,7 +115,6 @@ export default function Register() {
                     label="Email"
                     name="email"
                     autoComplete="email"
-                    autoFocus
                     onChange={onChangeEmail}
                 />
                 <TextField
@@ -141,7 +140,7 @@ export default function Register() {
                 </Button>
                 <Grid container>
                     <Grid item>
-                    <Link to="/login" variant="body2">
+                    <Link component={RouterLink} to="/login" variant="body2">
                         {"Already have an account? Login"}
                     </Link>
                     </Grid>
