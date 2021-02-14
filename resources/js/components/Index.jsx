@@ -1,11 +1,25 @@
 import React from 'react';
 import Header from './Header';
 
+// Material ui
+import { ThemeProvider, createMuiTheme } from "@material-ui/core";
+import { orange } from "@material-ui/core/colors";
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: orange[500],
+        }
+    }
+});
+
 function Index() {
     return (
-        <div>
-            <Header />
-        </div>
+        <ThemeProvider theme={theme}>
+            <div>
+                <Header />
+            </div>
+        </ThemeProvider>
     );
 }
 
