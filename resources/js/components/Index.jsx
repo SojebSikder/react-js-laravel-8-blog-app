@@ -16,9 +16,7 @@ const theme = createMuiTheme({
 function Index() {
     return (
         <ThemeProvider theme={theme}>
-            <div>
-                <Header />
-            </div>
+            <Header />
         </ThemeProvider>
     );
 }
