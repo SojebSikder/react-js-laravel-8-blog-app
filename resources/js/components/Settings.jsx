@@ -1,17 +1,26 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import AuthService from '../services/AuthService';
+import UrlHelper from '../helpers/UrlHelper';
 // Material ui
 import { Button, Container, CssBaseline } from '@material-ui/core'
 // End Material ui
-import AuthService from '../services/AuthService';
 
-export default function Settings() {
+export default function Settings(props) {
 
     const onClickLogout=()=>
     {
         AuthService.logout((res)=>{
-            console.log(res.data.message);
+            console.log(res.data);
+            UrlHelper.redirectTo(props, '/login');
         });
     }
+
+    useEffect(() => {
+        // check if user logged in or not
+        if (AuthService.isLogged() == false){
+            UrlHelper.redirectTo(props, '/login');
+        }
+    }, [])
 
     return (
         <Container>

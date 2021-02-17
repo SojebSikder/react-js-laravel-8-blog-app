@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from './Copyright';
+import UrlHelper from '../helpers/UrlHelper';
 // End Material UI
 
 
@@ -86,7 +87,8 @@ export default function Login(props) {
 
         // check if user logged in or not
         if (AuthService.isLogged() == true){
-            return props.history.push('/profile');
+            UrlHelper.redirectTo(props, '/profile');
+            //return <Redirect to='/profile' />;
         }
 
     }, [])
