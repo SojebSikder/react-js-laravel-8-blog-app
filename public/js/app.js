@@ -21470,7 +21470,7 @@ function Navbar() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: classes.grow,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_8__.default, {
-      position: "static",
+      position: "fixed",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_9__.default, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_10__.default, {
           edge: "start",
@@ -21546,6 +21546,8 @@ function Navbar() {
           })
         })]
       })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: classes.offset
     }), renderMobileMenu, renderMenu]
   });
 }
@@ -22247,7 +22249,8 @@ var useNavBarStyles = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__.d
       display: 'flex'
     }, theme.breakpoints.up('md'), {
       display: 'none'
-    })
+    }),
+    offset: theme.mixins.toolbar
   };
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useNavBarStyles);

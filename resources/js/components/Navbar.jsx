@@ -26,6 +26,7 @@ import useNavBarStyles from '../styles/navbarStyle';
 
 
 export default function Navbar() {
+
   const classes = useNavBarStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -103,7 +104,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton
             edge="start"
@@ -176,6 +177,7 @@ export default function Navbar() {
           </div>
         </Toolbar>
       </AppBar>
+      <div className={classes.offset} />
       {renderMobileMenu}
       {renderMenu}
     </div>

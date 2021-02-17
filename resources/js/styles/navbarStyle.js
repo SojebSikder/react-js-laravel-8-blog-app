@@ -62,6 +62,7 @@ const useNavBarStyles = makeStyles((theme) => ({
         display: 'none',
       },
     },
+    offset: theme.mixins.toolbar,
   }));
 
 
