@@ -19,7 +19,7 @@ export default function Settings(props) {
         if (AuthService.isLogged() == false){
             UrlHelper.redirectTo(props, '/login');
         }
-    }, [])
+    }, []);
 
     return (
         <Container>

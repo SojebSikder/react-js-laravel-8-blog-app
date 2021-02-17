@@ -8,6 +8,7 @@
 
     </head>
     <body>
+        <noscript>Please enable Javascript on your browser to visit this site </noscript>
         <div id="app"></div>
 
         <script src="{{ asset('js/app.js') }}"></script>
