@@ -10,7 +10,6 @@ export default function Settings(props) {
     const onClickLogout=()=>
     {
         AuthService.logout((res)=>{
-            console.log(res.data);
             UrlHelper.redirectTo(props, '/login');
         });
     }
