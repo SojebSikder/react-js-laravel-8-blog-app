@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Pagination from 'react-js-pagination';
 import Config from '../classes/Config';
 import BlogCard from './BlogCard';
+import LoadingBar from './LoadingBar';
 
 // Material UI
 import { Button, Container, CssBaseline } from '@material-ui/core';
@@ -60,45 +61,44 @@ export default function Home() {
 
     
     return (
-        <div>
-            <Container component="main" maxWidth="xs">
-                <br />
-                <CssBaseline />
-            {
-                blogs.map(blog=>{
-                    return(
-                        <div key={blog.id}>
+        <Container component="main" maxWidth="xs">
+            <br />
+            <CssBaseline />
+        {
+            // Show loading bar until data loading finished
+            blogs.length == 0 ? <LoadingBar /> : blogs.map(blog=>{
+                return(
+                    <div key={blog.id}>
 
-                            <BlogCard 
-                            image={Config.getBase()+'/images/' + blog.image}
-                            alt={blog.title} 
-                            title={blog.title} 
-                            description={blog.description.length > 400 ? blog.description.substr(1, 400)+  " ....." : blog.description} 
-                            link={'/blog/'+blog.id}
-                            />
+                        <BlogCard 
+                        image={Config.getBase()+'/images/' + blog.image}
+                        alt={blog.title} 
+                        title={blog.title} 
+                        description={blog.description.length > 400 ? blog.description.substr(1, 400)+  " ....." : blog.description} 
+                        link={'/blog/'+blog.id}
+                        />
 
-                            <br />
-                        </div>
-                        
-                    );
-                })
-            }
+                        <br />
+                    </div>
+                    
+                );
+            })
+        }
 
-                <div className="d-flex justify-content-center">
-                    <Pagination
-                    activePage={activePage}
-                    itemsCountPerPage={itemsCountPerPage}
-                    totalItemsCount={totalItemsCount}
-                    pageRangeDisplayed={pageRangeDisplayed}
-                    onChange={handlePageChange}
-                    itemClass='page-item'
-                    linkClass='page-link'
-                    />
+            <div className="d-flex justify-content-center">
+                <Pagination
+                activePage={activePage}
+                itemsCountPerPage={itemsCountPerPage}
+                totalItemsCount={totalItemsCount}
+                pageRangeDisplayed={pageRangeDisplayed}
+                onChange={handlePageChange}
+                itemClass='page-item'
+                linkClass='page-link'
+                />
 
-                </div>
-            </Container>
+            </div>
+        </Container>
 
-        </div>
         );
 
     

@@ -41,7 +41,7 @@ import Copyright from './Copyright';
   }));
 
 
-export default function Login() {
+export default function Login(props) {
 
     // User information
     const [username, setUsername] = useState('');
@@ -71,13 +71,25 @@ export default function Login() {
             password: password
         }
         AuthService.login(user, (res)=>{
-            if(res.data.status == 0){
+            if(res.data.success == false){
                 setAlert_message('error');
-            }else if(res.data.status == 1){
+            }else if(res.data.success == true){
                 setAlert_message('success');
+                return props.history.push('/profile');
             }
         });
     }
+
+    
+
+    useEffect(() => {
+
+        // check if user logged in or not
+        if (AuthService.isLogged() == true){
+            return props.history.push('/profile');
+        }
+
+    }, [])
 
 
     return (

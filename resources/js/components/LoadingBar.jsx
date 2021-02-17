@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 // Material ui
 import { Container, CssBaseline } from '@material-ui/core';
 
-export default function About() {
+export default function LoadingBar() {
     return (
         <Container component="main" maxWidth="xs">
         <br />
         <CssBaseline />
-            This is about
+            Loading...
         </Container>
     )
 }

@@ -1,5 +1,7 @@
-import { Button } from '@material-ui/core'
 import React from 'react'
+// Material ui
+import { Button, Container, CssBaseline } from '@material-ui/core'
+// End Material ui
 import AuthService from '../services/AuthService';
 
 export default function Settings() {
@@ -12,7 +14,9 @@ export default function Settings() {
     }
 
     return (
-        <div>
+        <Container>
+            <br />
+            <CssBaseline />
             <h2>Settings pages</h2>
             <hr/>
             <Button 
@@ -20,6 +24,6 @@ export default function Settings() {
             color="primary"
             onClick={onClickLogout}
             >Logout</Button>
-        </div>
+        </Container>
     )
 }

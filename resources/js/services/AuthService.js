@@ -32,7 +32,8 @@ class AuthService {
                 // Set sesiion
                 SessionService.set('id', res.data.user.id);
                 SessionService.set('name', res.data.user.name);
-                SessionService.set('token', res.data.token);
+                Userinfo.setToken(res.data.token);
+                //SessionService.set('token', res.data.token);
 
             }else if(res.data.success == false){
                 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import Config from '../classes/Config';
 import BlogCardSingle from './BlogCardSingle';
+import LoadingBar from './LoadingBar';
 
 // Material ui
 import { Container, CssBaseline, } from '@material-ui/core';
@@ -22,6 +23,19 @@ export default function BlogDetails(props) {
     }, []);
 
 
+
+    // Show loading bar until data loading finished
+    if(blog.length == 0){
+        return(
+        <Container component="main" maxWidth="lg">
+            <br />
+            <CssBaseline />
+
+            <LoadingBar />
+
+        </Container>
+        );
+    }else
     return (
         <Container component="main" maxWidth="lg">
             <br />
