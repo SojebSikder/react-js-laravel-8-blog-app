@@ -40,8 +40,9 @@ class UserController extends Controller
         // create the user account 
         $created=User::create($request->all());
         $request->request->add(['password' => $plainPassword]);
+
         // login now..
-        return $this->login($request);
+        //return $this->login($request);
     }
 
 
@@ -51,7 +52,8 @@ class UserController extends Controller
 
 
         $jwt_token = null;
-        if (!$jwt_token =  $this->guard()->attempt($input)){//JWTAuth::attempt($input)) {
+        if (!$jwt_token = $this->guard()->attempt($input)){//JWTAuth::attempt($input)) {
+
             return response()->json([
                 'success' => false,
                 'message' => 'Invalid Email or Password',
@@ -59,7 +61,14 @@ class UserController extends Controller
         }
         // get the user 
         $user = Auth::user();
+
+        // Save token to database
+        $userModel = User::find(Auth::id());
+        $userModel->api_token = $jwt_token;
+        $userModel->save();
+
        
+        // response back
         return response()->json([
             'success' => true,
             'token' => $jwt_token,
