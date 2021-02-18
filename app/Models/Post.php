@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    protected $appends = ["image_url", "date_formatted", "excerpt"];
 }
