@@ -5,7 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Blog;
+use App\Models\Post;
 
 class BlogController extends Controller
 {
@@ -16,7 +16,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $result = Blog::paginate(5);
+        $result = Post::paginate(5);
         return $result;
     }
 
@@ -38,7 +38,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $result = new Blog();
+        $result = new Post();
         $result->user_id = '';
         $result->post_id = '';
         $result->status = 'active';
@@ -56,7 +56,7 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        $result = Blog::find($id);
+        $result = Post::find($id);
         return $result;
     }
 
@@ -68,7 +68,7 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $result = Blog::find($id);
+        $result = Post::find($id);
         return $result;
     }
 
@@ -81,7 +81,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $result = Blog::find($id);
+        $result = Post::find($id);
         $result->status = $request->status;
         $result->title = $request->title;
         $result->description = $request->description;
@@ -97,7 +97,7 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $result = Blog::find($id);
+        $result = Post::find($id);
         $result->delete();
     }
 }

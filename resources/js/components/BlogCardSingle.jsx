@@ -9,16 +9,21 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 
+
 const useStyles = makeStyles({
   root: {
     //maxWidth: 345,
+    '@media (max-width: 400px)': {
+      width: '100%',
+      //background: 'white',
+    },
     display: 'flex',
-      justify: 'center',
-      flexWrap: 'wrap',
-      '& > *': {
-        margin: 'auto',
-        width: '50%',
-      },
+    justify: 'center',
+    flexWrap: 'wrap',
+    '& > *': {
+      margin: 'auto',
+      width: '50%',
+    },
   },
   media: {
     height: 400,
@@ -27,7 +32,10 @@ const useStyles = makeStyles({
 });
 
 export default function BlogCardSingle(props) {
+
+  // Style hooks
   const classes = useStyles();
+  // end style hooks
 
   return (
     <div className={classes.root}>

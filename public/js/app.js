@@ -20540,6 +20540,10 @@ __webpack_require__.r(__webpack_exports__);
 var useStyles = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__.default)({
   root: {
     //maxWidth: 345,
+    '@media (max-width: 400px)': {
+      width: '100%' //background: 'white',
+
+    },
     display: 'flex',
     justify: 'center',
     flexWrap: 'wrap',
@@ -20554,7 +20558,9 @@ var useStyles = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__.default
   }
 });
 function BlogCardSingle(props) {
-  var classes = useStyles();
+  // Style hooks
+  var classes = useStyles(); // end style hooks
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
     className: classes.root,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_3__.default, {
@@ -20985,7 +20991,7 @@ function Home() {
           image: _classes_Config__WEBPACK_IMPORTED_MODULE_4__.default.getBase() + '/images/' + blog.image,
           alt: blog.title,
           title: blog.title,
-          description: blog.description.length > 400 ? blog.description.substr(1, 400) + " ....." : blog.description,
+          description: blog.content.length > 400 ? blog.content.substr(1, 400) + " ....." : blog.content,
           link: '/blog/' + blog.id
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {})]
       }, blog.id);

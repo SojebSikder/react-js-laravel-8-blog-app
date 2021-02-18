@@ -41,6 +41,7 @@ export default function BlogDetails(props) {
             <br />
             <CssBaseline />
 
+                
             <BlogCardSingle
             image={ Config.getBase() + '/images/' + blog.image}
             alt={blog.title} 
@@ -48,6 +49,7 @@ export default function BlogDetails(props) {
             description={blog.description} 
             link={'/blog/'+blog.id}
             />
+
 
         </Container>
     );

@@ -64,6 +64,7 @@ export default function Home() {
         <Container component="main" maxWidth="xs">
             <br />
             <CssBaseline />
+
         {
             // Show loading bar until data loading finished
             blogs.length == 0 ? <LoadingBar /> : blogs.map(blog=>{
@@ -74,7 +75,7 @@ export default function Home() {
                         image={Config.getBase()+'/images/' + blog.image}
                         alt={blog.title} 
                         title={blog.title} 
-                        description={blog.description.length > 400 ? blog.description.substr(1, 400)+  " ....." : blog.description} 
+                        description={blog.content.length > 400 ? blog.content.substr(1, 400)+  " ....." : blog.content} 
                         link={'/blog/'+blog.id}
                         />
 
