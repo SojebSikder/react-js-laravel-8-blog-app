@@ -14,9 +14,8 @@ require('./bootstrap');
 
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom";
-import Index from './admin/components/Index';
+import Index from './admin/Index';
 
 if (document.getElementById('app')) {
-    //ReactDOM.render(<Router><Index /></Router>, document.getElementById('app'));
-    ReactDOM.render(<Index />, document.getElementById('app'));
+    ReactDOM.render(<Router><Index /></Router>, document.getElementById('app'));
 }
