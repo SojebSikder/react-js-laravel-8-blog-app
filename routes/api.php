@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
-// Blog
+// Post
 Route::get('/', [App\Http\Controllers\api\BlogController::class, 'index']);
 Route::get('/blog/{id}', [App\Http\Controllers\api\BlogController::class, 'show']);
 Route::post('/blog/store', [App\Http\Controllers\api\BlogController::class, 'store']);
@@ -27,8 +27,16 @@ Route::delete('/blog/delete', [App\Http\Controllers\api\BlogController::class, '
 Route::get('/blog/edit/{id}', [App\Http\Controllers\api\BlogController::class, 'edit']);
 Route::put('/blog/update/{id}', [App\Http\Controllers\api\BlogController::class, 'update']);
 
+// User
+Route::resource('categories', 'CategoryController');
+Route::resource('posts', 'PostsController');
+Route::resource('tags', 'TagsController');
+Route::resource('comments', 'CommentsController');
+Route::get('profile', 'UsersController@profile');
+Route::resource('users', 'UsersController');
 
-// Users login/register
+
+// login/register
 Route::post('/register', [App\Http\Controllers\api\UserController::class, 'register']);
 Route::post('/login', [App\Http\Controllers\api\UserController::class, 'login']);
 Route::get('/user', [App\Http\Controllers\api\UserController::class, 'getCurrentUser']);
