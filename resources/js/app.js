@@ -19,4 +19,3 @@ import Index from './app/components/Index';
 if (document.getElementById('app')) {
     ReactDOM.render(<Router><Index /></Router>, document.getElementById('app'));
 }
-  
