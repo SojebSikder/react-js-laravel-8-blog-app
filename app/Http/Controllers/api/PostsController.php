@@ -190,6 +190,20 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(!auth("api")->user()->is_admin){
+            return response()->json(['message' => 'Unauthorize'], 500);
+        }
+        $post = Post::findOrFail($id);
+
+        // remove image
+        $this->removeImage($post);
+        $post->delete();
+        return response()->json(['message' => 'Deleted successfully'], 200);
+    }
+
+    private function removeImage($post){
+        if($post->image != "" && !\File::exists('uploads/' . $post->image)){
+            @unlink(public_path('uploads/'.$post->image));
+        }
     }
 }
