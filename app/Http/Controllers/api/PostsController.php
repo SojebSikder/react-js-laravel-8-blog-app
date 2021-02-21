@@ -111,7 +111,10 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::with('category', 'user', 'tags', 'comments', 'approvedComments')->findOrFail($id);
+        $post->prev_post = Post::where('id', '<', $id)->orderBy('id', 'desc')->first();
+        $post->next_post = Post::where('id', '>', $id)->first();
+        return response()->json(['data' => $post], 200);
     }
 
     /**
@@ -134,7 +137,49 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(!auth("api")->user()->is_admin){
+            return response()->json(['message' => 'Unauthorize'], 500);
+        }
+        $post = Post::with('tags')->findOrFail($id);
+        $rules = [
+            'title' => 'required',
+            'content' => 'required',
+            'category_id' => 'required',
+            'published' => 'required'
+        ];
+        if($post->image == "" || ($post->image != "" && !\File::exists('uploads/' . $post->image))){
+            $rules['image'] = 'required';
+            $this->validate($request, $rules);
+
+            $post->title = $request->input('title');
+            $post->slug = $this->slugify($post->title);
+            $post->content = $request->input('content');
+            $post->published = $request->input('published');
+            $post->category_id = $request->input('category_id');
+
+            if($request->hasFile('image')){
+                // remove image
+                $this->removeImage($post);
+
+                $file = $request->file('image');
+                $filename = time().'-'.uniqid().'.'.$file->getClientOriginalExtension();
+                $file->move(public_path('uploads'), $filename);
+
+                $post->image =$filename;
+            }
+            $post->save();
+
+            // remove tags
+            foreach ($post->tags as $tag) {
+                $post->tags()->detach($tag->id);
+            }
+
+            // store tags
+            if($request->has('tags')){
+                $post->tags()->sync($request->input('tags'));
+            }
+            return response()->json(['data' => $post, 'message' => 'Updated successfully'], 200);
+        }
     }
 
     /**
