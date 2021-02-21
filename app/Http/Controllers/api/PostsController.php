@@ -3,18 +3,49 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Lib\Helper;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class PostsController extends Controller
 {
+    use Helper;
+
+    public function __construct()
+    {
+        $this->middleware('auth:api')->only(['store', 'update', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request->input('recent')){
+            // in case of recent posts in website homepage
+            $posts = Post::with('category', 'user', 'tags')->where('published', 1)
+            ->orderBy('id', 'DESC')->limit(7)->get();
+        }else if($request->input('category')){
+            // in case of posts per category page
+            $posts = Post::with('category', 'user', 'tags')
+            ->whereHas('category', function($query) use ($request){
+                $query->where('id', $request->input('category'));
+            })->where('published', 1)->orderBy('id', 'DESC')->paginate(10);
+        }else if($request->input('tag')){
+            // in case of posts per tag page
+            $posts = Post::with('category', 'user', 'tags')
+            ->whereHas('tags', function($query) use ($request){
+                $query->where('id', $request->input('tag'));
+            })->where('published', 1)->orderBy('id', 'DESC')->paginate(10);
+
+        }else{
+            // the default case for the admin posts
+            $posts = Post::with('category', 'user', 'tags')
+            ->orderBy('id', 'DESC')->paginate(10);
+        }
+        return response()->json(['data' => $posts], 200);
     }
 
     /**
@@ -35,7 +66,41 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(!auth("api")->user()->is_admin){
+            return response()->json(['message' => 'Unauthorize'], 500);
+        }
+
+        $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            'image' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        $post = new Post();
+        $post->title =$request->input('title');
+        $post->slug = $this->slugify($post->title);
+        $post->content = $request->input('content');
+        $post->published = $request->input('published');
+        $post->category_id = $request->input('category_id');
+        $post->user_id = auth("api")->user()->id;
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $filename = time().'-'.uniqid().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('uploads'), $filename);
+
+            $post->image = $filename;
+        }
+
+        $post->save();
+
+        // store tags
+        if($request->has('tags')){
+            $post->tags()->sync($request->input('tags'));
+        }
+        $post = Post::with('tags')->find($post->id);
+        return response()->json(['data' => $post, 'message' => 'Created successfully'], 201);
     }
 
     /**
