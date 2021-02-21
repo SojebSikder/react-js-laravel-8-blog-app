@@ -14,6 +14,7 @@ import Settings from './Settings';
 import Profile from './Profile';
 import Navbar from './Navbar';
 
+
 export default function Header() {
 
     return (
@@ -23,6 +24,7 @@ export default function Header() {
 
             <Switch>
                 <Route exact path='/' component={Home} />
+
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/about' component={About} />

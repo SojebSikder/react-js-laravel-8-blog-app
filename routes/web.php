@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 // Website route
 Route::get('/{path?}', function () {
     return view('welcome');
-})->where('path', '.*');
+})->where('path', '[^admin]*');//->where('path', '.*');
 
 // Admin route
 Route::get('/admin/{path?}', function () {
