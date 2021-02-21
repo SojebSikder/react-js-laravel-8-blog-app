@@ -11,7 +11,7 @@
         <noscript>Please enable Javascript on your browser to visit this site </noscript>
         <div id="app"></div>
 
-        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/admin.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/popper.min.js') }}"></script>
         <script src="{{ asset('js/jquery.min.js') }}"></script>

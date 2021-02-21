@@ -20148,7 +20148,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _components_Index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Index */ "./resources/js/components/Index.jsx");
+/* harmony import */ var _app_components_Index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/components/Index */ "./resources/js/app/components/Index.jsx");
 
 
 /**
@@ -20170,60 +20170,16 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 if (document.getElementById('app')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.BrowserRouter, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Index__WEBPACK_IMPORTED_MODULE_2__.default, {})
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_app_components_Index__WEBPACK_IMPORTED_MODULE_2__.default, {})
   }), document.getElementById('app'));
 }
 
 /***/ }),
 
-/***/ "./resources/js/bootstrap.js":
-/*!***********************************!*\
-  !*** ./resources/js/bootstrap.js ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
-
-try {
-  window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js").default;
-  window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-
-  __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
-} catch (e) {}
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
-
-
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-// import Echo from 'laravel-echo';
-// window.Pusher = require('pusher-js');
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
-// });
-
-/***/ }),
-
-/***/ "./resources/js/classes/Config.js":
-/*!****************************************!*\
-  !*** ./resources/js/classes/Config.js ***!
-  \****************************************/
+/***/ "./resources/js/app/classes/Config.js":
+/*!********************************************!*\
+  !*** ./resources/js/app/classes/Config.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20272,10 +20228,10 @@ var Config = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./resources/js/classes/Userinfo.js":
-/*!******************************************!*\
-  !*** ./resources/js/classes/Userinfo.js ***!
-  \******************************************/
+/***/ "./resources/js/app/classes/Userinfo.js":
+/*!**********************************************!*\
+  !*** ./resources/js/app/classes/Userinfo.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20283,7 +20239,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _services_SessionService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/SessionService */ "./resources/js/services/SessionService.js");
+/* harmony import */ var _services_SessionService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/SessionService */ "./resources/js/app/services/SessionService.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -20348,10 +20304,10 @@ var Userinfo = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./resources/js/components/About.jsx":
-/*!*******************************************!*\
-  !*** ./resources/js/components/About.jsx ***!
-  \*******************************************/
+/***/ "./resources/js/app/components/About.jsx":
+/*!***********************************************!*\
+  !*** ./resources/js/app/components/About.jsx ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20378,10 +20334,10 @@ function About() {
 
 /***/ }),
 
-/***/ "./resources/js/components/AlertMsg.jsx":
-/*!**********************************************!*\
-  !*** ./resources/js/components/AlertMsg.jsx ***!
-  \**********************************************/
+/***/ "./resources/js/app/components/AlertMsg.jsx":
+/*!**************************************************!*\
+  !*** ./resources/js/app/components/AlertMsg.jsx ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20412,10 +20368,10 @@ function AlertMsg(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/BlogCard.jsx":
-/*!**********************************************!*\
-  !*** ./resources/js/components/BlogCard.jsx ***!
-  \**********************************************/
+/***/ "./resources/js/app/components/BlogCard.jsx":
+/*!**************************************************!*\
+  !*** ./resources/js/app/components/BlogCard.jsx ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20505,10 +20461,10 @@ function BlogCard(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/BlogCardSingle.jsx":
-/*!****************************************************!*\
-  !*** ./resources/js/components/BlogCardSingle.jsx ***!
-  \****************************************************/
+/***/ "./resources/js/app/components/BlogCardSingle.jsx":
+/*!********************************************************!*\
+  !*** ./resources/js/app/components/BlogCardSingle.jsx ***!
+  \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20596,10 +20552,10 @@ function BlogCardSingle(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/BlogDetails.jsx":
-/*!*************************************************!*\
-  !*** ./resources/js/components/BlogDetails.jsx ***!
-  \*************************************************/
+/***/ "./resources/js/app/components/BlogDetails.jsx":
+/*!*****************************************************!*\
+  !*** ./resources/js/app/components/BlogDetails.jsx ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20611,9 +20567,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/classes/Config.js");
-/* harmony import */ var _BlogCardSingle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./BlogCardSingle */ "./resources/js/components/BlogCardSingle.jsx");
-/* harmony import */ var _LoadingBar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./LoadingBar */ "./resources/js/components/LoadingBar.jsx");
+/* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/app/classes/Config.js");
+/* harmony import */ var _BlogCardSingle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./BlogCardSingle */ "./resources/js/app/components/BlogCardSingle.jsx");
+/* harmony import */ var _LoadingBar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./LoadingBar */ "./resources/js/app/components/LoadingBar.jsx");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Container/Container.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/CssBaseline/CssBaseline.js");
 
@@ -20703,10 +20659,10 @@ function BlogDetails(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/ContactUs.jsx":
-/*!***********************************************!*\
-  !*** ./resources/js/components/ContactUs.jsx ***!
-  \***********************************************/
+/***/ "./resources/js/app/components/ContactUs.jsx":
+/*!***************************************************!*\
+  !*** ./resources/js/app/components/ContactUs.jsx ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20732,10 +20688,10 @@ function ContactUs() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Copyright.jsx":
-/*!***********************************************!*\
-  !*** ./resources/js/components/Copyright.jsx ***!
-  \***********************************************/
+/***/ "./resources/js/app/components/Copyright.jsx":
+/*!***************************************************!*\
+  !*** ./resources/js/app/components/Copyright.jsx ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20774,10 +20730,10 @@ function Copyright() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Error404.jsx":
-/*!**********************************************!*\
-  !*** ./resources/js/components/Error404.jsx ***!
-  \**********************************************/
+/***/ "./resources/js/app/components/Error404.jsx":
+/*!**************************************************!*\
+  !*** ./resources/js/app/components/Error404.jsx ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20797,10 +20753,10 @@ function Error404() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Header.jsx":
-/*!********************************************!*\
-  !*** ./resources/js/components/Header.jsx ***!
-  \********************************************/
+/***/ "./resources/js/app/components/Header.jsx":
+/*!************************************************!*\
+  !*** ./resources/js/app/components/Header.jsx ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20811,18 +20767,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home */ "./resources/js/components/Home.jsx");
-/* harmony import */ var _BlogDetails__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BlogDetails */ "./resources/js/components/BlogDetails.jsx");
-/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Login */ "./resources/js/components/Login.jsx");
-/* harmony import */ var _Register__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Register */ "./resources/js/components/Register.jsx");
-/* harmony import */ var _About__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./About */ "./resources/js/components/About.jsx");
-/* harmony import */ var _ContactUs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ContactUs */ "./resources/js/components/ContactUs.jsx");
-/* harmony import */ var _Error404__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Error404 */ "./resources/js/components/Error404.jsx");
-/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/services/AuthService.js");
-/* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/classes/Userinfo.js");
-/* harmony import */ var _Settings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Settings */ "./resources/js/components/Settings.jsx");
-/* harmony import */ var _Profile__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Profile */ "./resources/js/components/Profile.jsx");
-/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Navbar */ "./resources/js/components/Navbar.jsx");
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Home */ "./resources/js/app/components/Home.jsx");
+/* harmony import */ var _BlogDetails__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BlogDetails */ "./resources/js/app/components/BlogDetails.jsx");
+/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Login */ "./resources/js/app/components/Login.jsx");
+/* harmony import */ var _Register__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Register */ "./resources/js/app/components/Register.jsx");
+/* harmony import */ var _About__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./About */ "./resources/js/app/components/About.jsx");
+/* harmony import */ var _ContactUs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ContactUs */ "./resources/js/app/components/ContactUs.jsx");
+/* harmony import */ var _Error404__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Error404 */ "./resources/js/app/components/Error404.jsx");
+/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/app/services/AuthService.js");
+/* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/app/classes/Userinfo.js");
+/* harmony import */ var _Settings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Settings */ "./resources/js/app/components/Settings.jsx");
+/* harmony import */ var _Profile__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Profile */ "./resources/js/app/components/Profile.jsx");
+/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Navbar */ "./resources/js/app/components/Navbar.jsx");
 
 
 
@@ -20885,10 +20841,10 @@ function Header() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Home.jsx":
-/*!******************************************!*\
-  !*** ./resources/js/components/Home.jsx ***!
-  \******************************************/
+/***/ "./resources/js/app/components/Home.jsx":
+/*!**********************************************!*\
+  !*** ./resources/js/app/components/Home.jsx ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20901,9 +20857,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-js-pagination */ "./node_modules/react-js-pagination/dist/Pagination.js");
-/* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/classes/Config.js");
-/* harmony import */ var _BlogCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BlogCard */ "./resources/js/components/BlogCard.jsx");
-/* harmony import */ var _LoadingBar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LoadingBar */ "./resources/js/components/LoadingBar.jsx");
+/* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/app/classes/Config.js");
+/* harmony import */ var _BlogCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BlogCard */ "./resources/js/app/components/BlogCard.jsx");
+/* harmony import */ var _LoadingBar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LoadingBar */ "./resources/js/app/components/LoadingBar.jsx");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Container/Container.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/CssBaseline/CssBaseline.js");
 
@@ -21012,10 +20968,10 @@ function Home() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Index.jsx":
-/*!*******************************************!*\
-  !*** ./resources/js/components/Index.jsx ***!
-  \*******************************************/
+/***/ "./resources/js/app/components/Index.jsx":
+/*!***********************************************!*\
+  !*** ./resources/js/app/components/Index.jsx ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21025,7 +20981,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.jsx");
+/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Header */ "./resources/js/app/components/Header.jsx");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/styles/createMuiTheme.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/styles/esm/ThemeProvider/ThemeProvider.js");
 /* harmony import */ var _material_ui_core_colors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/colors */ "./node_modules/@material-ui/core/esm/colors/orange.js");
@@ -21055,10 +21011,10 @@ function Index() {
 
 /***/ }),
 
-/***/ "./resources/js/components/LoadingBar.jsx":
-/*!************************************************!*\
-  !*** ./resources/js/components/LoadingBar.jsx ***!
-  \************************************************/
+/***/ "./resources/js/app/components/LoadingBar.jsx":
+/*!****************************************************!*\
+  !*** ./resources/js/app/components/LoadingBar.jsx ***!
+  \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21086,10 +21042,10 @@ function LoadingBar() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Login.jsx":
-/*!*******************************************!*\
-  !*** ./resources/js/components/Login.jsx ***!
-  \*******************************************/
+/***/ "./resources/js/app/components/Login.jsx":
+/*!***********************************************!*\
+  !*** ./resources/js/app/components/Login.jsx ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21100,8 +21056,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/services/AuthService.js");
-/* harmony import */ var _AlertMsg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AlertMsg */ "./resources/js/components/AlertMsg.jsx");
+/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/app/services/AuthService.js");
+/* harmony import */ var _AlertMsg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AlertMsg */ "./resources/js/app/components/AlertMsg.jsx");
 /* harmony import */ var _material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Avatar */ "./node_modules/@material-ui/core/esm/Avatar/Avatar.js");
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/Button.js");
 /* harmony import */ var _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/CssBaseline */ "./node_modules/@material-ui/core/esm/CssBaseline/CssBaseline.js");
@@ -21112,8 +21068,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/Typography.js");
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/makeStyles.js");
 /* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Container */ "./node_modules/@material-ui/core/esm/Container/Container.js");
-/* harmony import */ var _Copyright__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Copyright */ "./resources/js/components/Copyright.jsx");
-/* harmony import */ var _helpers_UrlHelper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../helpers/UrlHelper */ "./resources/js/helpers/UrlHelper.js");
+/* harmony import */ var _Copyright__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Copyright */ "./resources/js/app/components/Copyright.jsx");
+/* harmony import */ var _helpers_UrlHelper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../helpers/UrlHelper */ "./resources/js/app/helpers/UrlHelper.js");
 
 
 
@@ -21293,10 +21249,10 @@ function Login(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Navbar.jsx":
-/*!********************************************!*\
-  !*** ./resources/js/components/Navbar.jsx ***!
-  \********************************************/
+/***/ "./resources/js/app/components/Navbar.jsx":
+/*!************************************************!*\
+  !*** ./resources/js/app/components/Navbar.jsx ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21307,7 +21263,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/services/AuthService.js");
+/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/app/services/AuthService.js");
 /* harmony import */ var _material_ui_core_AppBar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/AppBar */ "./node_modules/@material-ui/core/esm/AppBar/AppBar.js");
 /* harmony import */ var _material_ui_core_Toolbar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Toolbar */ "./node_modules/@material-ui/core/esm/Toolbar/Toolbar.js");
 /* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/IconButton */ "./node_modules/@material-ui/core/esm/IconButton/IconButton.js");
@@ -21319,8 +21275,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_Search__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/icons/Search */ "./node_modules/@material-ui/icons/Search.js");
 /* harmony import */ var _material_ui_icons_MoreVert__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/icons/MoreVert */ "./node_modules/@material-ui/icons/MoreVert.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Button/Button.js");
-/* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/classes/Userinfo.js");
-/* harmony import */ var _styles_navbarStyle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../styles/navbarStyle */ "./resources/js/styles/navbarStyle.js");
+/* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/app/classes/Userinfo.js");
+/* harmony import */ var _styles_navbarStyle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../styles/navbarStyle */ "./resources/js/app/styles/navbarStyle.js");
 
 
 
@@ -21560,10 +21516,10 @@ function Navbar() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Profile.jsx":
-/*!*********************************************!*\
-  !*** ./resources/js/components/Profile.jsx ***!
-  \*********************************************/
+/***/ "./resources/js/app/components/Profile.jsx":
+/*!*************************************************!*\
+  !*** ./resources/js/app/components/Profile.jsx ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21573,8 +21529,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _hooks_useToken__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks/useToken */ "./resources/js/hooks/useToken.js");
-/* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Login */ "./resources/js/components/Login.jsx");
+/* harmony import */ var _hooks_useToken__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hooks/useToken */ "./resources/js/app/hooks/useToken.js");
+/* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Login */ "./resources/js/app/components/Login.jsx");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Container/Container.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/CssBaseline/CssBaseline.js");
 
@@ -21604,10 +21560,10 @@ function Profile() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Register.jsx":
-/*!**********************************************!*\
-  !*** ./resources/js/components/Register.jsx ***!
-  \**********************************************/
+/***/ "./resources/js/app/components/Register.jsx":
+/*!**************************************************!*\
+  !*** ./resources/js/app/components/Register.jsx ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21618,8 +21574,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/services/AuthService.js");
-/* harmony import */ var _AlertMsg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AlertMsg */ "./resources/js/components/AlertMsg.jsx");
+/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/app/services/AuthService.js");
+/* harmony import */ var _AlertMsg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AlertMsg */ "./resources/js/app/components/AlertMsg.jsx");
 /* harmony import */ var _material_ui_core_Avatar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Avatar */ "./node_modules/@material-ui/core/esm/Avatar/Avatar.js");
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/Button.js");
 /* harmony import */ var _material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/CssBaseline */ "./node_modules/@material-ui/core/esm/CssBaseline/CssBaseline.js");
@@ -21630,7 +21586,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/Typography.js");
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/makeStyles.js");
 /* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/Container */ "./node_modules/@material-ui/core/esm/Container/Container.js");
-/* harmony import */ var _Copyright__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Copyright */ "./resources/js/components/Copyright.jsx");
+/* harmony import */ var _Copyright__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Copyright */ "./resources/js/app/components/Copyright.jsx");
 
 
 
@@ -21810,10 +21766,10 @@ function Register() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Settings.jsx":
-/*!**********************************************!*\
-  !*** ./resources/js/components/Settings.jsx ***!
-  \**********************************************/
+/***/ "./resources/js/app/components/Settings.jsx":
+/*!**************************************************!*\
+  !*** ./resources/js/app/components/Settings.jsx ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21823,8 +21779,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/services/AuthService.js");
-/* harmony import */ var _helpers_UrlHelper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../helpers/UrlHelper */ "./resources/js/helpers/UrlHelper.js");
+/* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/AuthService */ "./resources/js/app/services/AuthService.js");
+/* harmony import */ var _helpers_UrlHelper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../helpers/UrlHelper */ "./resources/js/app/helpers/UrlHelper.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Container/Container.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/CssBaseline/CssBaseline.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Button/Button.js");
@@ -21863,10 +21819,10 @@ function Settings(props) {
 
 /***/ }),
 
-/***/ "./resources/js/helpers/UrlHelper.js":
-/*!*******************************************!*\
-  !*** ./resources/js/helpers/UrlHelper.js ***!
-  \*******************************************/
+/***/ "./resources/js/app/helpers/UrlHelper.js":
+/*!***********************************************!*\
+  !*** ./resources/js/app/helpers/UrlHelper.js ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21913,10 +21869,10 @@ var UrlHelper = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./resources/js/hooks/useToken.js":
-/*!****************************************!*\
-  !*** ./resources/js/hooks/useToken.js ***!
-  \****************************************/
+/***/ "./resources/js/app/hooks/useToken.js":
+/*!********************************************!*\
+  !*** ./resources/js/app/hooks/useToken.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21925,7 +21881,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => /* binding */ useToken
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/classes/Userinfo.js");
+/* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/app/classes/Userinfo.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -21961,10 +21917,10 @@ function useToken() {
 
 /***/ }),
 
-/***/ "./resources/js/services/AuthService.js":
-/*!**********************************************!*\
-  !*** ./resources/js/services/AuthService.js ***!
-  \**********************************************/
+/***/ "./resources/js/app/services/AuthService.js":
+/*!**************************************************!*\
+  !*** ./resources/js/app/services/AuthService.js ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21974,9 +21930,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/classes/Config.js");
-/* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/classes/Userinfo.js");
-/* harmony import */ var _SessionService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SessionService */ "./resources/js/services/SessionService.js");
+/* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/app/classes/Config.js");
+/* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/app/classes/Userinfo.js");
+/* harmony import */ var _SessionService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SessionService */ "./resources/js/app/services/SessionService.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -22107,10 +22063,10 @@ this.setState({alert_message:'error'});
 
 /***/ }),
 
-/***/ "./resources/js/services/SessionService.js":
-/*!*************************************************!*\
-  !*** ./resources/js/services/SessionService.js ***!
-  \*************************************************/
+/***/ "./resources/js/app/services/SessionService.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/app/services/SessionService.js ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22182,10 +22138,10 @@ var SessionService = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./resources/js/styles/navbarStyle.js":
-/*!********************************************!*\
-  !*** ./resources/js/styles/navbarStyle.js ***!
-  \********************************************/
+/***/ "./resources/js/app/styles/navbarStyle.js":
+/*!************************************************!*\
+  !*** ./resources/js/app/styles/navbarStyle.js ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -22260,6 +22216,50 @@ var useNavBarStyles = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__.d
   };
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useNavBarStyles);
+
+/***/ }),
+
+/***/ "./resources/js/bootstrap.js":
+/*!***********************************!*\
+  !*** ./resources/js/bootstrap.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+try {
+  window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js").default;
+  window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+  __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
+} catch (e) {}
+/**
+ * We'll load the axios HTTP library which allows us to easily issue requests
+ * to our Laravel back-end. This library automatically handles sending the
+ * CSRF token as a header based on the value of the "XSRF" token cookie.
+ */
+
+
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+/**
+ * Echo exposes an expressive API for subscribing to channels and listening
+ * for events that are broadcast by Laravel. Echo and event broadcasting
+ * allows your team to easily build robust real-time web applications.
+ */
+// import Echo from 'laravel-echo';
+// window.Pusher = require('pusher-js');
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: process.env.MIX_PUSHER_APP_KEY,
+//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//     forceTLS: true
+// });
 
 /***/ }),
 
