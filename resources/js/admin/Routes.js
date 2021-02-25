@@ -1,8 +1,12 @@
 import React from 'react';
 import {
+    HashRouter as Router,
+    Link,
     Route,
     Switch
 } from 'react-router-dom';
+import Login from "./components/login/Login";
+import AuthenticatedRoute from './AuthenticatedRoute';
 import Dashboard from "./components/pages/Dashboard";
 import ListPosts from "./components/pages/posts/Index";
 import AddPosts from "./components/pages/posts/Add";
@@ -17,28 +21,29 @@ import ListComments from "./components/pages/comments/Index";
 import ListUsers from "./components/pages/users/Index";
 import AddUsers from "./components/pages/users/Add";
 import EditUsers from "./components/pages/users/Edit";
-class Routes extends React.Component
-{
-    render()
-    {
+
+class Routes extends React.Component {
+    render() {
         return (
             <Switch>
-                <Route exact path='/' component={Dashboard} />
-                <Route exact path='/posts' component={ListPosts} />
-                <Route path='/posts/add' component={AddPosts} />
-                <Route path='/posts/edit/:id' component={EditPosts} />
-                <Route exact path='/tags' component={ListTags} />
-                <Route path='/tags/add' component={AddTags} />
-                <Route path='/tags/edit/:id' component={EditTags} />
-                <Route exact path='/categories' component={ListCategories} />
-                <Route path='/categories/add' component={AddCategories} />
-                <Route path='/categories/edit/:id' component={EditCategories} />
-                <Route exact path='/comments' component={ListComments} />
-                <Route exact path='/users' component={ListUsers} />
-                <Route path='/users/add' component={AddUsers} />
-                <Route path='/users/edit/:id' component={EditUsers} />
+                <Route exact path='/login' component={Login} />
+                <AuthenticatedRoute exact path='/' component={Dashboard} />
+                <AuthenticatedRoute exact path='/posts' component={ListPosts} />
+                <AuthenticatedRoute path='/posts/add' component={AddPosts} />
+                <AuthenticatedRoute path='/posts/edit/:id' component={EditPosts} />
+                <AuthenticatedRoute exact path='/tags' component={ListTags} />
+                <AuthenticatedRoute path='/tags/add' component={AddTags} />
+                <AuthenticatedRoute path='/tags/edit/:id' component={EditTags} />
+                <AuthenticatedRoute exact path='/categories' component={ListCategories} />
+                <AuthenticatedRoute path='/categories/add' component={AddCategories} />
+                <AuthenticatedRoute path='/categories/edit/:id' component={EditCategories} />
+                <AuthenticatedRoute exact path='/comments' component={ListComments} />
+                <AuthenticatedRoute exact path='/users' component={ListUsers} />
+                <AuthenticatedRoute path='/users/add' component={AddUsers} />
+                <AuthenticatedRoute path='/users/edit/:id' component={EditUsers} />
             </Switch>
         )
     }
 }
+
 export default Routes;
