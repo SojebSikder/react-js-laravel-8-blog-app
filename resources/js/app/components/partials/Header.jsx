@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import { Link, Route, Switch } from "react-router-dom";
 
-import Home from './Home';
-import BlogDetails from './BlogDetails';
-import Login from './Login';
-import Register from './Register';
-import About from './About';
-import ContactUs from './ContactUs';
-import Error404 from './Error404';
-import AuthService from '../services/AuthService';
-import Userinfo from '../classes/Userinfo';
-import Settings from './Settings';
-import Profile from './Profile';
-import Navbar from './Navbar';
+import Home from '../Home';
+import BlogDetails from '../pages/BlogDetails';
+import Login from '../Login';
+import Register from '../pages/Register';
+import About from '../pages/About';
+import ContactUs from '../pages/ContactUs';
+import Error404 from '../pages/Error404';
+import AuthService from '../../services/AuthService';
+import Userinfo from '../../classes/Userinfo';
+import Settings from '../Settings';
+import Profile from '../pages/Profile';
+import Navbar from '../Navbar';
 
 
 export default function Header() {

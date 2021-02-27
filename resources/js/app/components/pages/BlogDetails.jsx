@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import Config from '../classes/Config';
-import BlogCardSingle from './BlogCardSingle';
-import LoadingBar from './LoadingBar';
+import Config from '../../classes/Config';
+import BlogCardSingle from '../BlogCardSingle';
+import LoadingBar from '../LoadingBar';
 
 // Material ui
 import { Container, CssBaseline, } from '@material-ui/core';

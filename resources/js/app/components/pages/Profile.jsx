@@ -1,5 +1,5 @@
 import React from 'react'
-import useToken from '../hooks/useToken';
+import useToken from '../../hooks/useToken';
 import Login from '../components/Login';
 
 // Material ui
