@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { deleteComment, editComment } from '../../../store/actions/CommentActions';
 
 // partials
-import ControlButtons from './ControlButtons';
+import ControlButtons from './../../ControlButtons';
 import EditForm from './EditForm';
 
 class Row extends React.Component {
