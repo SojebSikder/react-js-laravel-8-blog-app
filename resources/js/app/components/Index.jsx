@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import Header from './partials/Header';
 
 // Material ui
 import { ThemeProvider, createMuiTheme } from "@material-ui/core";

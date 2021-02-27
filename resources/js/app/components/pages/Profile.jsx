@@ -1,6 +1,6 @@
 import React from 'react'
 import useToken from '../../hooks/useToken';
-import Login from '../components/Login';
+import Login from './Login';
 
 // Material ui
 import { Container, CssBaseline } from '@material-ui/core';

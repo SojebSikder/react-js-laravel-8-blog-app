@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import AuthService from '../services/AuthService';
-import UrlHelper from '../helpers/UrlHelper';
+import AuthService from '../../services/AuthService';
+import UrlHelper from '../../helpers/UrlHelper';
 // Material ui
 import { Button, Container, CssBaseline } from '@material-ui/core'
 // End Material ui

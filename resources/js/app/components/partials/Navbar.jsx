@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import AuthService from '../services/AuthService';
+import AuthService from '../../services/AuthService';
+import Userinfo from '../../classes/Userinfo';
+
 
 // Material UI
 import { fade, makeStyles } from '@material-ui/core/styles';
@@ -19,8 +21,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Button } from '@material-ui/core';
-import Userinfo from '../classes/Userinfo';
-import useNavBarStyles from '../styles/navbarStyle';
+
+import useNavBarStyles from '../../styles/navbarStyle';
 // End Material UI
 
 
@@ -63,11 +65,11 @@ export default function Navbar() {
       onClose={handleMenuClose}
     >
 
-      { AuthService.isLogged() == true ? (<MenuItem onClick={handleMenuClose} component={Link} to='/profile'>Profile</MenuItem>) :(null) }
-      { AuthService.isLogged() == true ? (<MenuItem onClick={handleMenuClose} component={Link} to='/settings'>Settings</MenuItem>) : (null) }
+      { AuthService.isLogged() == true ? (<MenuItem onClick={handleMenuClose} component={Link} to='/profile'>Profile</MenuItem>) : (null)}
+      { AuthService.isLogged() == true ? (<MenuItem onClick={handleMenuClose} component={Link} to='/settings'>Settings</MenuItem>) : (null)}
 
-      { AuthService.isLogged() == true ? (null) : (<MenuItem onClick={handleMenuClose} component={Link} to='/login'>Login</MenuItem>) }
-      { AuthService.isLogged() == true ? (null) : (<MenuItem onClick={handleMenuClose} component={Link} to='/register'>Register</MenuItem>) }
+      { AuthService.isLogged() == true ? (null) : (<MenuItem onClick={handleMenuClose} component={Link} to='/login'>Login</MenuItem>)}
+      { AuthService.isLogged() == true ? (null) : (<MenuItem onClick={handleMenuClose} component={Link} to='/register'>Register</MenuItem>)}
     </Menu>
   );
 
@@ -88,15 +90,15 @@ export default function Navbar() {
       </MenuItem>
 
       <MenuItem onClick={handleProfileMenuOpen}>
-        { AuthService.isLogged() == true ? (Userinfo.getName()) :(<p>Account</p>) }
+        {AuthService.isLogged() == true ? (Userinfo.getName()) : (<p>Account</p>)}
       </MenuItem>
 
       <MenuItem>
-      <Link color="inherit" to='/about'>About us</Link>
+        <Link color="inherit" to='/about'>About us</Link>
       </MenuItem>
 
       <MenuItem>
-      <Link color="inherit" to='/contact'>Contact us</Link>
+        <Link color="inherit" to='/contact'>Contact us</Link>
       </MenuItem>
 
     </Menu>
@@ -136,32 +138,32 @@ export default function Navbar() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
 
-          <Button color="inherit" component={Link} to='/'>Home</Button>
+            <Button color="inherit" component={Link} to='/'>Home</Button>
 
 
-            { AuthService.isLogged() == true ? (
-            <Button 
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-             >{Userinfo.getName()}</Button>
-            ) 
-            :(<Button 
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >Account</Button>) }
+            {AuthService.isLogged() == true ? (
+              <Button
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >{Userinfo.getName()}</Button>
+            )
+              : (<Button
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >Account</Button>)}
 
-          <Button color="inherit" component={Link} to='/about'>About us</Button>
-          <Button color="inherit" component={Link} to='/contact'>Contact us</Button>
+            <Button color="inherit" component={Link} to='/about'>About us</Button>
+            <Button color="inherit" component={Link} to='/contact'>Contact us</Button>
 
-            
+
 
           </div>
           <div className={classes.sectionMobile}>

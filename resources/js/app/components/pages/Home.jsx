@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import Pagination from 'react-js-pagination';
-import Config from '../classes/Config';
-import BlogCard from './BlogCard';
-import LoadingBar from './LoadingBar';
+import Config from '../../classes/Config';
+import BlogCard from './../BlogCard';
+import LoadingBar from './../LoadingBar';
 
 // Material UI
 import { Button, Container, CssBaseline } from '@material-ui/core';
