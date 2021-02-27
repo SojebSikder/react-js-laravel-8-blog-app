@@ -1953,8 +1953,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _admin_Index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./admin/Index */ "./resources/js/admin/Index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
+/* harmony import */ var _admin_store_reducers_RootReducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./admin/store/reducers/RootReducer */ "./resources/js/admin/store/reducers/RootReducer.js");
+/* harmony import */ var _admin_Index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./admin/Index */ "./resources/js/admin/Index.js");
 
 
 /**
@@ -1975,11 +1978,15 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+
+
+var store = (0,redux__WEBPACK_IMPORTED_MODULE_6__.createStore)(_admin_store_reducers_RootReducer__WEBPACK_IMPORTED_MODULE_4__.default, (0,redux__WEBPACK_IMPORTED_MODULE_6__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_3__.default));
+
 if (document.getElementById('app')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_2__.Provider, {
     store: store,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.BrowserRouter, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_admin_Index__WEBPACK_IMPORTED_MODULE_3__.default, {})
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.BrowserRouter, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_admin_Index__WEBPACK_IMPORTED_MODULE_5__.default, {})
     })
   }), document.getElementById('app'));
 }
@@ -8019,6 +8026,8 @@ function PaginationItem(props) {
   }) : null;
 }
 
+var mapDispatchToProps = function mapDispatchToProps() {};
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(null, mapDispatchToProps)(PaginationItem));
 
 /***/ }),
@@ -9273,6 +9282,949 @@ function resetUserFields() {
 }
 
 
+
+/***/ }),
+
+/***/ "./resources/js/admin/store/reducers/CategoryReducer.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/admin/store/reducers/CategoryReducer.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actionTypes/CategoryTypes */ "./resources/js/admin/store/actionTypes/CategoryTypes.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var initialState = {
+  categories: {},
+  // used in listing page
+  all_categories: [],
+  // used to fill dropdowns
+  category: {
+    id: "",
+    title: "",
+    slug: ""
+  },
+  success_message: "",
+  error_message: "",
+  validation_errors: null,
+  list_spinner: false,
+  create_update_spinner: false
+};
+
+var categoryReducer = function categoryReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.SET_CATEGORY_DEFAULTS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        category: _objectSpread({}, state.category),
+        success_message: "",
+        error_message: "",
+        validation_errors: null,
+        list_spinner: false,
+        create_update_spinner: false
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.HANDLE_CATEGORY_TITLE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        category: _objectSpread(_objectSpread({}, state.category), {}, {
+          title: action.data
+        })
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_CATEGORIES:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: true
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_CATEGORIES_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        categories: action.data,
+        list_spinner: false
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_CATEGORIES_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        error_message: action.error,
+        list_spinner: false
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_ALL_CATEGORIES:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        all_categories: action.data
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_CATEGORIES:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: true
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_CATEGORIES_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        category: action.data.data,
+        success_message: action.data.message,
+        error_message: "",
+        validation_errors: null
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_CATEGORIES_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        error_message: action.error.message,
+        validation_errors: action.error.errors,
+        success_message: ""
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_CATEGORY:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: true
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_CATEGORY_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        category: action.data.data
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_CATEGORY_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        error_message: action.error.message
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_CATEGORIES:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: true
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_CATEGORIES_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        category: action.data.data,
+        success_message: action.data.message,
+        error_message: "",
+        validation_errors: null
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_CATEGORIES_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        error_message: action.error.message,
+        validation_errors: action.error.errors,
+        success_message: ""
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_CATEGORIES:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: true
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_CATEGORIES_SUCCESS:
+      var cats = state.categories;
+      cats.data = state.categories.data.filter(function (item) {
+        return item.id != action.id;
+      });
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        categories: cats,
+        success_message: action.message,
+        error_message: ''
+      });
+
+    case _actionTypes_CategoryTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_CATEGORIES_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        error_message: action.error.message,
+        success_message: ''
+      });
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (categoryReducer);
+
+/***/ }),
+
+/***/ "./resources/js/admin/store/reducers/CommentReducer.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/admin/store/reducers/CommentReducer.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _actionTypes_CommentTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actionTypes/CommentTypes */ "./resources/js/admin/store/actionTypes/CommentTypes.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var initialState = {
+  comments: {},
+  comment: {},
+  success_message: "",
+  error_message: "",
+  validation_errors: null,
+  list_spinner: false
+};
+
+var commentReducer = function commentReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  var comments = {};
+
+  switch (action.type) {
+    case _actionTypes_CommentTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_COMMENTS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: true
+      });
+
+    case _actionTypes_CommentTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_COMMENTS_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        comments: action.data
+      });
+
+    case _actionTypes_CommentTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_COMMENTS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        error_message: action.error
+      });
+
+    case _actionTypes_CommentTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_COMMENTS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: true
+      });
+
+    case _actionTypes_CommentTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_COMMENTS_SUCCESS:
+      comments = state.comments;
+      comments.data = state.comments.data.filter(function (item) {
+        return item.id != action.id;
+      });
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        comments: comments,
+        success_message: action.message,
+        error_message: ''
+      });
+
+    case _actionTypes_CommentTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_COMMENTS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        error_message: action.error.message,
+        success_message: ''
+      });
+
+    case _actionTypes_CommentTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_COMMENTS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: true
+      });
+
+    case _actionTypes_CommentTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_COMMENTS_SUCCESS:
+      var all_comments = state.comments;
+      var comments_data = state.comments.data;
+      comments_data = comments_data.map(function (item) {
+        if (item.id == action.id) {
+          return action.data.data;
+        } else {
+          return item;
+        }
+      });
+      all_comments.data = comments_data;
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        comments: all_comments,
+        success_message: action.data.message,
+        error_message: "",
+        validation_errors: null
+      });
+
+    case _actionTypes_CommentTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_COMMENTS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        error_message: action.error.message,
+        validation_errors: action.error.errors,
+        success_message: ""
+      });
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (commentReducer);
+
+/***/ }),
+
+/***/ "./resources/js/admin/store/reducers/PostReducer.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/admin/store/reducers/PostReducer.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actionTypes/PostTypes */ "./resources/js/admin/store/actionTypes/PostTypes.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var initialState = {
+  posts: {},
+  post: {
+    id: "",
+    title: "",
+    slug: "",
+    content: "",
+    image: "",
+    published: 1,
+    category_id: "",
+    tags: []
+  },
+  success_message: "",
+  error_message: "",
+  validation_errors: {},
+  list_spinner: false,
+  create_update_spinner: false
+};
+
+var postReducer = function postReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  var tags = [];
+
+  switch (action.type) {
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_POSTS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: true
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_POSTS_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        posts: action.data
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_POSTS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        error_message: action.error
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.HANDLE_FIELD_CHANGE:
+      return handleFieldChange(state, action);
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_POSTS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: true
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_POSTS_SUCCESS:
+      tags = action.data.data.tags;
+
+      if (tags) {
+        tags = tags.map(function (x) {
+          return x['id'];
+        });
+      } else {
+        tags = [];
+      }
+
+      action.data.data.tags = tags;
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        post: action.data.data,
+        success_message: action.data.message,
+        error_message: "",
+        validation_errors: {}
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_POSTS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        error_message: action.error.message,
+        validation_errors: action.error.errors,
+        success_message: ""
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_POST:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: true
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_POST_SUCCESS:
+      tags = action.data.tags;
+
+      if (tags) {
+        tags = tags.map(function (x) {
+          return x['id'];
+        });
+      } else {
+        tags = [];
+      }
+
+      action.data.tags = tags;
+      action.data.image = "";
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        post: action.data
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_POST_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        error_message: action.error.message
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_POSTS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: true
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_POSTS_SUCCESS:
+      tags = action.data.data.tags;
+
+      if (tags) {
+        tags = tags.map(function (x) {
+          return x['id'];
+        });
+      } else {
+        tags = [];
+      }
+
+      action.data.data.tags = tags;
+      return _objectSpread(_objectSpread({}, state), {}, {
+        post: action.data.data,
+        create_update_spinner: false,
+        success_message: action.data.message,
+        error_message: "",
+        validation_errors: {}
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_POSTS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        error_message: action.error.message,
+        validation_errors: action.error.errors,
+        success_message: ""
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_POSTS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: true
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_POSTS_SUCCESS:
+      var posts = state.posts;
+      posts.data = state.posts.data.filter(function (item) {
+        return item.id != action.id;
+      });
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        posts: posts,
+        success_message: action.message,
+        error_message: ''
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_POSTS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        error_message: action.error.message,
+        success_message: ''
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.SET_POST_DEFAULTS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        success_message: "",
+        error_message: "",
+        validation_errors: {},
+        list_spinner: false,
+        create_update_spinner: false
+      });
+
+    case _actionTypes_PostTypes__WEBPACK_IMPORTED_MODULE_0__.RESET_FIELDS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        post: {
+          id: "",
+          title: "",
+          slug: "",
+          content: "",
+          image: "",
+          published: 1,
+          category_id: "",
+          tags: []
+        }
+      });
+
+    default:
+      return state;
+  }
+};
+
+function handleFieldChange(state, action) {
+  if (action.field == 'title' || action.field == 'content' || action.field == 'category_id' || action.field == 'published' || action.field == 'image') {
+    return _objectSpread(_objectSpread({}, state), {}, {
+      post: _objectSpread(_objectSpread({}, state.post), {}, _defineProperty({}, action.field, action.data))
+    });
+  } else if (action.field == 'tag[]') {
+    var selected_tags = state.post.tags;
+
+    if (action.checked == true) {
+      if (!selected_tags.includes(action.data)) {
+        selected_tags.push(parseInt(action.data));
+      }
+    } else if (action.checked == false) {
+      if (selected_tags.includes(parseInt(action.data))) {
+        selected_tags = selected_tags.filter(function (item) {
+          return item != parseInt(action.data);
+        });
+      }
+    }
+
+    return _objectSpread(_objectSpread({}, state), {}, {
+      post: _objectSpread(_objectSpread({}, state.post), {}, {
+        tags: selected_tags
+      })
+    });
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (postReducer);
+
+/***/ }),
+
+/***/ "./resources/js/admin/store/reducers/RootReducer.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/admin/store/reducers/RootReducer.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _CategoryReducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CategoryReducer */ "./resources/js/admin/store/reducers/CategoryReducer.js");
+/* harmony import */ var _TagReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TagReducer */ "./resources/js/admin/store/reducers/TagReducer.js");
+/* harmony import */ var _PostReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PostReducer */ "./resources/js/admin/store/reducers/PostReducer.js");
+/* harmony import */ var _CommentReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CommentReducer */ "./resources/js/admin/store/reducers/CommentReducer.js");
+/* harmony import */ var _UserReducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./UserReducer */ "./resources/js/admin/store/reducers/UserReducer.js");
+
+
+
+
+
+
+var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
+  category: _CategoryReducer__WEBPACK_IMPORTED_MODULE_0__.default,
+  tag: _TagReducer__WEBPACK_IMPORTED_MODULE_1__.default,
+  post: _PostReducer__WEBPACK_IMPORTED_MODULE_2__.default,
+  comment: _CommentReducer__WEBPACK_IMPORTED_MODULE_3__.default,
+  user: _UserReducer__WEBPACK_IMPORTED_MODULE_4__.default
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rootReducer);
+
+/***/ }),
+
+/***/ "./resources/js/admin/store/reducers/TagReducer.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/admin/store/reducers/TagReducer.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actionTypes/TagTypes */ "./resources/js/admin/store/actionTypes/TagTypes.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var initialState = {
+  tags: {},
+  // used in listing page
+  all_tags: [],
+  // used in fill dropdowns
+  tag: {
+    id: "",
+    title: ""
+  },
+  success_message: "",
+  error_message: "",
+  validation_errors: null,
+  list_spinner: false,
+  create_update_spinner: false
+};
+
+var tagReducer = function tagReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.SET_TAG_DEFAULTS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        tag: _objectSpread({}, state.tag),
+        success_message: "",
+        error_message: "",
+        validation_errors: null,
+        list_spinner: false,
+        create_update_spinner: false
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.HANDLE_TAG_TITLE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        tag: _objectSpread(_objectSpread({}, state.tag), {}, {
+          title: action.data
+        })
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_TAGS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: true
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_TAGS_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        tags: action.data,
+        list_spinner: false
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_TAGS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        error_message: action.error,
+        list_spinner: false
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_ALL_TAGS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        all_tags: action.data
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_TAGS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: true
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_TAGS_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        tag: action.data.data,
+        success_message: action.data.message,
+        error_message: "",
+        validation_errors: null
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_TAGS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        error_message: action.error.message,
+        validation_errors: action.error.errors,
+        success_message: ""
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_TAG:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: true
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_TAG_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        tag: action.data.data
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_TAG_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        error_message: action.error.message
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TAGS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: true
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TAGS_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        tag: action.data.data,
+        success_message: action.data.message,
+        error_message: "",
+        validation_errors: null
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_TAGS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        error_message: action.error.message,
+        validation_errors: action.error.errors,
+        success_message: ""
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_TAGS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: true
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_TAGS_SUCCESS:
+      var tags = state.tags;
+      tags.data = state.tags.data.filter(function (item) {
+        return item.id != action.id;
+      });
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        tags: tags,
+        success_message: action.message,
+        error_message: ''
+      });
+
+    case _actionTypes_TagTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_TAGS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        error_message: action.error.message,
+        success_message: ''
+      });
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tagReducer);
+
+/***/ }),
+
+/***/ "./resources/js/admin/store/reducers/UserReducer.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/admin/store/reducers/UserReducer.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actionTypes/UserTypes */ "./resources/js/admin/store/actionTypes/UserTypes.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var initialState = {
+  users: {},
+  user: {
+    id: "",
+    name: "",
+    email: "",
+    password: "",
+    is_admin: 0
+  },
+  success_message: "",
+  error_message: "",
+  validation_errors: {},
+  list_spinner: false,
+  create_update_spinner: false
+};
+
+var userReducer = function userReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.SET_USER_DEFAULTS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        user: _objectSpread({}, state.user),
+        success_message: "",
+        error_message: "",
+        validation_errors: {},
+        list_spinner: false,
+        create_update_spinner: false
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_USERS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: true
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_USERS_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        users: action.data,
+        list_spinner: false
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.LIST_USERS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        error_message: action.error,
+        list_spinner: false
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_USERS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: true
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_USERS_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        user: action.data.data,
+        success_message: action.data.message,
+        error_message: "",
+        validation_errors: {}
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.CREATE_USERS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        error_message: action.error.message,
+        validation_errors: action.error.errors,
+        success_message: ""
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_USER:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: true
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_USER_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        user: _objectSpread(_objectSpread({}, action.data.data), {}, {
+          password: ""
+        })
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.SHOW_USER_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        error_message: action.error.message
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_USERS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: true
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_USERS_SUCCESS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        user: action.data.data,
+        success_message: action.data.message,
+        error_message: "",
+        validation_errors: {}
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.EDIT_USERS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        create_update_spinner: false,
+        error_message: action.error.message,
+        validation_errors: action.error.errors,
+        success_message: ""
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_USERS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: true
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_USERS_SUCCESS:
+      var users = state.users;
+      users.data = state.users.data.filter(function (item) {
+        return item.id != action.id;
+      });
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        users: users,
+        success_message: action.message,
+        error_message: ''
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.DELETE_USERS_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        list_spinner: false,
+        error_message: action.error.message,
+        success_message: ''
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.RESET_USER_FIELDS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        user: {
+          id: "",
+          name: "",
+          email: "",
+          password: "",
+          is_admin: 0
+        }
+      });
+
+    case _actionTypes_UserTypes__WEBPACK_IMPORTED_MODULE_0__.HANDLE_USER_CHANGE:
+      return handleChange(state, action);
+
+    default:
+      return state;
+  }
+};
+/**
+ * handle field change
+ */
+
+
+function handleChange(state, action) {
+  if (action.field !== 'is_admin') {
+    return _objectSpread(_objectSpread({}, state), {}, {
+      user: _objectSpread(_objectSpread({}, state.user), {}, _defineProperty({}, action.field, action.data))
+    });
+  } else {
+    var checked = state.user.is_admin;
+
+    if (action.checked == true) {
+      checked = 1;
+    } else if (action.checked == false) {
+      checked = 0;
+    }
+
+    return _objectSpread(_objectSpread({}, state), {}, {
+      user: _objectSpread(_objectSpread({}, state.user), {}, {
+        is_admin: checked
+      })
+    });
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (userReducer);
 
 /***/ }),
 
@@ -78301,6 +79253,40 @@ if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-jsx-runtime.development.js */ "./node_modules/react/cjs/react-jsx-runtime.development.js");
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/redux-thunk/es/index.js":
+/*!**********************************************!*\
+  !*** ./node_modules/redux-thunk/es/index.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+function createThunkMiddleware(extraArgument) {
+  return function (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return action(dispatch, getState, extraArgument);
+        }
+
+        return next(action);
+      };
+    };
+  };
+}
+
+var thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (thunk);
 
 /***/ }),
 

@@ -19,6 +19,10 @@ function PaginationItem(props) {
 
 }
 
+const mapDispatchToProps = () => {
+
+}
+
 
 
 export default connect(null, mapDispatchToProps)(PaginationItem);

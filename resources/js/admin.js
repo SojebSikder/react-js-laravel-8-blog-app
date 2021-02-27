@@ -15,7 +15,12 @@ require('./bootstrap');
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from "react-router-dom";
+import { applyMiddleware, createStore } from 'redux';
+import thunkMiddleware from 'redux-thunk'
+import rootReducer from './admin/store/reducers/RootReducer';
 import Index from './admin/Index';
+
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 if (document.getElementById('app')) {
     ReactDOM.render(
