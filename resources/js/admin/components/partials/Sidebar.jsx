@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from "react-router";
+import { useLocation } from "react-router";
 
 const Sidebar = (props) => {
 
-    return props.location.pathname != '/admin/login' ? (
+    const location = useLocation();
+
+    return location.pathname != '/admin/login' ? (
         <aside className="main-sidebar">
             <section className="sidebar">
                 <div className="user-panel">
@@ -17,32 +19,32 @@ const Sidebar = (props) => {
                 </div>
                 <ul className="sidebar-menu" data-widget="tree">
                     <li className="header">MAIN NAVIGATION</li>
-                    <li className={props.location.pathname == '/admin' ? 'active' : ''}>
+                    <li className={location.pathname == '/admin' ? 'active' : ''}>
                         <Link to='/admin'>
                             <i className="fa fa-dashboard"></i> <span>Dashboard</span>
                         </Link>
                     </li>
-                    <li className={props.location.pathname == '/admin/posts' ? 'active' : ''}>
+                    <li className={location.pathname == '/admin/posts' ? 'active' : ''}>
                         <Link to='/admin/posts'>
                             <i className="fa fa-th"></i> <span>Posts</span>
                         </Link>
                     </li>
-                    <li className={props.location.pathname == '/admin/categories' ? 'active' : ''}>
+                    <li className={location.pathname == '/admin/categories' ? 'active' : ''}>
                         <Link to='/admin/categories'>
                             <i className="fa fa-list"></i> <span>Categories</span>
                         </Link>
                     </li>
-                    <li className={props.location.pathname == '/admin/tags' ? 'active' : ''}>
+                    <li className={location.pathname == '/admin/tags' ? 'active' : ''}>
                         <Link to='/admin/tags'>
                             <i className="fa fa-tags"></i> <span>Tags</span>
                         </Link>
                     </li>
-                    <li className={props.location.pathname == '/admin/comments' ? 'active' : ''}>
+                    <li className={location.pathname == '/admin/comments' ? 'active' : ''}>
                         <Link to='/admin/comments'>
                             <i className="fa fa-comments-o"></i> <span>Comments</span>
                         </Link>
                     </li>
-                    <li className={props.location.pathname == '/admin/users' ? 'active' : ''}>
+                    <li className={location.pathname == '/admin/users' ? 'active' : ''}>
                         <Link to='/admin/users'>
                             <i className="fa fa-users"></i> <span>Users</span>
                         </Link>
@@ -53,4 +55,5 @@ const Sidebar = (props) => {
     ) : null;
 };
 
-export default withRouter(Sidebar);
+//export default withRouter(Sidebar);
+export default Sidebar;

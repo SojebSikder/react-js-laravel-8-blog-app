@@ -11,4 +11,5 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => (
     } />
 );
 
-export default withRouter(AuthenticatedRoute);
+//export default withRouter(AuthenticatedRoute);
+export default AuthenticatedRoute;
