@@ -23,29 +23,29 @@ import AddUsers from "./components/pages/users/Add";
 import EditUsers from "./components/pages/users/Edit";
 import Profile from "./components/pages/profile/Profile";
 
-class Routes extends React.Component {
-    render() {
-        return (
-            <Switch>
-                <Route exact path='/login' component={Login} />
-                <AuthenticatedRoute exact path='/' component={Dashboard} />
-                <AuthenticatedRoute exact path='/posts' component={ListPosts} />
-                <AuthenticatedRoute path='/posts/add' component={AddPosts} />
-                <AuthenticatedRoute path='/posts/edit/:id' component={EditPosts} />
-                <AuthenticatedRoute exact path='/tags' component={ListTags} />
-                <AuthenticatedRoute path='/tags/add' component={AddTags} />
-                <AuthenticatedRoute path='/tags/edit/:id' component={EditTags} />
-                <AuthenticatedRoute exact path='/categories' component={ListCategories} />
-                <AuthenticatedRoute path='/categories/add' component={AddCategories} />
-                <AuthenticatedRoute path='/categories/edit/:id' component={EditCategories} />
-                <AuthenticatedRoute exact path='/comments' component={ListComments} />
-                <AuthenticatedRoute exact path='/users' component={ListUsers} />
-                <AuthenticatedRoute path='/users/add' component={AddUsers} />
-                <AuthenticatedRoute path='/users/edit/:id' component={EditUsers} />
-                <AuthenticatedRoute path='/profile' component={Profile} />
-            </Switch>
-        )
-    }
+function Routes() {
+
+    return (
+        <Switch>
+            <Route exact path='/admin/login' component={Login} />
+            <AuthenticatedRoute exact path='/admin/' component={Dashboard} />
+            <AuthenticatedRoute exact path='/admin/posts' component={ListPosts} />
+            <AuthenticatedRoute path='/admin/posts/add' component={AddPosts} />
+            <AuthenticatedRoute path='/admin/posts/edit/:id' component={EditPosts} />
+            <AuthenticatedRoute exact path='/admin/tags' component={ListTags} />
+            <AuthenticatedRoute path='/admin/tags/add' component={AddTags} />
+            <AuthenticatedRoute path='/admin/tags/edit/:id' component={EditTags} />
+            <AuthenticatedRoute exact path='/admin/categories' component={ListCategories} />
+            <AuthenticatedRoute path='/admin/categories/add' component={AddCategories} />
+            <AuthenticatedRoute path='/admin/categories/edit/:id' component={EditCategories} />
+            <AuthenticatedRoute exact path='/admin/comments' component={ListComments} />
+            <AuthenticatedRoute exact path='/admin/users' component={ListUsers} />
+            <AuthenticatedRoute path='/admin/users/add' component={AddUsers} />
+            <AuthenticatedRoute path='/admin/users/edit/:id' component={EditUsers} />
+            <AuthenticatedRoute path='/admin/profile' component={Profile} />
+        </Switch>
+    )
+
 }
 
 export default Routes;

@@ -20,9 +20,15 @@ use Illuminate\Support\Facades\Route;
 //Auth::routes();
 
 // Website route
+// Route::get('/{path?}', function () {
+//     return view('welcome');
+// })->where('path', '[^admin]*');//->where('path', '.*');
+
 Route::get('/{path?}', function () {
     return view('welcome');
-})->where('path', '[^admin]*');//->where('path', '.*');
+ })->where('path', '^(?!admin).*$');
+
+
 
 // Admin route
 Route::get('/admin/{path?}', function () {

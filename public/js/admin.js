@@ -2031,7 +2031,7 @@ var AuthenticatedRoute = function AuthenticatedRoute(_ref) {
     render: function render(props) {
       return localStorage.getItem("user.api_token") ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Component, _objectSpread({}, props)) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
         to: {
-          pathname: "/login",
+          pathname: "/admin/login",
           state: {
             from: props.location
           }
@@ -2115,30 +2115,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_pages_users_Add__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/pages/users/Add */ "./resources/js/admin/components/pages/users/Add.js");
 /* harmony import */ var _components_pages_users_Edit__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/pages/users/Edit */ "./resources/js/admin/components/pages/users/Edit.js");
 /* harmony import */ var _components_pages_profile_Profile__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/pages/profile/Profile */ "./resources/js/admin/components/pages/profile/Profile.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
@@ -2160,83 +2136,67 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var Routes = /*#__PURE__*/function (_React$Component) {
-  _inherits(Routes, _React$Component);
 
-  var _super = _createSuper(Routes);
-
-  function Routes() {
-    _classCallCheck(this, Routes);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Routes, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Switch, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
-          exact: true,
-          path: "/login",
-          component: _components_login_Login__WEBPACK_IMPORTED_MODULE_2__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          exact: true,
-          path: "/",
-          component: _components_pages_Dashboard__WEBPACK_IMPORTED_MODULE_4__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          exact: true,
-          path: "/posts",
-          component: _components_pages_posts_Index__WEBPACK_IMPORTED_MODULE_5__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          path: "/posts/add",
-          component: _components_pages_posts_Add__WEBPACK_IMPORTED_MODULE_6__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          path: "/posts/edit/:id",
-          component: _components_pages_posts_Edit__WEBPACK_IMPORTED_MODULE_7__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          exact: true,
-          path: "/tags",
-          component: _components_pages_tags_Index__WEBPACK_IMPORTED_MODULE_11__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          path: "/tags/add",
-          component: _components_pages_tags_Add__WEBPACK_IMPORTED_MODULE_12__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          path: "/tags/edit/:id",
-          component: _components_pages_tags_Edit__WEBPACK_IMPORTED_MODULE_13__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          exact: true,
-          path: "/categories",
-          component: _components_pages_categories_Index__WEBPACK_IMPORTED_MODULE_8__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          path: "/categories/add",
-          component: _components_pages_categories_Add__WEBPACK_IMPORTED_MODULE_9__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          path: "/categories/edit/:id",
-          component: _components_pages_categories_Edit__WEBPACK_IMPORTED_MODULE_10__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          exact: true,
-          path: "/comments",
-          component: _components_pages_comments_Index__WEBPACK_IMPORTED_MODULE_14__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          exact: true,
-          path: "/users",
-          component: _components_pages_users_Index__WEBPACK_IMPORTED_MODULE_15__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          path: "/users/add",
-          component: _components_pages_users_Add__WEBPACK_IMPORTED_MODULE_16__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          path: "/users/edit/:id",
-          component: _components_pages_users_Edit__WEBPACK_IMPORTED_MODULE_17__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-          path: "/profile",
-          component: _components_pages_profile_Profile__WEBPACK_IMPORTED_MODULE_18__.default
-        })]
-      });
-    }
-  }]);
-
-  return Routes;
-}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
+function Routes() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Switch, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+      exact: true,
+      path: "/admin/login",
+      component: _components_login_Login__WEBPACK_IMPORTED_MODULE_2__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      exact: true,
+      path: "/admin/",
+      component: _components_pages_Dashboard__WEBPACK_IMPORTED_MODULE_4__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      exact: true,
+      path: "/admin/posts",
+      component: _components_pages_posts_Index__WEBPACK_IMPORTED_MODULE_5__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      path: "/admin/posts/add",
+      component: _components_pages_posts_Add__WEBPACK_IMPORTED_MODULE_6__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      path: "/admin/posts/edit/:id",
+      component: _components_pages_posts_Edit__WEBPACK_IMPORTED_MODULE_7__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      exact: true,
+      path: "/admin/tags",
+      component: _components_pages_tags_Index__WEBPACK_IMPORTED_MODULE_11__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      path: "/admin/tags/add",
+      component: _components_pages_tags_Add__WEBPACK_IMPORTED_MODULE_12__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      path: "/admin/tags/edit/:id",
+      component: _components_pages_tags_Edit__WEBPACK_IMPORTED_MODULE_13__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      exact: true,
+      path: "/admin/categories",
+      component: _components_pages_categories_Index__WEBPACK_IMPORTED_MODULE_8__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      path: "/admin/categories/add",
+      component: _components_pages_categories_Add__WEBPACK_IMPORTED_MODULE_9__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      path: "/admin/categories/edit/:id",
+      component: _components_pages_categories_Edit__WEBPACK_IMPORTED_MODULE_10__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      exact: true,
+      path: "/admin/comments",
+      component: _components_pages_comments_Index__WEBPACK_IMPORTED_MODULE_14__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      exact: true,
+      path: "/admin/users",
+      component: _components_pages_users_Index__WEBPACK_IMPORTED_MODULE_15__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      path: "/admin/users/add",
+      component: _components_pages_users_Add__WEBPACK_IMPORTED_MODULE_16__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      path: "/admin/users/edit/:id",
+      component: _components_pages_users_Edit__WEBPACK_IMPORTED_MODULE_17__.default
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_AuthenticatedRoute__WEBPACK_IMPORTED_MODULE_3__.default, {
+      path: "/admin/profile",
+      component: _components_pages_profile_Profile__WEBPACK_IMPORTED_MODULE_18__.default
+    })]
+  });
+}
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Routes);
 
