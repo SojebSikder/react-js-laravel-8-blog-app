@@ -42,6 +42,25 @@ class AuthService {
                 } else if (res.data.success == false) {
 
                 }
+
+                //----------------------------Just checking---------
+
+                if (res.data.user.is_admin == 1) {
+                    for (var i in res.data.user) {
+                        localStorage.setItem("user." + i, res.data.user[i]);
+                        setTimeout(() => {
+                            props.history.push("/");
+                        }, 500);
+                    }
+                } else {
+                    localStorage.clear();
+                }
+
+                //----------------------------end checking---------
+
+
+
+
                 calback(res);
             }).catch(error => {
                 //this.setState({alert_message:'error'});

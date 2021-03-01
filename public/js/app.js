@@ -21983,7 +21983,20 @@ var AuthService = /*#__PURE__*/function () {
           //JSON.parse(localStorage.getItem("user")).name
 
           _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__.default.setToken(res.data.token); //SessionService.set('token', res.data.token);
-        } else if (res.data.success == false) {}
+        } else if (res.data.success == false) {} //----------------------------Just checking---------
+
+
+        if (res.data.user.is_admin == 1) {
+          for (var i in res.data.user) {
+            localStorage.setItem("user." + i, res.data.user[i]);
+            setTimeout(function () {
+              props.history.push("/");
+            }, 500);
+          }
+        } else {
+          localStorage.clear();
+        } //----------------------------end checking---------
+
 
         calback(res);
       })["catch"](function (error) {//this.setState({alert_message:'error'});

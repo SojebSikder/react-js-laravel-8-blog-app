@@ -35,6 +35,7 @@ function Login(props) {
             return false;
         }
         Auth.login({ email: email, password: password }, (response) => {
+
             if (response.data.user.is_admin == 1) {
                 for (var i in response.data.user) {
                     localStorage.setItem("user." + i, response.data.user[i]);
@@ -47,6 +48,7 @@ function Login(props) {
                 
                 setError_message("Unauthorized");
             }
+            
         }, (err) => {
 
             setError_message(err.response.data.message);
