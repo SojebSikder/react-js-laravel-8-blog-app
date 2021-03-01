@@ -21943,7 +21943,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var AuthService = {
   /**
-   * Login with api
+   * Login user
+   * @param {*} data 
+   * @param {*} success 
+   * @param {*} fail 
    */
   login: function login(data, success, fail) {
     // const user ={
@@ -21958,7 +21961,10 @@ var AuthService = {
   },
 
   /**
-   * Register with api
+   * Register user
+   * @param {*} data 
+   * @param {*} success 
+   * @param {*} fail 
    */
   register: function register(data, success, fail) {
     axios__WEBPACK_IMPORTED_MODULE_0___default().post(_classes_Config__WEBPACK_IMPORTED_MODULE_1__.default.getUrl() + "/register", data).then(function (res) {
@@ -21982,6 +21988,8 @@ var AuthService = {
 
   /**
    * Logout user
+   * @param {*} success 
+   * @param {*} fail 
    */
   logout: function logout(success, fail) {
     var user = {
@@ -22033,67 +22041,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 /**
  * It is used for Session Management
  */
-var SessionService = /*#__PURE__*/function () {
-  function SessionService() {
-    _classCallCheck(this, SessionService);
+var SessionService = {
+  /**
+   * Set session value
+   * @param {*} key 
+   * @param {*} value 
+   */
+  set: function set(key, value) {
+    localStorage.setItem(key, value);
+  },
+
+  /**
+   * Get session value
+   * @param {*} key 
+   */
+  get: function get(key) {
+    var data = localStorage.getItem(key);
+    return data;
+  },
+
+  /**
+   * Remove session value
+   * @param {*} key 
+   */
+  remove: function remove(key) {
+    localStorage.removeItem(key);
+  },
+
+  /**
+   * Remove all session value
+   */
+  removeAll: function removeAll() {
+    localStorage.clear();
   }
-
-  _createClass(SessionService, [{
-    key: "set",
-
-    /**
-     * Set session value
-     * @param {*} key 
-     * @param {*} value 
-     */
-    value: function set(key, value) {
-      localStorage.setItem(key, value);
-    }
-    /**
-     * Get session value
-     * @param {*} key 
-     */
-
-  }, {
-    key: "get",
-    value: function get(key) {
-      var data = localStorage.getItem(key);
-      return data;
-    }
-    /**
-     * Remove session value
-     * @param {*} key 
-     */
-
-  }, {
-    key: "remove",
-    value: function remove(key) {
-      localStorage.removeItem(key);
-    }
-    /**
-     * Remove all session value
-     */
-
-  }, {
-    key: "removeAll",
-    value: function removeAll() {
-      localStorage.clear();
-    }
-  }]);
-
-  return SessionService;
-}();
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new SessionService());
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SessionService);
 
 /***/ }),
 

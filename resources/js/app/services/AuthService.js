@@ -8,7 +8,10 @@ import SessionService from "./SessionService";
  */
 const AuthService = {
     /**
-     * Login with api
+     * Login user
+     * @param {*} data 
+     * @param {*} success 
+     * @param {*} fail 
      */
     login: (data, success, fail) => {
         // const user ={
@@ -23,7 +26,10 @@ const AuthService = {
             });
     },
     /**
-     * Register with api
+     * Register user
+     * @param {*} data 
+     * @param {*} success 
+     * @param {*} fail 
      */
     register: (data, success, fail) => {
         axios.post(Config.getUrl() + "/register", data)
@@ -48,6 +54,8 @@ const AuthService = {
 
     /**
      * Logout user
+     * @param {*} success 
+     * @param {*} fail 
      */
     logout: (success, fail) => {
         const user = {
