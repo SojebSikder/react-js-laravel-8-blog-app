@@ -3,6 +3,7 @@ import AuthService from '../../services/AuthService';
 import UrlHelper from '../../helpers/UrlHelper';
 // Material ui
 import { Button, Container, CssBaseline } from '@material-ui/core'
+import SessionService from '../../services/SessionService';
 // End Material ui
 
 export default function Settings(props) {
@@ -10,7 +11,10 @@ export default function Settings(props) {
     const onClickLogout=()=>
     {
         AuthService.logout((res)=>{
+            SessionService.removeAll();
             UrlHelper.redirectTo(props, '/login');
+        }, (error)=>{
+
         });
     }
 

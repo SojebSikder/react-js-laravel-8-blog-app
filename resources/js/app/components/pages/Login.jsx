@@ -20,27 +20,27 @@ import Container from '@material-ui/core/Container';
 
 
 
-  
-  // Style
-  const useStyles = makeStyles((theme) => ({
+
+// Style
+const useStyles = makeStyles((theme) => ({
     paper: {
-      marginTop: theme.spacing(8),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
     },
     avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main,
     },
     form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(1),
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
     },
     submit: {
-      margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(3, 0, 2),
     },
-  }));
+}));
 
 
 export default function Login(props) {
@@ -56,38 +56,46 @@ export default function Login(props) {
 
 
     // Get value from input and set state
-    const onChangeUsername=(e)=>
-    {
+    const onChangeUsername = (e) => {
         setUsername(e.target.value);
     }
-    const onChangePassword=(e)=>
-    {
+    const onChangePassword = (e) => {
         setPassword(e.target.value);
     }
     // create user account
-    const onSubmit=(e)=>
-    {
+    const onSubmit = (e) => {
         e.preventDefault();
-        const user ={
+        const user = {
             name: username,
             password: password
         }
-        AuthService.login(user, (res)=>{
-            if(res.data.success == false){
-                setAlert_message('error');
-            }else if(res.data.success == true){
+        AuthService.login(user, (res) => {
+
+            if (res.data.success == true) {
+                // Set sesiion
+                for (var i in res.data.user) {
+                    SessionService.set("user." + i, res.data.user[i]);
+                }
                 setAlert_message('success');
                 return props.history.push('/profile');
+
+            } else {
+                setAlert_message('error');
+                SessionService.removeAll();
             }
+
+
+        }, (error) => {
+
         });
     }
 
-    
+
 
     useEffect(() => {
 
         // check if user logged in or not
-        if (AuthService.isLogged() == true){
+        if (AuthService.isLogged() == true) {
             UrlHelper.redirectTo(props, '/profile');
             //return <Redirect to='/profile' />;
         }
@@ -96,62 +104,62 @@ export default function Login(props) {
 
 
     return (
-        
+
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
-                <LockOutlinedIcon />
+                    <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                Login
+                    Login
                 </Typography>
                 <form onSubmit={onSubmit} className={classes.form} noValidate>
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="username"
-                    label="Username"
-                    name="username"
-                    autoComplete="username"
-                    autoFocus
-                    onChange={onChangeUsername}
-                />
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="current-password"
-                    onChange={onChangePassword}
-                />
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    className={classes.submit}
-                >
-                    Login
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="username"
+                        label="Username"
+                        name="username"
+                        autoComplete="username"
+                        autoFocus
+                        onChange={onChangeUsername}
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
+                        onChange={onChangePassword}
+                    />
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                    >
+                        Login
                 </Button>
-                <Grid container>
-                    <Grid item xs>
-                    <Link href="#" variant="body2">
-                        Forgot password?
+                    <Grid container>
+                        <Grid item xs>
+                            <Link href="#" variant="body2">
+                                Forgot password?
                     </Link>
+                        </Grid>
+                        <Grid item>
+                            <Link component={RouterLink} to="/register" variant="body2">
+                                {"Don't have an account? Register"}
+                            </Link>
+                        </Grid>
                     </Grid>
-                    <Grid item>
-                    <Link component={RouterLink} to="/register" variant="body2">
-                        {"Don't have an account? Register"}
-                    </Link>
-                    </Grid>
-                </Grid>
                 </form>
             </div>
             <Copyright />

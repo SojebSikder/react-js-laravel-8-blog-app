@@ -18,8 +18,8 @@ const Auth = {
      */
     login: (data) => {
         AuthService.login(data, (res) => {
+            
             if (res.data.success == true) {
-
                 // Set sesiion
                 for (var i in res.data.user) {
                     SessionService.set("user." + i, res.data.user[i]);
