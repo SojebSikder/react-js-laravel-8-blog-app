@@ -21976,7 +21976,12 @@ var AuthService = /*#__PURE__*/function () {
           _this.authenticated = true; // Set sesiion
 
           _SessionService__WEBPACK_IMPORTED_MODULE_3__.default.set('id', res.data.user.id);
-          _SessionService__WEBPACK_IMPORTED_MODULE_3__.default.set('name', res.data.user.name);
+          _SessionService__WEBPACK_IMPORTED_MODULE_3__.default.set('name', res.data.user.name); // whole user data
+
+          _SessionService__WEBPACK_IMPORTED_MODULE_3__.default.set('user', JSON.stringify(res.data.user)); //...
+          //var storedNames = JSON.parse(localStorage.getItem("names"));
+          //JSON.parse(localStorage.getItem("user")).name
+
           _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__.default.setToken(res.data.token); //SessionService.set('token', res.data.token);
         } else if (res.data.success == false) {}
 
@@ -22046,7 +22051,7 @@ axios.post(Config.getUrl()+"/user/login", user)
     }else if(res.data.status == 1){
         this.setState({alert_message:'success'});
     }
-    
+
 }).catch(error=>{
     this.setState({alert_message:'error'});
 }); */
