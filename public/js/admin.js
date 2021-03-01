@@ -2076,7 +2076,7 @@ __webpack_require__.r(__webpack_exports__);
 function Index() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "wrapper",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_partials_Header__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_partials_Sidebar__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_partials_Header__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Routes__WEBPACK_IMPORTED_MODULE_6__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_partials_Sidebar__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "content-wrapper",
       children: "Admin page"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_partials_Footer__WEBPACK_IMPORTED_MODULE_5__.default, {})]
@@ -2682,8 +2682,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Login(props) {
-  var _this = this;
-
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
       email = _useState2[0],
@@ -2714,50 +2712,37 @@ function Login(props) {
   };
 
   var handlePassword = function handlePassword(e) {
-    _this.setState({
-      password: e.target.value
-    });
+    setPassword(e.target.value);
   };
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
+    setError_message(null);
+    setErrors(null);
 
-    _this.setState({
-      error_message: null,
-      errors: null
-    });
-
-    if (_this.state.email == "" || _this.state.password == "") {
-      _this.setState({
-        error_message: "Please enter login credentials"
-      });
-
+    if (email == "" || password == "") {
+      setError_message("Please enter login credentials");
       return false;
     }
 
     _apis_Auth__WEBPACK_IMPORTED_MODULE_2__.default.login({
-      email: _this.state.email,
-      password: _this.state.password
+      email: email,
+      password: password
     }, function (response) {
       if (response.data.user.is_admin == 1) {
         for (var i in response.data.user) {
           localStorage.setItem("user." + i, response.data.user[i]);
           setTimeout(function () {
-            _this.props.history.push("/");
+            props.history.push("/");
           }, 500);
         }
       } else {
         localStorage.clear();
-
-        _this.setState({
-          error_message: "Unauthorized"
-        });
+        setError_message("Unauthorized");
       }
     }, function (err) {
-      _this.setState({
-        error_message: err.response.data.message,
-        errors: err.response.data.errors
-      });
+      setError_message(err.response.data.message);
+      setErrors(err.response.data.errors);
     });
   };
 
@@ -2775,42 +2760,42 @@ function Login(props) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
           className: "login-box-msg",
           children: "Sign in to start your session"
-        }), this.state.error_message ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        }), error_message ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           className: "alert alert-danger",
-          children: this.state.error_message
+          children: error_message
         }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
           action: "#",
           method: "post",
-          onSubmit: this.handleSubmit,
+          onSubmit: handleSubmit,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "form-group has-feedback ".concat(this.state.errors && this.state.errors.email ? 'has-error' : ''),
+            className: "form-group has-feedback ".concat(errors && errors.email ? 'has-error' : ''),
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
               type: "email",
               name: "email",
               className: "form-control",
               placeholder: "Email",
-              onChange: this.handleEmail,
-              value: this.state.email
+              onChange: handleEmail,
+              value: email
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
               className: "glyphicon glyphicon-envelope form-control-feedback"
-            }), this.state.errors && this.state.errors.email ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            }), errors && errors.email ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
               className: "help-block",
-              children: this.state.errors.email[0]
+              children: errors.email[0]
             }) : null]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "form-group has-feedback ".concat(this.state.errors && this.state.errors.password ? 'has-error' : ''),
+            className: "form-group has-feedback ".concat(errors && errors.password ? 'has-error' : ''),
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
               type: "password",
               name: "password",
               className: "form-control",
               placeholder: "Password",
-              onChange: this.handlePassword,
-              value: this.state.password
+              onChange: handlePassword,
+              value: password
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
               className: "glyphicon glyphicon-lock form-control-feedback"
-            }), this.state.errors && this.state.errors.password ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            }), errors && errors.password ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
               className: "help-block",
-              children: this.state.errors.password[0]
+              children: errors.password[0]
             }) : null]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
             className: "row",

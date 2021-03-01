@@ -10,6 +10,7 @@ export default function Index() {
     return (
         <div className="wrapper">
             <Header />
+            <Routes />
             <Sidebar />
             <div className="content-wrapper">
                 Admin page
