@@ -16,6 +16,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import SessionService from '../../services/SessionService';
 // End Material UI
 
 
@@ -72,13 +73,13 @@ export default function Login(props) {
         AuthService.login(user, (res) => {
 
             if (res.data.success == true) {
-                // Set sesiion
+                // Set session
+                SessionService.set("token", res.data.token);
                 for (var i in res.data.user) {
                     SessionService.set("user." + i, res.data.user[i]);
                 }
                 setAlert_message('success');
                 return props.history.push('/profile');
-
             } else {
                 setAlert_message('error');
                 SessionService.removeAll();

@@ -8,14 +8,14 @@ class Userinfo{
      * Get user id
      */
     getId(){
-        let data = SessionService.get('id');
+        let data = SessionService.get('user.id');
         return data;
     }
     /**
      * Get User name
      */
     getName(){
-        let data = SessionService.get('name');
+        let data = SessionService.get('user.name');
         return data;
     }
     /**
