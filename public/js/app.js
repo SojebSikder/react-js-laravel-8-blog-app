@@ -21933,12 +21933,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _classes_Config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../classes/Config */ "./resources/js/app/classes/Config.js");
 /* harmony import */ var _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../classes/Userinfo */ "./resources/js/app/classes/Userinfo.js");
 /* harmony import */ var _SessionService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SessionService */ "./resources/js/app/services/SessionService.js");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 
 
 
@@ -21947,113 +21941,60 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
  * Manage authentication
  */
 
-var AuthService = /*#__PURE__*/function () {
-  function AuthService() {
-    _classCallCheck(this, AuthService);
-
-    if (_SessionService__WEBPACK_IMPORTED_MODULE_3__.default.get('token') != null) {
-      this.authenticated = true;
-    } else {
-      this.authenticated = false;
-    }
-  }
+var AuthService = {
   /**
    * Login with api
    */
+  login: function login(data, success, fail) {
+    // const user ={
+    //     username: this.state.username,
+    //     password: this.state.password
+    // }
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post(_classes_Config__WEBPACK_IMPORTED_MODULE_1__.default.getUrl() + "/login", data).then(function (response) {
+      success(response);
+    })["catch"](function (error) {
+      fail(error);
+    });
+  },
 
+  /**
+   * Register with api
+   */
+  register: function register(data, success, fail) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post(_classes_Config__WEBPACK_IMPORTED_MODULE_1__.default.getUrl() + "/register", data).then(function (res) {
+      success(res); //this.setState({alert_message:'success'});
+    })["catch"](function (error) {
+      //this.setState({alert_message:'error'});
+      fail(error);
+    });
+  },
 
-  _createClass(AuthService, [{
-    key: "login",
-    value: function login(user, calback) {
-      var _this = this;
-
-      // const user ={
-      //     username: this.state.username,
-      //     password: this.state.password
-      // }
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post(_classes_Config__WEBPACK_IMPORTED_MODULE_1__.default.getUrl() + "/login", user).then(function (res) {
-        if (res.data.success == true) {
-          _this.authenticated = true; // Set sesiion
-
-          _SessionService__WEBPACK_IMPORTED_MODULE_3__.default.set('id', res.data.user.id);
-          _SessionService__WEBPACK_IMPORTED_MODULE_3__.default.set('name', res.data.user.name); // whole user data
-
-          _SessionService__WEBPACK_IMPORTED_MODULE_3__.default.set('user', JSON.stringify(res.data.user)); //...
-          //var storedNames = JSON.parse(localStorage.getItem("names"));
-          //JSON.parse(localStorage.getItem("user")).name
-
-          _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__.default.setToken(res.data.token); //SessionService.set('token', res.data.token);
-        } else if (res.data.success == false) {} //----------------------------Just checking---------
-
-
-        if (res.data.user.is_admin == 1) {
-          for (var i in res.data.user) {
-            localStorage.setItem("user." + i, res.data.user[i]);
-            setTimeout(function () {
-              props.history.push("/");
-            }, 500);
-          }
-        } else {
-          localStorage.clear();
-        } //----------------------------end checking---------
-
-
-        calback(res);
-      })["catch"](function (error) {//this.setState({alert_message:'error'});
-      });
+  /**
+   * Check if user is authenticated or not
+   */
+  isLogged: function isLogged() {
+    if (_SessionService__WEBPACK_IMPORTED_MODULE_3__.default.get('token') != null) {
+      return true;
+    } else {
+      return false;
     }
-    /**
-     * Register with api
-     */
+  },
 
-  }, {
-    key: "register",
-    value: function register(user, callback) {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post(_classes_Config__WEBPACK_IMPORTED_MODULE_1__.default.getUrl() + "/register", user).then(function (res) {
-        callback(res); //this.setState({alert_message:'success'});
-      })["catch"](function (error) {//this.setState({alert_message:'error'});
-      });
-    }
-    /**
-     * Check if user is authenticated or not
-     */
-
-  }, {
-    key: "isLogged",
-    value: function isLogged() {
-      if (_SessionService__WEBPACK_IMPORTED_MODULE_3__.default.get('token') != null) {
-        this.authenticated = true;
-        return true;
-      } else {
-        this.authenticated = false;
-        return false;
-      }
-    }
-    /**
-     * Logout user
-     */
-
-  }, {
-    key: "logout",
-    value: function logout(callback) {
-      var _this2 = this;
-
-      var user = {
-        token: _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__.default.getToken()
-      };
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post(_classes_Config__WEBPACK_IMPORTED_MODULE_1__.default.getUrl() + "/logout", user).then(function (res) {
-        _SessionService__WEBPACK_IMPORTED_MODULE_3__.default.removeAll();
-        _this2.authenticated = false;
-        callback(res);
-      })["catch"](function (error) {//this.setState({alert_message:'error'});
-      });
-    }
-  }]);
-
-  return AuthService;
-}();
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new AuthService()); // for Login
+  /**
+   * Logout user
+   */
+  logout: function logout(success, fail) {
+    var user = {
+      token: _classes_Userinfo__WEBPACK_IMPORTED_MODULE_2__.default.getToken()
+    };
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post(_classes_Config__WEBPACK_IMPORTED_MODULE_1__.default.getUrl() + "/logout", user).then(function (res) {
+      success(res);
+    })["catch"](function (error) {
+      fail(error); //this.setState({alert_message:'error'});
+    });
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AuthService); // for Login
 
 /*
 axios.post(Config.getUrl()+"/user/login", user)

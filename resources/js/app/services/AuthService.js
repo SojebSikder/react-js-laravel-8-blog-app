@@ -6,112 +6,66 @@ import SessionService from "./SessionService";
 /**
  * Manage authentication
  */
-class AuthService {
-    constructor() {
-        if (SessionService.get('token') != null) {
-            this.authenticated = true;
-        } else {
-            this.authenticated = false;
-        }
-    }
+const AuthService = {
     /**
      * Login with api
      */
-    login(user, calback) {
+    login: (data, success, fail) => {
         // const user ={
         //     username: this.state.username,
         //     password: this.state.password
         // }
-        axios.post(Config.getUrl() + "/login", user)
-            .then(res => {
-                if (res.data.success == true) {
-                    this.authenticated = true;
-                    // Set sesiion
-                    SessionService.set('id', res.data.user.id);
-                    SessionService.set('name', res.data.user.name);
-                    // whole user data
-                    SessionService.set('user', JSON.stringify(res.data.user));
-
-                    //...
-                    //var storedNames = JSON.parse(localStorage.getItem("names"));
-                    //JSON.parse(localStorage.getItem("user")).name
-
-                    Userinfo.setToken(res.data.token);
-                    //SessionService.set('token', res.data.token);
-
-                } else if (res.data.success == false) {
-
-                }
-
-                //----------------------------Just checking---------
-
-                if (res.data.user.is_admin == 1) {
-                    for (var i in res.data.user) {
-                        localStorage.setItem("user." + i, res.data.user[i]);
-                        setTimeout(() => {
-                            props.history.push("/");
-                        }, 500);
-                    }
-                } else {
-                    localStorage.clear();
-                }
-
-                //----------------------------end checking---------
-
-
-
-
-                calback(res);
+        axios.post(Config.getUrl() + "/login", data)
+            .then(response => {
+                success(response);
             }).catch(error => {
-                //this.setState({alert_message:'error'});
+                fail(error);
             });
-    }
+    },
     /**
      * Register with api
      */
-    register(user, callback) {
-        axios.post(Config.getUrl() + "/register", user)
+    register: (data, success, fail) => {
+        axios.post(Config.getUrl() + "/register", data)
             .then(res => {
-                callback(res);
+                success(res);
                 //this.setState({alert_message:'success'});
             }).catch(error => {
                 //this.setState({alert_message:'error'});
+                fail(error);
             });
-    }
+    },
     /**
      * Check if user is authenticated or not
      */
-    isLogged() {
+    isLogged: () => {
         if (SessionService.get('token') != null) {
-            this.authenticated = true;
             return true;
         } else {
-            this.authenticated = false;
             return false;
         }
-    }
+    },
 
     /**
      * Logout user
      */
-    logout(callback) {
+    logout: (success, fail) => {
         const user = {
             token: Userinfo.getToken(),
         }
         axios.post(Config.getUrl() + "/logout", user)
             .then(res => {
-                SessionService.removeAll();
-                this.authenticated = false;
-                callback(res);
+                success(res);
             }).catch(error => {
+                fail(error);
                 //this.setState({alert_message:'error'});
             });
 
-    }
+    },
 }
 
 
-export default new AuthService();
+export default AuthService;
 
 
 
