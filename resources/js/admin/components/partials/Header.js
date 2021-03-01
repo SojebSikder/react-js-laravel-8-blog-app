@@ -1,7 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useLocation, withRouter } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Auth from '../../apis/Auth';
 
 function Header(props) {
@@ -83,4 +82,4 @@ function Header(props) {
     ) : null
 }
 
-export default withRouter(Header)
+export default Header
