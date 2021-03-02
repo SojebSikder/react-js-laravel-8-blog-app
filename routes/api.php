@@ -32,13 +32,14 @@ Route::put('/blog/update/{id}', [App\Http\Controllers\api\BlogController::class,
 //Route::post('register', 'Auth\\RegisterController@register')->name('register');
 //Route::get('logout', 'Auth\\LoginController@logout')->name('logout');
 //Route::get('check-auth', 'Auth\\LoginController@checkAuth')->name('logout');
-Route::resource('categories', 'CategoryController');
-Route::resource('posts', 'PostsController');
-Route::resource('tags', 'TagsController');
-Route::resource('comments', 'CommentsController');
+Route::resource('categories', App\Http\Controllers\api\CategoryController::class);
+//Route::resource('posts', 'PostsController');
+Route::resource('posts', App\Http\Controllers\api\PostsController::class);
+Route::resource('tags', App\Http\Controllers\api\TagsController::class);
+Route::resource('comments', App\Http\Controllers\api\CommentsController::class);
 Route::get('profile', 'UsersController@profile');
 Route::post('profile/update', 'UsersController@updateProfile');
-Route::resource('users', 'UsersController');
+Route::resource('users', App\Http\Controllers\api\UsersController::class);
 
 
 // login/register
