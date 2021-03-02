@@ -17,28 +17,31 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class UserController extends Controller
 {
-// JWT Token: VsvuDxEa7UUzVc7rOY2rRZwFGwjiRFU9a9A4WWfxD7kQnAITnkis5EcQN8gwkfsL
+    // JWT Token: VsvuDxEa7UUzVc7rOY2rRZwFGwjiRFU9a9A4WWfxD7kQnAITnkis5EcQN8gwkfsL
 
     use AuthenticatesUsers;
 
-    public function __construct() {
-        $this->middleware('auth:api', ['except' => ['login', 'register', 'refresh', 'logout']]);
+    public function __construct()
+    {
+        //$this->middleware('auth:api', ['except' => ['login', 'register', 'refresh', 'logout']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'refresh']]);
     }
 
 
-    public function register(Request $request){
-        $plainPassword=$request->password;
+    public function register(Request $request)
+    {
+        $plainPassword = $request->password;
 
-        $password=bcrypt($request->password);
+        $password = bcrypt($request->password);
         $name = $request->name;
         $email = $request->email;
 
         $request->request->add(['name' => $name]);
         $request->request->add(['email' => $email]);
         $request->request->add(['password' => $password]);
-        
+
         // create the user account 
-        $created=User::create($request->all());
+        $created = User::create($request->all());
         $request->request->add(['password' => $plainPassword]);
 
         // login now..
@@ -52,7 +55,7 @@ class UserController extends Controller
 
 
         $jwt_token = null;
-        if (!$jwt_token = $this->guard()->attempt($input)){//JWTAuth::attempt($input)) {
+        if (!$jwt_token = $this->guard()->attempt($input)) { //JWTAuth::attempt($input)) {
 
             return response()->json([
                 'success' => false,
@@ -67,7 +70,7 @@ class UserController extends Controller
         $userModel->api_token = $jwt_token;
         $userModel->save();
 
-       
+
         // response back
         return response()->json([
             'success' => true,
@@ -77,17 +80,18 @@ class UserController extends Controller
     }
 
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         // $this->guard()->logout();
         // return response()->json(['message' => 'Successfully logged out']);
 
-        if(!User::checkToken($request)){
+        if (!User::checkToken($request)) {
             return response()->json([
-             'message' => 'Token is required',
-             'success' => false,
-            ],422);
+                'message' => 'Token is required',
+                'success' => false,
+            ], 422);
         }
-        
+
         try {
             JWTAuth::invalidate(JWTAuth::parseToken($request->token));
             return response()->json([
@@ -104,44 +108,45 @@ class UserController extends Controller
 
 
 
-    public function getCurrentUser(Request $request){
-       if(!User::checkToken($request)){
-           return response()->json([
-            'message' => 'Token is required'
-           ],422);
-       }
-        
-        $user = JWTAuth::parseToken()->authenticate();
-       // add isProfileUpdated....
-       $isProfileUpdated=false;
-        if($user->isPicUpdated==1 && $user->isEmailUpdated){
-            $isProfileUpdated=true;
-            
+    public function getCurrentUser(Request $request)
+    {
+        if (!User::checkToken($request)) {
+            return response()->json([
+                'message' => 'Token is required'
+            ], 422);
         }
-        $user->isProfileUpdated=$isProfileUpdated;
+
+        $user = JWTAuth::parseToken()->authenticate();
+        // add isProfileUpdated....
+        $isProfileUpdated = false;
+        if ($user->isPicUpdated == 1 && $user->isEmailUpdated) {
+            $isProfileUpdated = true;
+        }
+        $user->isProfileUpdated = $isProfileUpdated;
 
         return $user;
     }
 
-   
-    public function update(Request $request){
-        $user=$this->getCurrentUser($request);
-        if(!$user){
+
+    public function update(Request $request)
+    {
+        $user = $this->getCurrentUser($request);
+        if (!$user) {
             return response()->json([
                 'success' => false,
                 'message' => 'User is not found'
             ]);
         }
-    
+
         unset($data['token']);
 
         $updatedUser = User::where('id', $user->id)->update($data);
         $user =  User::find($user->id);
 
         return response()->json([
-            'success' => true, 
+            'success' => true,
             'message' => 'Information has been updated successfully!',
-            'user' =>$user
+            'user' => $user
         ]);
     }
 

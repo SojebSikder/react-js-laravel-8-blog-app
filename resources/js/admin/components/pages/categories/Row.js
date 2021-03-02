@@ -1,41 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deleteCategory } from '../../../store/actions/CategoryActions';
 
-class Row extends React.Component {
+function Row(props) {
 
-    constructor(props) {
-        super(props);
 
-        this.handleDelete = this.handleDelete.bind(this);
-    }
 
-    handleDelete(e) {
+    const handleDelete = (e) => {
         e.preventDefault();
 
         if (confirm("Are you sure?")) {
-            this.props.deleteCategory(this.props.category.id);
+            props.deleteCategory(props.category.id);
         }
     }
 
-    render() {
-        return (
-            <tr>
-                <td>{this.props.category.id}</td>
-                <td>{this.props.category.title}</td>
-                <td>
-                    {this.props.category.slug}
-                </td>
-                <td>
-                    <Link to={'/categories/edit/' + this.props.category.id} className="btn btn-info btn-sm"><i
-                        className="fa fa-edit"></i></Link>
-                    <a href="#" className="btn btn-danger btn-sm" onClick={this.handleDelete}><i
-                        className="fa fa-remove"></i></a>
-                </td>
-            </tr>
-        )
-    }
+    return (
+        <tr>
+            <td>{props.category.id}</td>
+            <td>{props.category.title}</td>
+            <td>
+                {props.category.slug}
+            </td>
+            <td>
+                <Link to={'/admin/categories/edit/' + props.category.id} className="btn btn-info btn-sm"><i
+                    className="fa fa-edit"></i></Link>
+                <a href="#" className="btn btn-danger btn-sm" onClick={handleDelete}><i
+                    className="fa fa-remove"></i></a>
+            </td>
+        </tr>
+    )
 };
 
 const mapDispatchToProps = (dispatch) => {

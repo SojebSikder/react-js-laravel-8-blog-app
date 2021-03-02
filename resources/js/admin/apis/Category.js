@@ -5,7 +5,12 @@ const Category = {
         return axios.get('/categories?page=' + page);
     },
     add: (title) => {
-        return axios.post('/categories', { title }, { headers: { Authorization: 'Bearer ' + localStorage.getItem("user.api_token") } });
+        const data = {
+            title: title,
+            token: localStorage.getItem("user.api_token"),
+        }
+        //return axios.post('/categories', { title }, { headers: { Authorization: 'Bearer ' + localStorage.getItem("user.api_token") } });
+        return axios.post('/categories', data);
     },
     showOne: (id) => {
         return axios.get('/categories/' + id);

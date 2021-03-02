@@ -9,6 +9,14 @@ class Category extends Model
 {
     use HasFactory;
 
+    public static function checkToken($token)
+    {
+        if ($token->token) {
+            return true;
+        }
+        return false;
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class, 'category_id');

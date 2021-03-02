@@ -23,9 +23,9 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         //
-        if($request->input('all')){
+        if ($request->input('all')) {
             $categories = Category::orderBy('id', 'DESC')->get();
-        }else{
+        } else {
             $categories = Category::paginate(10);
         }
 
@@ -50,9 +50,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        if(!auth("api")->user()->is_admin){
+        // if(!auth("api")->user()->is_admin){
+        //     return response()->json(['message' => 'Unauthorize'], 500);
+        // }
+
+        if (!Category::checkToken($request)) {
             return response()->json(['message' => 'Unauthorize'], 500);
         }
+
+        // if (!User::checkToken($request)) {
+        //     return response()->json([
+        //         'message' => 'Token is required',
+        //         'success' => false,
+        //     ], 422);
+        // }
+
         $this->validate($request, [
             'title' => 'required'
         ]);
@@ -63,7 +75,6 @@ class CategoryController extends Controller
         $category->save();
 
         return response()->json(['data' => $category, 'message' => 'Created successfully'], 201);
-
     }
 
     /**
@@ -98,7 +109,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(!auth("api")->user()->is_admin){
+        if (!auth("api")->user()->is_admin) {
             return response()->json(['message' => 'Updated successfully'], 200);
         }
     }
@@ -111,7 +122,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        if(!auth("api")->user()->is_admin){
+        if (!auth("api")->user()->is_admin) {
             return response()->json(['message' => 'Deleted successfully'], 200);
         }
     }

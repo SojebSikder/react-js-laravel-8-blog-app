@@ -67,7 +67,7 @@ class Edit extends React.Component {
                                 <div className="box-header with-border">
                                     <h3 className="box-title">Edit category #{this.props.match.params.id}</h3>
 
-                                    <Link to='/categories' className="btn btn-warning btn-sm"><i className="fa fa-arrow-left"></i> Return back</Link>
+                                    <Link to='/admin/categories' className="btn btn-warning btn-sm"><i className="fa fa-arrow-left"></i> Return back</Link>
                                 </div>
                                 <form role="form" method="post" onSubmit={this.handleSubmit}>
 

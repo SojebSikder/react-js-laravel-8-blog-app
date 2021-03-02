@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -10,76 +10,69 @@ import CategoryForm from './CategoryForm';
 import { addCategory, setCategoryDefaults, handleCategoryTitle } from '../../../store/actions/CategoryActions';
 
 
-class Add extends React.Component {
-    constructor(props) {
-        super(props);
+function Add(props) {
 
-        this.handleChange = this.handleChange.bind(this);
+    useEffect(() => {
+        props.setCategoryDefaults();
+    }, [])
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
-    componentDidMount() {
-        this.props.setCategoryDefaults();
-    }
 
-    handleChange(e) {
+    const handleChange = (e) => {
         e.preventDefault();
 
-        this.props.handleTitleChange(e.target.value);
+        props.handleTitleChange(e.target.value);
     }
 
-    handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        let self = this;
 
-        this.props.addCategory(this.props.categories.category.title, function () {
+        props.addCategory(props.categories.category.title, function () {
 
             // reset title
-            self.props.handleTitleChange('');
+            props.handleTitleChange('');
 
             // redirect
-            setTimeout(() => self.props.history.push('/categories'), 2000);
+            setTimeout(() => props.history.push('/admin/categories'), 2000);
         });
     }
 
-    render() {
-        return (
-            <div className="content-wrapper">
-                <section className="content-header">
-                    <h1>
-                        Add category
+
+    return (
+        <div className="content-wrapper">
+            <section className="content-header">
+                <h1>
+                    Add category
                     </h1>
 
-                    <Breadcrumb />
+                <Breadcrumb />
 
-                </section>
+            </section>
 
-                <section className="content">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="box box-warning">
-                                <div className="box-header with-border">
-                                    <h3 className="box-title">Add category</h3>
+            <section className="content">
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="box box-warning">
+                            <div className="box-header with-border">
+                                <h3 className="box-title">Add category</h3>
 
-                                    <Link to='/categories' className="btn btn-warning btn-sm"><i className="fa fa-arrow-left"></i> Return back</Link>
-                                </div>
-                                <form role="form" method="post" onSubmit={this.handleSubmit}>
-
-                                    <div className="box-body">
-                                        <CategoryForm categories={this.props.categories} onchange={this.handleChange} />
-                                    </div>
-                                    <div className="box-footer">
-                                        <button type="submit" className="btn btn-success">Submit</button>
-                                    </div>
-                                </form>
+                                <Link to='/admin/categories' className="btn btn-warning btn-sm"><i className="fa fa-arrow-left"></i> Return back</Link>
                             </div>
+                            <form role="form" method="post" onSubmit={handleSubmit}>
+
+                                <div className="box-body">
+                                    <CategoryForm categories={props.categories} onchange={handleChange} />
+                                </div>
+                                <div className="box-footer">
+                                    <button type="submit" className="btn btn-success">Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </section>
-            </div>
-        );
-    }
+                </div>
+            </section>
+        </div>
+    );
 }
 
 const mapStateToProps = (state, ownProps) => {
