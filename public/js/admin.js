@@ -2059,13 +2059,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _components_partials_Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/partials/Header */ "./resources/js/admin/components/partials/Header.js");
-/* harmony import */ var _components_partials_Sidebar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/partials/Sidebar */ "./resources/js/admin/components/partials/Sidebar.jsx");
-/* harmony import */ var _components_partials_Footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/partials/Footer */ "./resources/js/admin/components/partials/Footer.jsx");
-/* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Routes */ "./resources/js/admin/Routes.js");
-
-
+/* harmony import */ var _components_partials_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/partials/Header */ "./resources/js/admin/components/partials/Header.js");
+/* harmony import */ var _components_partials_Sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/partials/Sidebar */ "./resources/js/admin/components/partials/Sidebar.jsx");
+/* harmony import */ var _components_partials_Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/partials/Footer */ "./resources/js/admin/components/partials/Footer.jsx");
+/* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Routes */ "./resources/js/admin/Routes.js");
 
 
 
@@ -2076,10 +2073,10 @@ __webpack_require__.r(__webpack_exports__);
 function Index() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "wrapper",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_partials_Header__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Routes__WEBPACK_IMPORTED_MODULE_6__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_partials_Sidebar__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_partials_Header__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Routes__WEBPACK_IMPORTED_MODULE_5__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_partials_Sidebar__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "content-wrapper",
       children: "Admin page"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_partials_Footer__WEBPACK_IMPORTED_MODULE_5__.default, {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_partials_Footer__WEBPACK_IMPORTED_MODULE_4__.default, {})]
   });
 }
 

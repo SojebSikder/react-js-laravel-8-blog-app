@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import React from 'react';
 import Header from './components/partials/Header';
 import Sidebar from './components/partials/Sidebar';
 import Footer from './components/partials/Footer';
