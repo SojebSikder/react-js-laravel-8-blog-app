@@ -7,7 +7,7 @@ import {
 import TagForm from './TagForm';
 
 
-function AddModal(props) {
+function AddTagModal(props) {
 
     useEffect(() => {
         props.setTagDefaults();
@@ -81,4 +81,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddModal);
+export default connect(mapStateToProps, mapDispatchToProps)(AddTagModal);

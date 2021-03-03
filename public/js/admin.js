@@ -3100,7 +3100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function AddModal(props) {
+function AddCategoryModal(props) {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     props.setCategoryDefaults();
   }, []);
@@ -3203,7 +3203,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, mapDispatchToProps)(AddModal));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, mapDispatchToProps)(AddCategoryModal));
 
 /***/ }),
 
@@ -4294,10 +4294,10 @@ function Add(props) {
           })
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_categories_AddModal__WEBPACK_IMPORTED_MODULE_5__.AddModal, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_categories_AddModal__WEBPACK_IMPORTED_MODULE_5__.default, {
       show_modal: show_add_category_modal,
       close_modal: closeAddCategoryModal
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_tags_AddModal__WEBPACK_IMPORTED_MODULE_6__.AddModal, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_tags_AddModal__WEBPACK_IMPORTED_MODULE_6__.default, {
       show_modal: show_add_tag_modal,
       close_modal: closeAddTagModal
     })]
@@ -5542,7 +5542,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function AddModal(props) {
+function AddTagModal(props) {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     props.setTagDefaults();
   }, []);
@@ -5645,7 +5645,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, mapDispatchToProps)(AddModal));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, mapDispatchToProps)(AddTagModal));
 
 /***/ }),
 
@@ -6966,111 +6966,62 @@ var Form = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */   "default": () => /* binding */ Breadcrumb
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _BreadcrumbItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BreadcrumbItem */ "./resources/js/admin/components/partials/BreadcrumbItem.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function Breadcrumb(props) {
+  var prepareLinks = function prepareLinks() {
+    var links = [{
+      text: 'Dashboard',
+      url: '/admin/',
+      icon: 'fa fa-dashboard'
+    }];
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+    if (props.location.pathname != '/admin/') {
+      // split pathname using '/'
+      var parts = props.location.pathname.split('/'); // filter parts to exclude empty and numeric parts
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+      parts = parts.filter(function (val) {
+        return val != "" && isNaN(val);
+      }); // loop through parts and push in the links array
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-
-var Breadcrumb = /*#__PURE__*/function (_React$Component) {
-  _inherits(Breadcrumb, _React$Component);
-
-  var _super = _createSuper(Breadcrumb);
-
-  function Breadcrumb(props) {
-    _classCallCheck(this, Breadcrumb);
-
-    return _super.call(this, props);
-  }
-
-  _createClass(Breadcrumb, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {}
-  }, {
-    key: "prepareLinks",
-    value: function prepareLinks() {
-      var links = [{
-        text: 'Dashboard',
-        url: '/',
-        icon: 'fa fa-dashboard'
-      }];
-
-      if (this.props.location.pathname != '/') {
-        // split pathname using '/'
-        var parts = this.props.location.pathname.split('/'); // filter parts to exclude empty and numeric parts
-
-        parts = parts.filter(function (val) {
-          return val != "" && isNaN(val);
-        }); // loop through parts and push in the links array
-
-        for (var i = 0; i < parts.length; i++) {
-          if (i == parts.length - 1) {
-            links.push({
-              text: parts[i].replace(/^\w/, function (c) {
-                return c.toUpperCase();
-              }),
-              url: '#'
-            });
-          } else {
-            links.push({
-              text: parts[i].replace(/^\w/, function (c) {
-                return c.toUpperCase();
-              }),
-              url: '/' + parts[i]
-            });
-          }
+      for (var i = 0; i < parts.length; i++) {
+        if (i == parts.length - 1) {
+          links.push({
+            text: parts[i].replace(/^\w/, function (c) {
+              return c.toUpperCase();
+            }),
+            url: '#'
+          });
+        } else {
+          links.push({
+            text: parts[i].replace(/^\w/, function (c) {
+              return c.toUpperCase();
+            }),
+            url: '/' + parts[i]
+          });
         }
       }
-
-      return links;
     }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ol", {
-        className: "breadcrumb",
-        children: this.prepareLinks().map(function (link, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_BreadcrumbItem__WEBPACK_IMPORTED_MODULE_2__.default, {
-            link: link,
-            is_active: index === link.length - 1
-          }, index);
-        })
-      });
-    }
-  }]);
 
-  return Breadcrumb;
-}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
+    return links;
+  };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router__WEBPACK_IMPORTED_MODULE_3__.withRouter)(Breadcrumb));
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ol", {
+    className: "breadcrumb",
+    children: prepareLinks().map(function (link, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_BreadcrumbItem__WEBPACK_IMPORTED_MODULE_2__.default, {
+        link: link,
+        is_active: index === link.length - 1
+      }, index);
+    })
+  });
+}
 
 /***/ }),
 
@@ -7092,8 +7043,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var BreadcrumbItem = function BreadcrumbItem(props) {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BreadcrumbItem = function BreadcrumbItem(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
     className: props.is_active ? 'active' : '',
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
@@ -7103,9 +7053,7 @@ var BreadcrumbItem = function BreadcrumbItem(props) {
       }) : null, props.link.text]
     })
   });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BreadcrumbItem);
+});
 
 /***/ }),
 

@@ -8,7 +8,7 @@ import {
 import CategoryForm from './CategoryForm';
 
 
-function AddModal(props) {
+function AddCategoryModal(props) {
 
     useEffect(() => {
         props.setCategoryDefaults();
@@ -83,4 +83,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddModal);
+export default connect(mapStateToProps, mapDispatchToProps)(AddCategoryModal);

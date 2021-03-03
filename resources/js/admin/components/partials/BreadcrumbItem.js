@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const BreadcrumbItem = (props) => {
+export default BreadcrumbItem = (props) => {
 
     return (
         <li className={props.is_active ? 'active' : ''}>
@@ -13,5 +13,3 @@ const BreadcrumbItem = (props) => {
         </li>
     )
 };
-
-export default BreadcrumbItem;

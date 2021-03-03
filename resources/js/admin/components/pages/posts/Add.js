@@ -6,8 +6,8 @@ import '../../../css/editor.css';
 
 // partials
 import Breadcrumb from '../../partials/Breadcrumb';
-import { AddModal as AddCategoryModal } from '../categories/AddModal';
-import { AddModal as AddTagModal } from '../tags/AddModal';
+import AddCategoryModal from '../categories/AddModal';
+import AddTagModal from '../tags/AddModal';
 
 import PostForm from './PostForm';
 // actions

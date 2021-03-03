@@ -1,27 +1,20 @@
 import React from 'react';
-import { withRouter } from "react-router";
 import BreadcrumbItem from './BreadcrumbItem';
 
-class Breadcrumb extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+export default function Breadcrumb(props) {
 
-    componentDidMount() {
 
-    }
-
-    prepareLinks() {
+    const prepareLinks = () => {
         let links = [{
             text: 'Dashboard',
-            url: '/',
+            url: '/admin/',
             icon: 'fa fa-dashboard'
         }];
 
-        if (this.props.location.pathname != '/') {
+        if (props.location.pathname != '/admin/') {
 
             // split pathname using '/'
-            let parts = this.props.location.pathname.split('/');
+            let parts = props.location.pathname.split('/');
 
             // filter parts to exclude empty and numeric parts
             parts = parts.filter(val => val != "" && isNaN(val));
@@ -45,13 +38,10 @@ class Breadcrumb extends React.Component {
         return links;
     }
 
-    render() {
-        return (
-            <ol className="breadcrumb">
-                {this.prepareLinks().map((link, index) => <BreadcrumbItem key={index} link={link} is_active={index === link.length - 1} />)}
-            </ol>
-        )
-    }
+    return (
+        <ol className="breadcrumb">
+            {prepareLinks().map((link, index) => <BreadcrumbItem key={index} link={link} is_active={index === link.length - 1} />)}
+        </ol>
+    );
 }
 
-export default withRouter(Breadcrumb);
