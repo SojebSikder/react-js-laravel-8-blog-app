@@ -1,7 +1,10 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import BreadcrumbItem from './BreadcrumbItem';
 
 export default function Breadcrumb(props) {
+
+    const location = useLocation();
 
 
     const prepareLinks = () => {
@@ -11,10 +14,10 @@ export default function Breadcrumb(props) {
             icon: 'fa fa-dashboard'
         }];
 
-        if (props.location.pathname != '/admin/') {
+        if (location.pathname != '/admin/') {
 
             // split pathname using '/'
-            let parts = props.location.pathname.split('/');
+            let parts = location.pathname.split('/');
 
             // filter parts to exclude empty and numeric parts
             parts = parts.filter(val => val != "" && isNaN(val));
