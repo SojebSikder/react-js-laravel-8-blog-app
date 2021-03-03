@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import { connect } from 'react-redux';
 
 // style
@@ -16,130 +16,111 @@ import { listAllTags } from '../../../store/actions/TagActions';
 import { handleFieldChange, addPost, setPostDefaults, resetFields } from '../../../store/actions/PostActions';
 
 
-class Add extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            show_add_category_modal: false,
-            show_add_tag_modal: false
-        };
+function Add(props) {
 
-        this.submitRef = React.createRef();
+    // Hooks
+    const [show_add_category_modal, setShow_add_category_modal] = useState(false);
+    const [show_add_tag_modal, setShow_add_tag_modal] = useState(false);
 
-        this.handleFieldChange = this.handleFieldChange.bind(this);
+    const submitRef = createRef();
 
-        this.handleSubmit = this.handleSubmit.bind(this);
 
-        this.handleSave = this.handleSave.bind(this);
+    useEffect(() => {
+
+        props.setPostDefaults();
+
+        props.resetFields();
+
+        props.listAllCategories();
+
+        props.listAllTags();
+    }, [])
+
+
+    const openAddCategoryModal = () => {
+        setShow_add_category_modal(true);
     }
 
-    componentDidMount() {
-        this.props.setPostDefaults();
-
-        this.props.resetFields();
-
-        this.props.listAllCategories();
-
-        this.props.listAllTags();
+    const closeAddCategoryModal = () => {
+        setShow_add_category_modal(false);
     }
 
-    openAddCategoryModal() {
-        this.setState({
-            show_add_category_modal: true
-        });
+    const openAddTagModal = () => {
+        setShow_add_tag_modal(true);
     }
 
-    closeAddCategoryModal() {
-        this.setState({
-            show_add_category_modal: false
-        });
+    const closeAddTagModal = () => {
+        setShow_add_tag_modal(false);
     }
 
-    openAddTagModal() {
-        this.setState({
-            show_add_tag_modal: true
-        });
-    }
-
-    closeAddTagModal() {
-        this.setState({
-            show_add_tag_modal: false
-        });
-    }
-
-    handleFieldChange(e) {
+    const handleFieldChange = (e) => {
         if (e.target.name == 'tag[]') {
-            this.props.handleFieldChange(e.target.name, e.target.value, e.target.checked);
+            props.handleFieldChange(e.target.name, e.target.value, e.target.checked);
         } else if (e.target.name == 'image') {
-            this.props.handleFieldChange(e.target.name, e.target.files[0]);
+            props.handleFieldChange(e.target.name, e.target.files[0]);
         } else {
-            this.props.handleFieldChange(e.target.name, e.target.value);
+            props.handleFieldChange(e.target.name, e.target.value);
         }
     }
 
-    handleCkeditorChange(editor) {
-        this.props.handleFieldChange("content", editor.getData());
+    const handleCkeditorChange = (editor) => {
+        props.handleFieldChange("content", editor.getData());
     }
 
-    handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        let self = this;
 
-        this.props.addPost(this.props.post.post, function () {
+        props.addPost(props.post.post, function () {
 
             // reset fields
-            self.props.resetFields();
+            props.resetFields();
 
             // redirect
-            setTimeout(() => self.props.history.push('/posts'), 2000);
+            setTimeout(() => props.history.push('/admin/posts'), 2000);
         });
     }
 
-    handleSave(e) {
+    const handleSave = (e) => {
         e.preventDefault();
 
-        this.props.handleFieldChange('published', e.target.name == 'publish' ? 1 : 2);
+        props.handleFieldChange('published', e.target.name == 'publish' ? 1 : 2);
 
-        setTimeout(() => this.submitRef.current.click(), 200);
+        setTimeout(() => submitRef.current.click(), 200);
     }
 
-    render() {
-        return (
-            <div className="content-wrapper">
-                <section className="content-header">
-                    <h1>
-                        Add Post
-                    </h1>
+    return (
+        <div className="content-wrapper">
+            <section className="content-header">
+                <h1>Add Post</h1>
 
-                    <Breadcrumb />
+                <Breadcrumb />
 
-                </section>
+            </section>
 
-                <section className="content">
-                    <div className="row">
-                        <form method="post" role="form" onSubmit={this.handleSubmit}>
+            <section className="content">
+                <div className="row">
+                    <form method="post" role="form" onSubmit={handleSubmit}>
 
-                            <PostForm post={this.props.post.post} create_update_spinner={this.props.post.create_update_spinner}
-                                success_message={this.props.post.success_message} error_message={this.props.post.error_message}
-                                handleFieldChange={this.handleFieldChange} handleCkeditorChange={(event, editor) => this.handleCkeditorChange(editor)}
-                                all_categories={this.props.all_categories} all_tags={this.props.all_tags} openAddCategoryModal={this.openAddCategoryModal.bind(this)}
-                                openAddTagModal={this.openAddTagModal.bind(this)} handleSave={this.handleSave} submitRef={this.submitRef}
-                                validation_errors={this.props.post.validation_errors}
-                            />
+                        <PostForm post={props.post.post} create_update_spinner={props.post.create_update_spinner}
+                            success_message={props.post.success_message} error_message={props.post.error_message}
+                            handleFieldChange={handleFieldChange} handleCkeditorChange={(event, editor) => handleCkeditorChange(editor)}
+                            all_categories={props.all_categories} all_tags={props.all_tags} openAddCategoryModal={openAddCategoryModal}
+                            openAddTagModal={openAddTagModal} handleSave={handleSave} submitRef={submitRef}
+                            validation_errors={props.post.validation_errors}
+                        />
 
-                        </form>
-                    </div>
-                </section>
+                    </form>
+                </div>
+            </section>
 
-                <AddCategoryModal show_modal={this.state.show_add_category_modal} close_modal={this.closeAddCategoryModal.bind(this)} />
+            <AddCategoryModal show_modal={show_add_category_modal} close_modal={closeAddCategoryModal} />
 
-                <AddTagModal show_modal={this.state.show_add_tag_modal} close_modal={this.closeAddTagModal.bind(this)} />
+            <AddTagModal show_modal={show_add_tag_modal} close_modal={closeAddTagModal} />
 
-            </div>
-        );
-    }
+        </div>
+    );
 }
 
 const mapStateToProps = (state, ownProps) => {

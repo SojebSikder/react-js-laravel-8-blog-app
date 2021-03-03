@@ -4212,30 +4212,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_actions_CategoryActions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../store/actions/CategoryActions */ "./resources/js/admin/store/actions/CategoryActions.js");
 /* harmony import */ var _store_actions_TagActions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../store/actions/TagActions */ "./resources/js/admin/store/actions/TagActions.js");
 /* harmony import */ var _store_actions_PostActions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../store/actions/PostActions */ "./resources/js/admin/store/actions/PostActions.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
  // style
@@ -4251,157 +4241,119 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var Add = /*#__PURE__*/function (_React$Component) {
-  _inherits(Add, _React$Component);
+function Add(props) {
+  // Hooks
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      show_add_category_modal = _useState2[0],
+      setShow_add_category_modal = _useState2[1];
 
-  var _super = _createSuper(Add);
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      show_add_tag_modal = _useState4[0],
+      setShow_add_tag_modal = _useState4[1];
 
-  function Add(props) {
-    var _this;
+  var submitRef = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createRef)();
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    props.setPostDefaults();
+    props.resetFields();
+    props.listAllCategories();
+    props.listAllTags();
+  }, []);
 
-    _classCallCheck(this, Add);
+  var openAddCategoryModal = function openAddCategoryModal() {
+    setShow_add_category_modal(true);
+  };
 
-    _this = _super.call(this, props);
-    _this.state = {
-      show_add_category_modal: false,
-      show_add_tag_modal: false
-    };
-    _this.submitRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createRef();
-    _this.handleFieldChange = _this.handleFieldChange.bind(_assertThisInitialized(_this));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.handleSave = _this.handleSave.bind(_assertThisInitialized(_this));
-    return _this;
-  }
+  var closeAddCategoryModal = function closeAddCategoryModal() {
+    setShow_add_category_modal(false);
+  };
 
-  _createClass(Add, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.setPostDefaults();
-      this.props.resetFields();
-      this.props.listAllCategories();
-      this.props.listAllTags();
-    }
-  }, {
-    key: "openAddCategoryModal",
-    value: function openAddCategoryModal() {
-      this.setState({
-        show_add_category_modal: true
-      });
-    }
-  }, {
-    key: "closeAddCategoryModal",
-    value: function closeAddCategoryModal() {
-      this.setState({
-        show_add_category_modal: false
-      });
-    }
-  }, {
-    key: "openAddTagModal",
-    value: function openAddTagModal() {
-      this.setState({
-        show_add_tag_modal: true
-      });
-    }
-  }, {
-    key: "closeAddTagModal",
-    value: function closeAddTagModal() {
-      this.setState({
-        show_add_tag_modal: false
-      });
-    }
-  }, {
-    key: "handleFieldChange",
-    value: function handleFieldChange(e) {
-      if (e.target.name == 'tag[]') {
-        this.props.handleFieldChange(e.target.name, e.target.value, e.target.checked);
-      } else if (e.target.name == 'image') {
-        this.props.handleFieldChange(e.target.name, e.target.files[0]);
-      } else {
-        this.props.handleFieldChange(e.target.name, e.target.value);
-      }
-    }
-  }, {
-    key: "handleCkeditorChange",
-    value: function handleCkeditorChange(editor) {
-      this.props.handleFieldChange("content", editor.getData());
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
-      var self = this;
-      this.props.addPost(this.props.post.post, function () {
-        // reset fields
-        self.props.resetFields(); // redirect
+  var openAddTagModal = function openAddTagModal() {
+    setShow_add_tag_modal(true);
+  };
 
-        setTimeout(function () {
-          return self.props.history.push('/posts');
-        }, 2000);
-      });
-    }
-  }, {
-    key: "handleSave",
-    value: function handleSave(e) {
-      var _this2 = this;
+  var closeAddTagModal = function closeAddTagModal() {
+    setShow_add_tag_modal(false);
+  };
 
-      e.preventDefault();
-      this.props.handleFieldChange('published', e.target.name == 'publish' ? 1 : 2);
+  var handleFieldChange = function handleFieldChange(e) {
+    if (e.target.name == 'tag[]') {
+      props.handleFieldChange(e.target.name, e.target.value, e.target.checked);
+    } else if (e.target.name == 'image') {
+      props.handleFieldChange(e.target.name, e.target.files[0]);
+    } else {
+      props.handleFieldChange(e.target.name, e.target.value);
+    }
+  };
+
+  var _handleCkeditorChange = function handleCkeditorChange(editor) {
+    props.handleFieldChange("content", editor.getData());
+  };
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    props.addPost(props.post.post, function () {
+      // reset fields
+      props.resetFields(); // redirect
+
       setTimeout(function () {
-        return _this2.submitRef.current.click();
-      }, 200);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
+        return props.history.push('/admin/posts');
+      }, 2000);
+    });
+  };
 
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "content-wrapper",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", {
-          className: "content-header",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
-            children: "Add Post"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_Breadcrumb__WEBPACK_IMPORTED_MODULE_4__.default, {})]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("section", {
-          className: "content",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("form", {
-              method: "post",
-              role: "form",
-              onSubmit: this.handleSubmit,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_PostForm__WEBPACK_IMPORTED_MODULE_7__.default, {
-                post: this.props.post.post,
-                create_update_spinner: this.props.post.create_update_spinner,
-                success_message: this.props.post.success_message,
-                error_message: this.props.post.error_message,
-                handleFieldChange: this.handleFieldChange,
-                handleCkeditorChange: function handleCkeditorChange(event, editor) {
-                  return _this3.handleCkeditorChange(editor);
-                },
-                all_categories: this.props.all_categories,
-                all_tags: this.props.all_tags,
-                openAddCategoryModal: this.openAddCategoryModal.bind(this),
-                openAddTagModal: this.openAddTagModal.bind(this),
-                handleSave: this.handleSave,
-                submitRef: this.submitRef,
-                validation_errors: this.props.post.validation_errors
-              })
-            })
+  var handleSave = function handleSave(e) {
+    e.preventDefault();
+    props.handleFieldChange('published', e.target.name == 'publish' ? 1 : 2);
+    setTimeout(function () {
+      return submitRef.current.click();
+    }, 200);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: "content-wrapper",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", {
+      className: "content-header",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
+        children: "Add Post"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_Breadcrumb__WEBPACK_IMPORTED_MODULE_4__.default, {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("section", {
+      className: "content",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "row",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("form", {
+          method: "post",
+          role: "form",
+          onSubmit: handleSubmit,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_PostForm__WEBPACK_IMPORTED_MODULE_7__.default, {
+            post: props.post.post,
+            create_update_spinner: props.post.create_update_spinner,
+            success_message: props.post.success_message,
+            error_message: props.post.error_message,
+            handleFieldChange: handleFieldChange,
+            handleCkeditorChange: function handleCkeditorChange(event, editor) {
+              return _handleCkeditorChange(editor);
+            },
+            all_categories: props.all_categories,
+            all_tags: props.all_tags,
+            openAddCategoryModal: openAddCategoryModal,
+            openAddTagModal: openAddTagModal,
+            handleSave: handleSave,
+            submitRef: submitRef,
+            validation_errors: props.post.validation_errors
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_categories_AddModal__WEBPACK_IMPORTED_MODULE_5__.default, {
-          show_modal: this.state.show_add_category_modal,
-          close_modal: this.closeAddCategoryModal.bind(this)
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_tags_AddModal__WEBPACK_IMPORTED_MODULE_6__.default, {
-          show_modal: this.state.show_add_tag_modal,
-          close_modal: this.closeAddTagModal.bind(this)
-        })]
-      });
-    }
-  }]);
-
-  return Add;
-}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
+        })
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_categories_AddModal__WEBPACK_IMPORTED_MODULE_5__.default, {
+      show_modal: show_add_category_modal,
+      close_modal: closeAddCategoryModal
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_tags_AddModal__WEBPACK_IMPORTED_MODULE_6__.default, {
+      show_modal: show_add_tag_modal,
+      close_modal: closeAddTagModal
+    })]
+  });
+}
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
@@ -4754,7 +4706,7 @@ function Index(props) {
                 className: "box-title",
                 children: "All posts"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, {
-                to: "/posts/add",
+                to: "/admin/posts/add",
                 className: "btn btn-primary pull-right",
                 children: ["Add ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
                   className: "fa fa-plus"
@@ -4850,30 +4802,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partials_Spinner__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../partials/Spinner */ "./resources/js/admin/components/partials/Spinner.js");
 /* harmony import */ var _partials_SuccessAlert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../partials/SuccessAlert */ "./resources/js/admin/components/partials/SuccessAlert.js");
 /* harmony import */ var _partials_ErrorAlert__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../partials/ErrorAlert */ "./resources/js/admin/components/partials/ErrorAlert.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
@@ -4883,203 +4811,185 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var Form = /*#__PURE__*/function (_React$Component) {
-  _inherits(Form, _React$Component);
 
-  var _super = _createSuper(Form);
-
-  function Form(props) {
-    _classCallCheck(this, Form);
-
-    return _super.call(this, props);
-  }
-
-  _createClass(Form, [{
-    key: "render",
-    value: function render() {
-      var _this = this;
-
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_Spinner__WEBPACK_IMPORTED_MODULE_4__.default, {
-          show: this.props.create_update_spinner
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_SuccessAlert__WEBPACK_IMPORTED_MODULE_5__.default, {
-          msg: this.props.success_message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_ErrorAlert__WEBPACK_IMPORTED_MODULE_6__.default, {
-          msg: this.props.error_message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-          className: "col-md-8",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "box box-warning",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-              className: "box-header with-border",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
-                className: "box-title",
-                children: this.props.post.id != "" ? 'Edit post #' + this.props.post.id : 'Add post'
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
-                to: "/posts",
-                className: "btn btn-warning btn-sm pull-right",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
-                  className: "fa fa-arrow-left"
-                }), " Return back"]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-              className: "box-body",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "form-group ".concat(this.props.validation_errors.title ? 'has-error' : ''),
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                  children: "Post title"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                  type: "text",
-                  className: "form-control",
-                  placeholder: "Post title",
-                  onChange: this.props.handleFieldChange,
-                  value: this.props.post.title ? this.props.post.title : '',
-                  name: "title"
-                }), this.props.validation_errors.title != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-                  className: "help-block",
-                  children: this.props.validation_errors.title[0]
-                }) : null]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "form-group ".concat(this.props.validation_errors.content ? 'has-error' : ''),
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                  children: "Content"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)((_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_2___default()), {
-                  name: "content",
-                  editor: (_ckeditor_ckeditor5_build_classic_build_ckeditor__WEBPACK_IMPORTED_MODULE_3___default()),
-                  data: this.props.post.content ? this.props.post.content : '',
-                  onInit: function onInit(editor) {
-                    editor.setData(_this.props.post.content ? _this.props.post.content : '');
-                  },
-                  onChange: this.props.handleCkeditorChange
-                }), this.props.validation_errors.content != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-                  className: "help-block",
-                  children: this.props.validation_errors.content[0]
-                }) : null]
-              })]
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-          className: "col-md-4",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-            className: "box box-success",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-              className: "box-body",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "input-group input-group-sm ".concat(this.props.validation_errors.category_id ? 'has-error' : ''),
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("select", {
-                  name: "category_id",
-                  id: "category_id",
-                  className: "form-control",
-                  onChange: this.props.handleFieldChange,
-                  value: this.props.post.category_id,
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
-                    value: "",
-                    children: "select category"
-                  }), this.props.all_categories.map(function (cat) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
-                      value: cat.id,
-                      children: cat.title
-                    }, cat.id);
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-                  className: "input-group-btn",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
-                    type: "button",
-                    className: "btn btn-info btn-flat",
-                    onClick: this.props.openAddCategoryModal.bind(this),
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
-                      className: "fa fa-plus"
-                    }), " Add new category"]
-                  })
-                })]
-              }), this.props.validation_errors.category_id != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-                className: "help-block",
-                children: this.props.validation_errors.category_id[0]
-              }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                  children: "Tags"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-                  children: this.props.all_tags.map(function (tag) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-                      className: "checkbox",
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("label", {
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                          type: "checkbox",
-                          name: "tag[]",
-                          value: tag.id,
-                          onChange: _this.props.handleFieldChange,
-                          checked: _this.props.post.tags.includes(tag.id)
-                        }), tag.title]
-                      })
-                    }, tag.id);
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
-                  type: "button",
-                  className: "btn btn-info btn-flat",
-                  onClick: this.props.openAddTagModal.bind(this),
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
-                    className: "fa fa-plus"
-                  }), " Add new tag"]
-                })]
-              }), this.props.post.image_url ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-                src: this.props.post.image_url,
-                width: "100",
-                height: "80"
-              }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "form-group ".concat(this.props.validation_errors.image ? 'has-error' : ''),
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-                  children: "Image"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                  type: "file",
-                  name: "image",
-                  id: "image",
-                  className: "form-control",
-                  onChange: this.props.handleFieldChange,
-                  accept: "image/*"
-                }), this.props.validation_errors.image != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-                  className: "help-block",
-                  children: this.props.validation_errors.image[0]
-                }) : null]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "row",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-                  className: "col-md-6",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                    type: "button",
-                    name: "publish",
-                    value: "Publish",
-                    onClick: this.props.handleSave,
-                    className: "btn btn-success"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-                  className: "col-md-6",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                    type: "button",
-                    name: "savedraft",
-                    value: "Save draft",
-                    onClick: this.props.handleSave,
-                    className: "btn btn-default pull-right"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                  type: "submit",
-                  ref: this.props.submitRef,
-                  style: {
-                    display: 'none'
-                  }
-                })]
-              })]
-            })
-          })
+function PostForm(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_Spinner__WEBPACK_IMPORTED_MODULE_4__.default, {
+      show: props.create_update_spinner
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_SuccessAlert__WEBPACK_IMPORTED_MODULE_5__.default, {
+      msg: props.success_message
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_ErrorAlert__WEBPACK_IMPORTED_MODULE_6__.default, {
+      msg: props.error_message
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "col-md-8",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "box box-warning",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "box-header with-border",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", {
+            className: "box-title",
+            children: props.post.id != "" ? 'Edit post #' + props.post.id : 'Add post'
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+            to: "/admin/posts",
+            className: "btn btn-warning btn-sm pull-right",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+              className: "fa fa-arrow-left"
+            }), " Return back"]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "box-body",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "form-group ".concat(props.validation_errors.title ? 'has-error' : ''),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+              children: "Post title"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+              type: "text",
+              className: "form-control",
+              placeholder: "Post title",
+              onChange: props.handleFieldChange,
+              value: props.post.title ? props.post.title : '',
+              name: "title"
+            }), props.validation_errors.title != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              className: "help-block",
+              children: props.validation_errors.title[0]
+            }) : null]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "form-group ".concat(props.validation_errors.content ? 'has-error' : ''),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+              children: "Content"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)((_ckeditor_ckeditor5_react__WEBPACK_IMPORTED_MODULE_2___default()), {
+              name: "content",
+              editor: (_ckeditor_ckeditor5_build_classic_build_ckeditor__WEBPACK_IMPORTED_MODULE_3___default()),
+              data: props.post.content ? props.post.content : '',
+              onInit: function onInit(editor) {
+                editor.setData(props.post.content ? props.post.content : '');
+              },
+              onChange: props.handleCkeditorChange
+            }), props.validation_errors.content != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              className: "help-block",
+              children: props.validation_errors.content[0]
+            }) : null]
+          })]
         })]
-      });
-    }
-  }]);
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "col-md-4",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "box box-success",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "box-body",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "input-group input-group-sm ".concat(props.validation_errors.category_id ? 'has-error' : ''),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("select", {
+              name: "category_id",
+              id: "category_id",
+              className: "form-control",
+              onChange: props.handleFieldChange,
+              value: props.post.category_id,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
+                value: "",
+                children: "select category"
+              }), props.all_categories.map(function (cat) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
+                  value: cat.id,
+                  children: cat.title
+                }, cat.id);
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+              className: "input-group-btn",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
+                type: "button",
+                className: "btn btn-info btn-flat",
+                onClick: props.openAddCategoryModal,
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                  className: "fa fa-plus"
+                }), " Add new category"]
+              })
+            })]
+          }), props.validation_errors.category_id != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "help-block",
+            children: props.validation_errors.category_id[0]
+          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "form-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+              children: "Tags"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              children: props.all_tags.map(function (tag) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                  className: "checkbox",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("label", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                      type: "checkbox",
+                      name: "tag[]",
+                      value: tag.id,
+                      onChange: props.handleFieldChange,
+                      checked: props.post.tags.includes(tag.id)
+                    }), tag.title]
+                  })
+                }, tag.id);
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
+              type: "button",
+              className: "btn btn-info btn-flat",
+              onClick: props.openAddTagModal,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                className: "fa fa-plus"
+              }), " Add new tag"]
+            })]
+          }), props.post.image_url ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+            src: props.post.image_url,
+            width: "100",
+            height: "80"
+          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "form-group ".concat(props.validation_errors.image ? 'has-error' : ''),
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+              children: "Image"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+              type: "file",
+              name: "image",
+              id: "image",
+              className: "form-control",
+              onChange: props.handleFieldChange,
+              accept: "image/*"
+            }), props.validation_errors.image != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              className: "help-block",
+              children: props.validation_errors.image[0]
+            }) : null]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              className: "col-md-6",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                type: "button",
+                name: "publish",
+                value: "Publish",
+                onClick: props.handleSave,
+                className: "btn btn-success"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              className: "col-md-6",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                type: "button",
+                name: "savedraft",
+                value: "Save draft",
+                onClick: props.handleSave,
+                className: "btn btn-default pull-right"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+              type: "submit",
+              ref: props.submitRef,
+              style: {
+                display: 'none'
+              }
+            })]
+          })]
+        })
+      })
+    })]
+  });
+}
 
-  return Form;
-}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Form);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PostForm);
 
 /***/ }),
 

@@ -39,7 +39,7 @@ function Index(props) {
                             <div className="box-header">
                                 <h3 className="box-title">All posts</h3>
 
-                                <Link to='/posts/add' className="btn btn-primary pull-right">Add <i className="fa fa-plus"></i></Link>
+                                <Link to='/admin/posts/add' className="btn btn-primary pull-right">Add <i className="fa fa-plus"></i></Link>
                             </div>
                             <div className="box-body">
                                 <Spinner show={props.post.list_spinner} />
