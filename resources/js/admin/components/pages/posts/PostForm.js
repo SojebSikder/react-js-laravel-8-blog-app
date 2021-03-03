@@ -7,7 +7,7 @@ import Spinner from '../../partials/Spinner';
 import SuccessAlert from '../../partials/SuccessAlert';
 import ErrorAlert from '../../partials/ErrorAlert';
 
-function PostForm(props) {
+export default function PostForm(props) {
 
 
     return (
@@ -111,7 +111,5 @@ function PostForm(props) {
             </div>
 
         </div>
-    )
+    );
 }
-
-export default PostForm;

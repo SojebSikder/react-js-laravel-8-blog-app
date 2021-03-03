@@ -6,10 +6,10 @@ import '../../../css/editor.css';
 
 // partials
 import Breadcrumb from '../../partials/Breadcrumb';
-import AddCategoryModal from '../categories/AddModal';
-import AddTagModal from '../tags/AddModal';
-import PostForm from './PostForm';
+import { AddModal as AddCategoryModal } from '../categories/AddModal';
+import { AddModal as AddTagModal } from '../tags/AddModal';
 
+import PostForm from './PostForm';
 // actions
 import { listAllCategories } from '../../../store/actions/CategoryActions';
 import { listAllTags } from '../../../store/actions/TagActions';
@@ -103,7 +103,8 @@ function Add(props) {
                 <div className="row">
                     <form method="post" role="form" onSubmit={handleSubmit}>
 
-                        <PostForm post={props.post.post} create_update_spinner={props.post.create_update_spinner}
+                        <PostForm
+                            post={props.post.post} create_update_spinner={props.post.create_update_spinner}
                             success_message={props.post.success_message} error_message={props.post.error_message}
                             handleFieldChange={handleFieldChange} handleCkeditorChange={(event, editor) => handleCkeditorChange(editor)}
                             all_categories={props.all_categories} all_tags={props.all_tags} openAddCategoryModal={openAddCategoryModal}

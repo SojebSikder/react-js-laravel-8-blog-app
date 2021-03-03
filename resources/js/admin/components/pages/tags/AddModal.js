@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import {
     addTag, setTagDefaults, handleTagTitle,
@@ -7,72 +7,63 @@ import {
 import TagForm from './TagForm';
 
 
-class AddModal extends React.Component {
-    constructor(props) {
-        super(props);
+function AddModal(props) {
 
-        this.handleChange = this.handleChange.bind(this);
+    useEffect(() => {
+        props.setTagDefaults();
+    }, [])
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
-    componentDidMount() {
-        this.props.setTagDefaults();
-    }
-
-    handleChange(e) {
+    const handleChange = (e) => {
         e.preventDefault();
 
-        this.props.handleTitleChange(e.target.value);
+        props.handleTitleChange(e.target.value);
     }
 
-    handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        let self = this;
 
-        this.props.addTag(this.props.tag.tag.title, function () {
+        props.addTag(props.tag.tag.title, function () {
 
             // reset title
-            self.props.handleTitleChange('');
+            props.handleTitleChange('');
 
             setTimeout(() => {
                 // close modal
-                self.props.close_modal();
+                props.close_modal();
 
                 // reset defaults
-                self.props.setTagDefaults();
+                props.setTagDefaults();
 
                 // refetch tags
-                self.props.listAllTags();
+                props.listAllTags();
 
             }, 2000);
         });
     }
 
-    render() {
-        return (
-            <div className={`modal fade` + (this.props.show_modal == true ? ' in' : '')} style={{ display: (this.props.show_modal == true ? 'block' : 'none') }} id="modal-default">
-                <div className="modal-dialog">
-                    <form role="form" method="post" onSubmit={this.handleSubmit}>
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <button type="button" className="close" aria-label="Close" onClick={this.props.close_modal}>
-                                    <span aria-hidden="true">&times;</span></button>
-                                <h4 className="modal-title">Add new tag</h4>
-                            </div>
-                            <div className="modal-body">
-                                <TagForm tag={this.props.tag} onchange={this.handleChange} />
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-default pull-left" onClick={this.props.close_modal}>Close</button>
-                                <button type="submit" className="btn btn-primary">Save</button>
-                            </div>
+    return (
+        <div className={`modal fade` + (props.show_modal == true ? ' in' : '')} style={{ display: (props.show_modal == true ? 'block' : 'none') }} id="modal-default">
+            <div className="modal-dialog">
+                <form role="form" method="post" onSubmit={handleSubmit}>
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <button type="button" className="close" aria-label="Close" onClick={props.close_modal}>
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 className="modal-title">Add new tag</h4>
                         </div>
-                    </form>
-                </div>
+                        <div className="modal-body">
+                            <TagForm tag={props.tag} onchange={handleChange} />
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-default pull-left" onClick={props.close_modal}>Close</button>
+                            <button type="submit" className="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 const mapStateToProps = (state, ownProps) => {
