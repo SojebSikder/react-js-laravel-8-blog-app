@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
-    Link,
     Route,
     Switch
 } from 'react-router-dom';
@@ -23,7 +21,7 @@ import AddUsers from "./components/pages/users/Add";
 import EditUsers from "./components/pages/users/Edit";
 import Profile from "./components/pages/profile/Profile";
 
-function Routes() {
+export default function Routes() {
 
     return (
         <Switch>
@@ -47,5 +45,3 @@ function Routes() {
     )
 
 }
-
-export default Routes;

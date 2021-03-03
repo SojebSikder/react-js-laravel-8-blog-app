@@ -2091,7 +2091,7 @@ function Index() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */   "default": () => /* binding */ Routes
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -2113,7 +2113,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_pages_users_Add__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/pages/users/Add */ "./resources/js/admin/components/pages/users/Add.js");
 /* harmony import */ var _components_pages_users_Edit__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/pages/users/Edit */ "./resources/js/admin/components/pages/users/Edit.js");
 /* harmony import */ var _components_pages_profile_Profile__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/pages/profile/Profile */ "./resources/js/admin/components/pages/profile/Profile.js");
-
 
 
 
@@ -2195,8 +2194,6 @@ function Routes() {
     })]
   });
 }
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Routes);
 
 /***/ }),
 
@@ -6131,84 +6128,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partials_Spinner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../partials/Spinner */ "./resources/js/admin/components/partials/Spinner.js");
 /* harmony import */ var _partials_SuccessAlert__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../partials/SuccessAlert */ "./resources/js/admin/components/partials/SuccessAlert.js");
 /* harmony import */ var _partials_ErrorAlert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../partials/ErrorAlert */ "./resources/js/admin/components/partials/ErrorAlert.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
 
 
 
-var Form = /*#__PURE__*/function (_React$Component) {
-  _inherits(Form, _React$Component);
 
-  var _super = _createSuper(Form);
+function TagForm(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_Spinner__WEBPACK_IMPORTED_MODULE_2__.default, {
+      show: props.tag.create_update_spinner
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_SuccessAlert__WEBPACK_IMPORTED_MODULE_3__.default, {
+      msg: props.tag.success_message
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_ErrorAlert__WEBPACK_IMPORTED_MODULE_4__.default, {
+      msg: props.tag.error_message
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: "box-body",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "form-group ".concat(props.tag.validation_errors != null ? 'has-error' : ''),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
+          children: "Tag title"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+          type: "text",
+          className: "form-control",
+          placeholder: "Tag title",
+          onChange: props.onchange,
+          value: props.tag.tag.title ? props.tag.tag.title : '',
+          name: "title"
+        }), props.tag.validation_errors != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "help-block",
+          children: props.tag.validation_errors.title[0]
+        }) : null]
+      })
+    })]
+  });
+}
 
-  function Form(props) {
-    _classCallCheck(this, Form);
-
-    return _super.call(this, props);
-  }
-
-  _createClass(Form, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_Spinner__WEBPACK_IMPORTED_MODULE_2__.default, {
-          show: this.props.tag.create_update_spinner
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_SuccessAlert__WEBPACK_IMPORTED_MODULE_3__.default, {
-          msg: this.props.tag.success_message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_partials_ErrorAlert__WEBPACK_IMPORTED_MODULE_4__.default, {
-          msg: this.props.tag.error_message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-          className: "box-body",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            className: "form-group ".concat(this.props.tag.validation_errors != null ? 'has-error' : ''),
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
-              children: "Tag title"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-              type: "text",
-              className: "form-control",
-              placeholder: "Tag title",
-              onChange: this.props.onchange,
-              value: this.props.tag.tag.title ? this.props.tag.tag.title : '',
-              name: "title"
-            }), this.props.tag.validation_errors != null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-              className: "help-block",
-              children: this.props.tag.validation_errors.title[0]
-            }) : null]
-          })
-        })]
-      });
-    }
-  }]);
-
-  return Form;
-}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Form);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TagForm);
 
 /***/ }),
 
